@@ -1,0 +1,169 @@
+
+set(SOURCES
+        accesscontrol.cpp
+        autostr.cpp
+        blockbuf.cpp
+        brotlibuf.cpp
+        compressor.cpp
+        configentry.cpp
+        connpool.cpp
+        crashguard.cpp
+        daemonize.cpp
+        datetime.cpp
+        dlinkqueue.cpp
+        duplicable.cpp
+        emailsender.cpp
+        env.cpp
+        fdpass.cpp
+        filtermatch.cpp
+        gfactory.cpp
+        ghash.cpp
+        gpath.cpp
+        gpointerlist.cpp
+        guardedapp.cpp
+        gzipbuf.cpp
+        hashdatacache.cpp
+        hashstringmap.cpp
+        httpfetch.cpp
+        httpfetchdriver.cpp
+        httputil.cpp
+        iconnection.cpp
+        iovec.cpp
+        keydata.cpp
+        linkedobj.cpp
+        linkedqueue.cpp
+        linkobjpool.cpp
+        loopbuf.cpp
+        ni_fio.c
+        objpool.cpp
+        pcregex.cpp
+        pcutil.cpp
+        pidfile.cpp
+        pool.cpp
+        poolalloc.cpp
+        radixtree.cpp
+        refcounter.cpp
+        resourcepool.cpp
+        rlimits.cpp
+        semaphore.cpp
+        signalutil.cpp
+        staticobj.cpp
+        stringlist.cpp
+        stringtool.cpp
+        tlinklist.cpp
+        tsingleton.cpp
+        vmembuf.cpp
+        xmlnode.cpp
+        misc/profiletime.cpp
+        sysinfo/nicdetect.cpp
+        sysinfo/partitioninfo.cpp
+        sysinfo/systeminfo.cpp
+)
+
+set(HEADERS
+        accesscontrol.h
+        accessdef.h
+        aho.h
+        autobuf.h
+        autostr.h
+        blockbuf.h
+        brotlibuf.h
+        compressor.h
+        configentry.h
+        connpool.h
+        crashguard.h
+        daemonize.h
+        datetime.h
+        dlinkqueue.h
+        duplicable.h
+        emailsender.h
+        env.h
+        fdpass.h
+        filtermatch.h
+        gfactory.h
+        ghash.h
+        gmap.h
+        gnew.h
+        gpath.h
+        gpointerlist.h
+        gsendfile.h
+        guardedapp.h
+        gzipbuf.h
+        hashdatacache.h
+        hashstringmap.h
+        httpfetch.h
+        httpfetchdriver.h
+        httputil.h
+        iconnection.h
+        ienv.h
+        iovec.h
+        itimer.h
+        keydata.h
+        linkedobj.h
+        linkedqueue.h
+        linkobjpool.h
+        logfile.h
+        loopbuf.h
+        ls_hash_fun.h
+        ni_fio.h
+        objarray.h
+        objpool.h
+        pcregex.h
+        pcutil.h
+        pidfile.h
+        pool.h
+        poolalloc.h
+        radixtree.h
+        refcounter.h
+        resourcepool.h
+        rlimits.h
+        semaphore.h
+        signalutil.h
+        ssnprintf.h
+        staticobj.h
+        stringlist.h
+        stringmap.h
+        stringtool.h
+        swap.h
+        timer.h
+        timerprocessor.h
+        timertask.h
+        tlinklist.h
+        tsingleton.h
+        vmembuf.h
+        xmlnode.h
+        xpool.h
+        misc/denydup.h
+        misc/profiletime.h
+        sysinfo/nicdetect.h
+        sysinfo/partitioninfo.h
+        sysinfo/systeminfo.h
+)
+
+add_library(util
+        STATIC
+            "${SOURCES}"
+            "${HEADERS}"
+)
+
+target_include_directories(util
+        PUBLIC
+            "${PCRE_INCLUDE_DIRS}"
+            "${BROTLI_INCLUDE_DIRS}"
+        PRIVATE
+            "${OpenLiteSpeed_SOURCE_DIR}/src"
+)
+
+if (ENABLE_BROTLI)
+    target_compile_definitions(util
+            PUBLIC
+                USE_BROTLI
+    )
+endif ()
+
+target_link_libraries(util
+        PUBLIC
+            lsr edio adns sslpp ZLIB::ZLIB ${PCRE_LIBRARIES} ${BROTLI_LIBRARIES}
+        PRIVATE
+            adns log4cxx socket OpenSSL::SSL Threads::Threads EXPAT::EXPAT
+)

@@ -1,0 +1,217 @@
+
+SET(SOURCES
+        accesscache.cpp
+        accesslog.cpp
+        authuser.cpp
+        awstats.cpp
+        cacheelement.cpp
+        chunkinputstream.cpp
+        chunkoutputstream.cpp
+        clientcache.cpp
+        clientinfo.cpp
+        connlimitctrl.cpp
+        contextlist.cpp
+        contextnode.cpp
+        contexttree.cpp
+        denieddir.cpp
+        eventdispatcher.cpp
+        expiresctrl.cpp
+        handlerfactory.cpp
+        handlertype.cpp
+        hiochainstream.cpp
+        hiohandlerfactory.cpp
+        hiostream.cpp
+        hotlinkctrl.cpp
+        htauth.cpp
+        htpasswd.cpp
+        httpaiosendfile.cpp
+        httpcache.cpp
+        httpcgitool.cpp
+        httpcontext.cpp
+        httpextconnector.cpp
+        httphandler.cpp
+        httpheader.cpp
+        httplistener.cpp
+        httplistenerlist.cpp
+        httplog.cpp
+        httplogsource.cpp
+        httpmethod.cpp
+        httpmime.cpp
+        httprange.cpp
+        httpreq.cpp
+        httpresourcemanager.cpp
+        httpresp.cpp
+        httprespheaders.cpp
+        httpserverconfig.cpp
+        httpserverversion.cpp
+        httpsession.cpp
+        httpsignals.cpp
+        httpstats.cpp
+        httpstatuscode.cpp
+        httpstatusline.cpp
+        httpver.cpp
+        httpvhost.cpp
+        httpvhostlist.cpp
+        iptogeo2.cpp
+        iptoloc.cpp
+        l4handler.cpp
+        moduserdir.cpp
+        moov.cpp
+        ntwkiolink.cpp
+        phpconfig.cpp
+        pipeappender.cpp
+        recaptcha.cpp
+        reqhandler.cpp
+        reqparser.cpp
+        reqstats.cpp
+        requestvars.cpp
+        rewriteengine.cpp
+        rewritemap.cpp
+        rewriterule.cpp
+        rewriterulelist.cpp
+        sendfileinfo.cpp
+        serverprocessconfig.cpp
+        smartsettings.cpp
+        staticfilecache.cpp
+        staticfilecachedata.cpp
+        staticfilehandler.cpp
+        statusurlmap.cpp
+        stderrlogger.cpp
+        subrequest.cpp
+        throttlecontrol.cpp
+        urimatch.cpp
+        userdir.cpp
+        vhostmap.cpp
+)
+
+set(HEADERS
+        accesscache.h
+        accesslog.h
+        authuser.h
+        awstats.h
+        cacheelement.h
+        chunkinputstream.h
+        chunkoutputstream.h
+        clientcache.h
+        clientinfo.h
+        clientinfo.h
+        connlimitctrl.h
+        contextlist.h
+        contextnode.h
+        contexttree.h
+        denieddir.h
+        eventdispatcher.h
+        expiresctrl.h
+        handlerfactory.h
+        handlertype.cpp
+        hiochainstream.h
+        hiohandlerfactory.h
+        hiostream.h
+        hotlinkctrl.h
+        htauth.h
+        htpasswd.h
+        httpaiosendfile.h
+        httpcache.h
+        httpcgitool.h
+        httpcontext.h
+        httpdefs.h
+        httpextconnector.h
+        httphandler.h
+        httpheader.h
+        httplistener.h
+        httplistenerlist.h
+        httplog.h
+        httplogsource.h
+        httpmethod.h
+        httpmime.h
+        httprange.h
+        httpreq.h
+        httpresourcemanager.h
+        httpresp.h
+        httprespheaders.h
+        httpserverconfig.h
+        httpserverversion.h
+        httpsession.h
+        httpsessionmt.h
+        httpsignals.h
+        httpstats.h
+        httpstatuscode.h
+        httpstatusline.h
+        httpver.h
+        httpvhost.h
+        httpvhostlist.h
+        ip2geo.h
+        iptogeo2.h
+        iptoloc.h
+        l4handler.h
+        moduserdir.h
+        moov.h
+        moovP.h
+        mtsessdata.h
+        nshttp.h
+        ntwkiolink.h
+        phpconfig.h
+        pipeappender.h
+        platforms.h
+        recaptcha.h
+        reqhandler.h
+        reqparser.h
+        reqparserparam.h
+        reqstats.h
+        requestvars.h
+        rewriteengine.h
+        rewritemap.h
+        rewriterule.h
+        rewriterulelist.h
+        sendfileinfo.h
+        serverprocessconfig.h
+        smartsettings.h
+        staticfilecache.h
+        staticfilecachedata.h
+        staticfilehandler.h
+        statusurlmap.h
+        stderrlogger.h
+        throttlecontrol.h
+        urimatch.h
+        userdir.h
+        vhostmap.h
+)
+
+add_library(http
+        STATIC
+            "${SOURCES}"
+            "${HEADERS}"
+)
+
+target_include_directories(http
+        PUBLIC
+            "${IP2LOCATION_INCLUDE_DIRS}"
+        PRIVATE
+            "${OpenLiteSpeed_SOURCE_DIR}/src"
+            "${PCRE_INCLUDE_DIRS}"
+            "${CRYPT_INCLUDE_DIR}"
+            "${GEOIP_INCLUDE_DIRS}"
+            "${MAXMIND_INCLUDE_DIRS}"
+)
+
+if(ENABLE_GEOIP)
+    target_compile_definitions(http
+            PRIVATE
+                ENABLE_IPTOGEO2
+    )
+endif()
+
+if(ENABLE_IP2LOCATION)
+    target_compile_definitions(http
+            PUBLIC
+                USE_IP2LOCATION
+    )
+endif()
+
+target_link_libraries(http
+        PUBLIC
+            lsr edio extensions extensions-registry log4cxx lsiapi socket sslpp thread util ${IP2LOCATION_LIBRARIES}
+        PRIVATE
+            adns extensions-cgi extensions-fcgi extensions-lsapi extensions-proxy mod_gzip
+            main spdy ssi c OpenSSL::SSL ${PCRE_LIBRARIES} ${CRYPT_LIBRARIES} ${GEOIP_LIBRARIES} ${MAXMIND_LIBRARIES}
+)
