@@ -8,25 +8,25 @@ jobs:
     runs-on: ubuntu-19.10
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Update
-    - run: apt-get update && apt-get -yq upgrade
-    - name: Install dependencies
-      run: apt-get -yq install build-essential cmake libzip-dev pkg-config libluajit-5.1-dev libpcre3-dev libudns-dev libssl-dev libexpat1-dev doxygen libgeoip-dev libmaxminddb-dev libbrotli-dev wget libunittest++-dev libmodsecurity-dev  
-    - name: Build IP2Location
-    - run: | 
-        wget https://github.com/chrislim2888/IP2Location-C-Library/archive/8.0.9.tar.gz -O IP2Location.tar.gz
-        tar xf IP2Location.tar.gz -C IP2Location --strip-components 1 
-        cd IP2Location
-        autoreconf -i -v --force
-        ./configure
-        make
-        make install
-        cd ..
-    - name: Build OpenLiteSpeed
-      run: |
-        mkdir build
-        cd build
-        cmake ..
-        make
-        make test
+      - uses: actions/checkout@v1
+      - name: Update
+      - run: apt-get update && apt-get -yq upgrade
+      - name: Install dependencies
+        run: apt-get -yq install build-essential cmake libzip-dev pkg-config libluajit-5.1-dev libpcre3-dev libudns-dev libssl-dev libexpat1-dev doxygen libgeoip-dev libmaxminddb-dev libbrotli-dev wget libunittest++-dev libmodsecurity-dev
+      - name: Build IP2Location
+      - run: |
+          wget https://github.com/chrislim2888/IP2Location-C-Library/archive/8.0.9.tar.gz -O IP2Location.tar.gz
+          tar xf IP2Location.tar.gz -C IP2Location --strip-components 1
+          cd IP2Location
+          autoreconf -i -v --force
+          ./configure
+          make
+          make install
+          cd ..
+      - name: Build OpenLiteSpeed
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make
+          make test
