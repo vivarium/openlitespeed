@@ -45,20 +45,14 @@
 #include <util/emailsender.h>
 #include <util/gpath.h>
 #include <util/pcutil.h>
-#include <util/stringlist.h>
-#include <util/signalutil.h>
 #include <util/vmembuf.h>
 #include <util/httpfetch.h>
 #include <socket/gsockaddr.h>
 
-#include <sys/sysctl.h>
-
 #include <extensions/cgi/cgidworker.h>
 #include <extensions/registry/extappregistry.h>
 #include <openssl/crypto.h>
-#include <assert.h>
 #include <ctype.h>
-#include <dirent.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <signal.h>
@@ -74,7 +68,6 @@
 #include <time.h>
 #include <unistd.h>
 #include <config.h>
-#include <sys/stat.h>
 
 
 /***
