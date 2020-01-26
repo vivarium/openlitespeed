@@ -20,6 +20,7 @@ jobs:
       - name: Build IP2Location
         run: |
           wget https://github.com/chrislim2888/IP2Location-C-Library/archive/8.0.9.tar.gz -O IP2Location.tar.gz
+          mkdir IP2Location
           tar xf IP2Location.tar.gz -C IP2Location --strip-components 1
           cd IP2Location
           autoreconf -i -v --force
