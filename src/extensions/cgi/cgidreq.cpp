@@ -204,7 +204,7 @@ int CgidReq::finalize(int req_id, const char *pSecret, int type)
     pHeader->m_reqid = req_id;
     pHeader->m_szData = size() - sizeof(lscgid_req);
 
-    RAND_pseudo_bytes(pHeader->m_nonce, 16);
+    RAND_bytes(pHeader->m_nonce, 16);
     memmove(pHeader->m_md5, pSecret, 16);
     StringTool::getMd5((const char *)pHeader, sizeof(lscgid_req),
                        pHeader->m_md5);
