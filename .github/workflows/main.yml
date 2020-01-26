@@ -5,7 +5,8 @@ on: [push]
 jobs:
   build:
     name: Build all
-    runs-on: ubuntu-19.10
+    runs-on: ubuntu-latest
+    container: ubuntu:19.10
 
     steps:
       - uses: actions/checkout@v1
