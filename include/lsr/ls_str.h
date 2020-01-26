@@ -225,7 +225,7 @@ int     ls_str_cmp(const void *pVal1, const void *pVal2);
  *
  * @param[in] pVal1 - The first ls_str object to compare.
  * @param[in] pVal2 - The second ls_str object to compare.
- * @return Result according to #ls_hash_val_comp.
+ * @return Result according to ls_hash_val_comp.
  */
 int     ls_str_bcmp(const void *pVal1, const void *pVal2);
 
@@ -264,7 +264,7 @@ ls_hash_key_t  ls_str_xxh64(const void *pKey);
  *
  * @param[in] pVal1 - The first lsr str object to compare.
  * @param[in] pVal2 - The second lsr str object to compare.
- * @return Result according to #ls_hash_val_comp.
+ * @return Result according to ls_hash_val_comp.
  */
 int             ls_str_cmpci(const void *pVal1, const void *pVal2);
 
