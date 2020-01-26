@@ -36,7 +36,7 @@ typedef struct ls_lfqueue_s  ls_lfqueue_t;
 
 
 /**
- * @ls_mpscq_new
+ *  
  * @brief Creates a new multi-producer single-consumer (mpsc)
  *  lockless queue object.
  * @details The routine allocates and initializes an object
@@ -51,7 +51,7 @@ typedef struct ls_lfqueue_s  ls_lfqueue_t;
 ls_mpscq_t *ls_mpscq_new(ls_lfnoden_t *pNode);
 
 /**
- * @ls_mpscq_init
+ *  
  * @brief Initializes a multi-producer single-consumer (mpsc)
  *  lockless queue object.
  *
@@ -64,7 +64,7 @@ ls_mpscq_t *ls_mpscq_new(ls_lfnoden_t *pNode);
 int ls_mpscq_init(ls_mpscq_t *pThis, ls_lfnoden_t *pNode);
 
 /**
- * @ls_mpscq_destroy
+ *  
  * @brief Destroys an mpsc lockless queue object.
  *
  * @param[in] pThis - A pointer to an initialized mpsc lockless queue object.
@@ -75,7 +75,7 @@ int ls_mpscq_init(ls_mpscq_t *pThis, ls_lfnoden_t *pNode);
 void ls_mpscq_destroy(ls_mpscq_t *pThis);
 
 /**
- * @ls_mpscq_delete
+ *  
  * @brief Destroys then deletes an mpsc lockless queue object.
  * @details The object should have been created with a previous
  *   successful call to ls_mpscq_new.
@@ -88,7 +88,7 @@ void ls_mpscq_destroy(ls_mpscq_t *pThis);
 void ls_mpscq_delete(ls_mpscq_t *pThis);
 
 /**
- * @ls_mpscq_put
+ *  
  * @brief Put an object on an mpsc lockless queue.
  *
  * @param[in] pThis - A pointer to an initialized mpsc lockless queue object.
@@ -98,7 +98,7 @@ void ls_mpscq_delete(ls_mpscq_t *pThis);
 int ls_mpscq_put(ls_mpscq_t *pThis, ls_lfnoden_t *data);
 
 /**
- * @ls_mpscq_get
+ *  
  * @brief Get an object from an mpsc lockless queue.
  *
  * @param[in] pThis - A pointer to an initialized mpsc lockless queue object.
@@ -107,7 +107,7 @@ int ls_mpscq_put(ls_mpscq_t *pThis, ls_lfnoden_t *data);
 ls_lfnoden_t *ls_mpscq_get(ls_mpscq_t *pThis);
 
 /**
- * @ls_mpscq_empty
+ *  
  * @brief Checks if the mpsc lockless queue is empty.
  *
  * @param[in] pThis - A pointer to an initialized mpsc lockless queue object.
@@ -117,7 +117,7 @@ int ls_mpscq_empty(ls_mpscq_t *pThis);
 
 
 /**
- * @ls_lfqueue_new
+ *  
  * @brief Creates a new multi-producer multi-consumer (mpmc)
  *  lockless queue object.
  * @details The routine allocates and initializes an object
@@ -131,7 +131,7 @@ int ls_mpscq_empty(ls_mpscq_t *pThis);
 ls_lfqueue_t *ls_lfqueue_new();
 
 /**
- * @ls_lfqueue_init
+ *  
  * @brief Initializes a multi-producer multi-consumer (mpmc)
  *  lockless queue object.
  *
@@ -143,7 +143,7 @@ ls_lfqueue_t *ls_lfqueue_new();
 int ls_lfqueue_init(ls_lfqueue_t *pThis);
 
 /**
- * @ls_lfqueue_destroy
+ *  
  * @brief Destroys an mpmc lockless queue object.
  *
  * @param[in] pThis - A pointer to an initialized mpmc lockless queue object.
@@ -154,7 +154,7 @@ int ls_lfqueue_init(ls_lfqueue_t *pThis);
 void ls_lfqueue_destroy(ls_lfqueue_t *pThis);
 
 /**
- * @ls_lfqueue_delete
+ *  
  * @brief Destroys then deletes an mpmc lockless queue object.
  * @details The object should have been created with a previous
  *   successful call to ls_lfqueue_new.
@@ -167,7 +167,7 @@ void ls_lfqueue_destroy(ls_lfqueue_t *pThis);
 void ls_lfqueue_delete(ls_lfqueue_t *pThis);
 
 /**
- * @ls_lfqueue_put
+ *  
  * @brief Put a node on an mpmc lockless queue.
  *
  * @param[in] pThis - A pointer to an initialized mpmc lockless queue object.
@@ -177,7 +177,7 @@ void ls_lfqueue_delete(ls_lfqueue_t *pThis);
 int ls_lfqueue_put(ls_lfqueue_t *pThis, ls_lfnodei_t *data);
 
 /**
- * @ls_lfqueue_putn
+ *  
  * @brief Put a linked list of nodes on an mpmc lockless queue.
  *
  * @param[in] pThis - A pointer to an initialized mpmc lockless queue object.
@@ -189,7 +189,7 @@ int ls_lfqueue_putn(ls_lfqueue_t *pThis, ls_lfnodei_t *data1,
                     ls_lfnodei_t *datan);
 
 /**
- * @ls_lfqueue_get
+ *  
  * @brief Get a node from an mpmc lockless queue.
  *
  * @param[in] pThis - A pointer to an initialized mpmc lockless queue object.
@@ -198,7 +198,7 @@ int ls_lfqueue_putn(ls_lfqueue_t *pThis, ls_lfnodei_t *data1,
 ls_lfnodei_t *ls_lfqueue_get(ls_lfqueue_t *pThis);
 
 /**
- * @ls_lfqueue_timedget
+ *  
  * @brief Get a node from an mpmc lockless queue.
  *
  * @param[in] pThis - A pointer to an initialized mpmc lockless queue object.
@@ -211,7 +211,7 @@ ls_lfnodei_t *ls_lfqueue_timedget(ls_lfqueue_t *pThis,
                                   struct timespec *timeout);
 
 /**
- * @ls_lfqueue_empty
+ *  
  * @brief Checks if the mpmc lockless queue is empty.
  *
  * @param[in] pThis - A pointer to an initialized mpmc lockless queue object.

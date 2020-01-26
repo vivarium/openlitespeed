@@ -489,7 +489,7 @@ int ls_futex_setup(ls_mutex_t *p);
 
 
 /**
- * @ls_atomic_spin_lock
+ *  
  * @brief Locks
  *   a spinlock set up with built-in functions for atomic memory access.
  * @details The routine \e spins until it is able to acquire the lock.
@@ -511,7 +511,7 @@ ls_inline int ls_atomic_spin_lock(ls_atom_spinlock_t *p)
 }
 
 /**
- * @ls_atomic_spin_pidlock
+ *  
  * @brief Locks
  *   a spinlock set up with built-in functions for atomic memory access
  *   using a Process Id lock.
@@ -545,7 +545,7 @@ ls_inline int ls_atomic_spin_pidlock(ls_atom_spinlock_t *p)
 
 
 /**
- * @ls_atomic_spin_trylock
+ *  
  * @brief Tries to lock
  *   a spinlock set up with built-in functions for atomic memory access.
  *
@@ -565,7 +565,7 @@ ls_inline int ls_atomic_spin_trylock(ls_atom_spinlock_t *p)
 }
 
 /**
- * @ls_atomic_pidspin_trylock
+ *  
  * @brief Tries to lock
  *   a spinlock set up with built-in functions for atomic memory access
  *   using a Process Id lock.
@@ -587,7 +587,7 @@ ls_inline int ls_atomic_pidspin_trylock(ls_atom_spinlock_t *p)
 }
 
 /**
- * @ls_atomic_spin_unlock
+ *  
  * @brief Unlocks
  *   a spinlock set up with built-in functions for atomic memory access.
  *
@@ -604,7 +604,7 @@ ls_inline int ls_atomic_spin_unlock(ls_atom_spinlock_t *p)
 }
 
 /**
- * @ls_atomic_spin_locked
+ *  
  * @brief Test if a spinlock is currently in locked state.
  *
  * @param[in] p - A pointer to the lock.
@@ -619,7 +619,7 @@ ls_inline int ls_atomic_spin_locked(ls_atom_spinlock_t *p)
 }
 
 /**
- * @ls_atomic_spin_pidunlock
+ *  
  * @brief Unlocks
  *   a spinlock set up with built-in functions for atomic memory access.
  *
@@ -637,7 +637,7 @@ ls_inline int ls_atomic_spin_pidunlock(ls_atom_spinlock_t *p)
 }
 
 /**
- * @ls_atomic_pidlocked
+ *  
  * @brief Test if a spinlock is currently is locked with current pid.
  *
  * @param[in] p - A pointer to the lock.
@@ -655,7 +655,7 @@ ls_inline int ls_atomic_pidlocked(ls_atom_spinlock_t *p)
 
 
 /**
- * @ls_atomic_spin_setup
+ *  
  * @brief Initializes a locking mechanism
  *   using spinlocks with built-in functions for atomic memory access.
  *

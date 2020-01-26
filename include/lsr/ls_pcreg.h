@@ -88,7 +88,7 @@ struct ls_pcresubent_s
     int         param;
 };
 
-/** @ls_pcre_new
+/**  
  * @brief Creates a new pcre object and initializes it.
  * Must be \link #ls_pcre_delete deleted \endlink when finished.
  *
@@ -98,7 +98,7 @@ struct ls_pcresubent_s
  */
 ls_pcre_t         *ls_pcre_new();
 
-/** @ls_pcre
+/**  
  * @brief Initializes a given pcre object.
  * Must be \link #ls_pcre_d destroyed \endlink when finished.
  *
@@ -109,7 +109,7 @@ ls_pcre_t         *ls_pcre_new();
  */
 ls_pcre_t         *ls_pcre(ls_pcre_t *pThis);
 
-/** @ls_pcre_d
+/**  
  * @brief Destroys the pcre object.  DOES NOT FREE THE STRUCT ITSELF!
  *
  * @param[in] pThis - A pointer to an initialized pcre object.
@@ -119,7 +119,7 @@ ls_pcre_t         *ls_pcre(ls_pcre_t *pThis);
  */
 void                ls_pcre_d(ls_pcre_t *pThis);
 
-/** @ls_pcre_delete
+/**  
  * @brief Destroys and deletes the pcre object.
  * @details The object should have been created with a previous
  *   successful call to ls_pcre_new.
@@ -131,7 +131,7 @@ void                ls_pcre_d(ls_pcre_t *pThis);
  */
 void                ls_pcre_delete(ls_pcre_t *pThis);
 
-/** @ls_pcre_load
+/**  
  * @brief Load a ls_pcre object with the same Regex pattern and compile flags.
  *
  * @param[in] pRegex - A pointer to the Regex to match against.
@@ -142,7 +142,7 @@ void                ls_pcre_delete(ls_pcre_t *pThis);
  */
 ls_pcre_t         *ls_pcre_load(const char *pRegex, unsigned long iFlags);
 
-/** @ls_pcre_store
+/**  
  * @brief Stores a ls_pcre_t object with the compile flags.
  * @details NOTE: The ls_pcre_t object must be allocated via ls_pcre_new.
  *
@@ -155,7 +155,7 @@ ls_pcre_t         *ls_pcre_load(const char *pRegex, unsigned long iFlags);
  */
 int                ls_pcre_store(ls_pcre_t *pThis, unsigned long iFlags);
 
-/** @ls_pcre_result
+/**  
  * @brief Initializes a given pcre result object.
  *
  * @param[in] pThis - A pointer to an allocated pcre result object.
@@ -165,7 +165,7 @@ int                ls_pcre_store(ls_pcre_t *pThis, unsigned long iFlags);
  */
 ls_pcreres_t  *ls_pcre_result(ls_pcreres_t *pThis);
 
-/** @ls_pcre_sub
+/**  
  * @brief Initializes a given pcre sub object.
  * Must be \link #ls_pcresub_d destroyed \endlink when finished.
  *
@@ -176,7 +176,7 @@ ls_pcreres_t  *ls_pcre_result(ls_pcreres_t *pThis);
  */
 ls_pcresub_t     *ls_pcre_sub(ls_pcresub_t *pThis);
 
-/** @ls_pcreres_new
+/**  
  * @brief Creates a new pcre result object and initializes it.
  * Must be \link #ls_pcreres_delete deleted \endlink when finished.
  *
@@ -186,7 +186,7 @@ ls_pcresub_t     *ls_pcre_sub(ls_pcresub_t *pThis);
  */
 ls_pcreres_t  *ls_pcreres_new();
 
-/** @ls_pcreres_d
+/**  
  * @brief Destroys the pcre result object.  DOES NOT FREE THE STRUCT ITSELF!
  *
  * @param[in] pThis - A pointer to an initialized pcre result object.
@@ -196,7 +196,7 @@ ls_pcreres_t  *ls_pcreres_new();
  */
 void                ls_pcreres_d(ls_pcreres_t *pThis);
 
-/** @ls_pcreres_delete
+/**  
  * @brief Destroys and deletes the pcre result object.
  * @details The object should have been created with a previous
  *   successful call to ls_pcreres_new.
@@ -208,7 +208,7 @@ void                ls_pcreres_d(ls_pcreres_t *pThis);
  */
 void                ls_pcreres_delete(ls_pcreres_t *pThis);
 
-/** @ls_pcresub_new
+/**  
  * @brief Creates a new pcre sub object and initializes it.
  * Must be \link #ls_pcresub_delete deleted \endlink when finished.
  *
@@ -218,7 +218,7 @@ void                ls_pcreres_delete(ls_pcreres_t *pThis);
  */
 ls_pcresub_t     *ls_pcresub_new();
 
-/** @ls_pcresub_copy
+/**  
  * @brief Copies the sub internals from src to dest.
  *
  * @param[in] dest - A pointer to an initialized pcre sub object.
@@ -230,7 +230,7 @@ ls_pcresub_t     *ls_pcresub_new();
 ls_pcresub_t     *ls_pcresub_copy(ls_pcresub_t *dest,
                                   const ls_pcresub_t *src);
 
-/** @ls_pcresub_d
+/**  
  * @brief Destroys the pcre sub object.  DOES NOT FREE THE STRUCT ITSELF!
  *
  * @param[in] pThis - A pointer to an initialized pcre sub object.
@@ -240,7 +240,7 @@ ls_pcresub_t     *ls_pcresub_copy(ls_pcresub_t *dest,
  */
 void                ls_pcresub_d(ls_pcresub_t *pThis);
 
-/** @ls_pcresub_delete
+/**  
  * @brief Destroys and deletes the pcre sub object.
  * @details The object should have been created with a previous
  *   successful call to ls_pcresub_new.
@@ -252,7 +252,7 @@ void                ls_pcresub_d(ls_pcresub_t *pThis);
  */
 void                ls_pcresub_delete(ls_pcresub_t *pThis);
 
-/** @ls_pcreres_setbuf
+/**  
  * @brief Sets the result buf to \e pBuf.
  * @note This does not create a deep copy!
  *
@@ -263,7 +263,7 @@ void                ls_pcresub_delete(ls_pcresub_t *pThis);
 ls_inline void  ls_pcreres_setbuf(ls_pcreres_t *pThis, const char *pBuf)
 {   pThis->pbuf = pBuf;        }
 
-/** @ls_pcreres_setmatches
+/**  
  * @brief Sets the number of matches to \e matches.
  *
  * @param[in] pThis - A pointer to an initialized pcre result object.
@@ -273,7 +273,7 @@ ls_inline void  ls_pcreres_setbuf(ls_pcreres_t *pThis, const char *pBuf)
 ls_inline void  ls_pcreres_setmatches(ls_pcreres_t *pThis, int matches)
 {   pThis->matches = matches;  }
 
-/** @ls_pcreres_getvector
+/**  
  * @brief Gets the ovector from the result.
  *
  * @param[in] pThis - A pointer to an initialized pcre result object.
@@ -282,7 +282,7 @@ ls_inline void  ls_pcreres_setmatches(ls_pcreres_t *pThis, int matches)
 ls_inline int  *ls_pcreres_getvector(ls_pcreres_t *pThis)
 {   return pThis->ovector;    }
 
-/** @ls_pcres_getmatches
+/**  
  * @brief Gets the matches from the result.
  *
  * @param[in] pThis - A pointer to an initialized result object.
@@ -291,7 +291,7 @@ ls_inline int  *ls_pcreres_getvector(ls_pcreres_t *pThis)
 ls_inline int   ls_pcres_getmatches(ls_pcreres_t *pThis)
 {   return pThis->matches;    }
 
-/** @ls_pcreres_getsubstr
+/**  
  * @brief Gets the substring from the result.
  *
  * @param[in] pThis - A pointer to an initialized pcre result object.
@@ -309,7 +309,7 @@ void ls_pcre_release_jit_stack(void *pValue);
 #endif
 #endif
 
-/** @ls_pcre_parseoptions
+/**  
  * @brief Parses a character representation of pcre compilation options.
  * @details The following options are available:
  * - a: Anchored
@@ -339,7 +339,7 @@ void ls_pcre_release_jit_stack(void *pValue);
 int ls_pcre_parseoptions(const char *pOptions, size_t iOptLen,
                          unsigned long *iFlags);
 
-/** @ls_pcre_compile
+/**  
  * @brief Compiles the pcre object to get it ready for exec.  Must
  * \link #ls_pcre_release release \endlink at the end if successful.
  *
@@ -355,7 +355,7 @@ int ls_pcre_parseoptions(const char *pOptions, size_t iOptLen,
 int ls_pcre_compile(ls_pcre_t *pThis, const char *regex,
                     int options, int matchLimit, int recursionLimit);
 
-/** @ls_pcre_exec
+/**  
  * @brief Executes the regex matching.
  *
  * @param[in] pThis - A pointer to an initialized pcre object.
@@ -381,7 +381,7 @@ ls_inline int   ls_pcre_exec(ls_pcre_t *pThis, const char *subject,
                      options, ovector, ovecsize);
 }
 
-/** @ls_pcre_execresult
+/**  
  * @brief Executes the regex matching, storing the result in a pcre result object.
  *
  * @param[in] pThis - A pointer to an initialized pcre object.
@@ -401,7 +401,7 @@ ls_inline int  ls_pcre_execresult(ls_pcre_t *pThis, const char *subject,
     return ls_pcres_getmatches(pRes);
 }
 
-/** @ls_pcre_dfaexec
+/**  
  * @brief Executes the regex matching.
  * @details Uses the DFA algorithm.
  *
@@ -428,7 +428,7 @@ ls_inline int  ls_pcre_dfaexec(ls_pcre_t *pThis, const char *subject,
 #endif
 }
 
-/** @ls_pcre_dfaexecresult
+/**  
  * @brief Executes the regex matching, storing the result in a pcre result object.
  * @details Uses the DFA algorithm.
  *
@@ -456,7 +456,7 @@ ls_inline int  ls_pcre_dfaexecresult(ls_pcre_t *pThis, const char *subject,
 #endif
 }
 
-/** @ls_pcre_release
+/**  
  * @brief Releases anything that was initialized by the pcre compile/exec calls.
  * MUST BE CALLED IF COMPILE/EXEC ARE CALLED.
  *
@@ -465,7 +465,7 @@ ls_inline int  ls_pcre_dfaexecresult(ls_pcre_t *pThis, const char *subject,
  */
 void                ls_pcre_release(ls_pcre_t *pThis);
 
-/** @ls_pcre_getsubstrcnt
+/**  
  * @brief Gets the number of substrings in the pcre.
  *
  * @param[in] pThis - A pointer to an initialized pcre object.
@@ -474,7 +474,7 @@ void                ls_pcre_release(ls_pcre_t *pThis);
 ls_inline int   ls_pcre_getsubstrcnt(ls_pcre_t *pThis)
 {   return pThis->substr;   }
 
-/** @ls_pcre_getnamedsubcnt
+/**  
  * @brief Gets the number of Named Subpatterns from the Pattern.
  *
  * @param[in] pThis - A pointer to an initialized pcre object.
@@ -482,7 +482,7 @@ ls_inline int   ls_pcre_getsubstrcnt(ls_pcre_t *pThis)
  */
 int ls_pcre_getnamedsubcnt(ls_pcre_t *pThis);
 
-/** @ls_pcre_getnamedsubs
+/**  
  * @brief Gets the named subpatterns from the pcre object after execution.
  * @details The array of patterns must be allocated before calling this
  * function.  The size of the array is determined by a previous call to
@@ -498,7 +498,7 @@ int ls_pcre_getnamedsubcnt(ls_pcre_t *pThis);
 int ls_pcre_getnamedsubs(const ls_pcre_t *pThis, const ls_pcreres_t *pRes,
                          ls_strpair_t *pSubPats, int iCount);
 
-/** @ls_pcresub_release
+/**  
  * @brief Releases anything that was initialized by the pcre sub compile/exec calls.
  * MUST BE CALLED IF SUB COMPILE/EXEC ARE CALLED.
  *
@@ -507,7 +507,7 @@ int ls_pcre_getnamedsubs(const ls_pcre_t *pThis, const ls_pcreres_t *pRes,
  */
 void    ls_pcresub_release(ls_pcresub_t *pThis);
 
-/** @ls_pcresub_compile
+/**  
  * @brief Sets up the pcre sub object to get it ready for substitution.
  * Must \link #ls_pcresub_release release \endlink after
  * \link #ls_pcresub_exec executing. \endlink
@@ -518,7 +518,7 @@ void    ls_pcresub_release(ls_pcresub_t *pThis);
  */
 int     ls_pcresub_compile(ls_pcresub_t *pThis, const char *rule);
 
-/** @ls_pcresub_exec
+/**  
  * @brief Applies the rule from \link #ls_pcresub_compile sub compile \endlink
  * to the result.  The output buffer must be allocated before calling this function.
  * @note Please notice that ovector and ovec_num are \e input parameters.  They should
@@ -538,7 +538,7 @@ int     ls_pcresub_compile(ls_pcresub_t *pThis, const char *rule);
 int     ls_pcresub_exec(ls_pcresub_t *pThis, const char *input,
                         const int *ovector, int ovec_num, char *output, int *length);
 
-/** @ls_pcresub_getlen
+/**  
  * @brief Gets the final length of the substring post exec.
  * @details This may be used to determine the length of the buffer for
  * ls_pcresub_exec.

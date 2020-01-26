@@ -33,7 +33,7 @@ extern "C" {
 typedef struct ls_llmq_s    ls_llmq_t;
 
 /**
- * @ls_llmq_new
+ *  
  * @brief Creates a new lockless queue object.
  * @details The routine allocates and initializes an object
  *  to manage a queue of objects without the use of locks.
@@ -48,7 +48,7 @@ typedef struct ls_llmq_s    ls_llmq_t;
 ls_llmq_t *ls_llmq_new(unsigned int size);
 
 /**
- * @ls_llmq_init
+ *  
  * @brief Initializes a lockless queue object.
  *
  * @param[in] pThis - A pointer to an allocated lockless queue object.
@@ -61,7 +61,7 @@ ls_llmq_t *ls_llmq_new(unsigned int size);
 int ls_llmq_init(ls_llmq_t *pThis, unsigned int size);
 
 /**
- * @ls_llmq_destroy
+ *  
  * @brief Destroys a lockless queue object.
  *
  * @param[in] pThis - A pointer to an initialized lockless queue object.
@@ -72,7 +72,7 @@ int ls_llmq_init(ls_llmq_t *pThis, unsigned int size);
 void ls_llmq_destroy(ls_llmq_t *pThis);
 
 /**
- * @ls_llmq_delete
+ *  
  * @brief Destroys then deletes a lockless queue object.
  * @details The object should have been created with a previous
  *   successful call to ls_llmq_new.
@@ -85,7 +85,7 @@ void ls_llmq_destroy(ls_llmq_t *pThis);
 void ls_llmq_delete(ls_llmq_t *pThis);
 
 /**
- * @ls_llmq_timedput
+ *  
  * @brief Put an object on a lockless queue.
  *
  * @param[in] pThis - A pointer to an initialized lockless queue object.
@@ -98,7 +98,7 @@ int ls_llmq_timedput(ls_llmq_t *pThis, void *data,
                      struct timespec *timeout);
 
 /**
- * @ls_llmq_timedget
+ *  
  * @brief Get an object from a lockless queue.
  *
  * @param[in] pThis - A pointer to an initialized lockless queue object.

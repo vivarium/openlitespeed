@@ -38,7 +38,7 @@ extern "C" {
 
 
 /**
- * @ls_xpool_new
+ *  
  * @brief Creates a new session memory pool object.
  * @details The routine allocates and initializes an object
  *   to manage a memory pool which is expected
@@ -53,7 +53,7 @@ ls_xpool_t *ls_xpool_new();
 
 
 /**
- * @ls_xpool_reset
+ *  
  * @brief Destroys then re-initializes a session memory pool object.
  * @details The previously allocated memory and data are released,
  *   and the pool is set empty to be used again.
@@ -64,7 +64,7 @@ ls_xpool_t *ls_xpool_new();
 void    ls_xpool_reset(ls_xpool_t *pool);
 
 /**
- * @ls_xpool_alloc
+ *  
  * @brief Allocates memory from the session memory pool.
  * @details The allocated memory is not initialized.
  *
@@ -77,7 +77,7 @@ void    ls_xpool_reset(ls_xpool_t *pool);
 void   *ls_xpool_alloc(ls_xpool_t *pool, uint32_t size);
 
 /**
- * @ls_xpool_calloc
+ *  
  * @brief Allocates memory from the session memory pool
  *   for an array of fixed size items.
  * @details The allocated memory is set to zero (unlike ls_xpool_alloc).
@@ -92,7 +92,7 @@ void   *ls_xpool_alloc(ls_xpool_t *pool, uint32_t size);
 void   *ls_xpool_calloc(ls_xpool_t *pool, uint32_t items, uint32_t size);
 
 /**
- * @ls_xpool_realloc
+ *  
  * @brief Changes the size of a block of memory allocated
  *   from the session memory pool.
  * @details The new memory contents will be unchanged
@@ -111,7 +111,7 @@ void   *ls_xpool_calloc(ls_xpool_t *pool, uint32_t items, uint32_t size);
 void   *ls_xpool_realloc(ls_xpool_t *pool, void *pOld, uint32_t new_sz);
 
 /**
- * @ls_xpool_free
+ *  
  * @brief Frees (releases) memory back to the session memory pool.
  * @details The memory pointer must be one returned from a previous
  *   successful call to ls_xpool_alloc.
@@ -125,7 +125,7 @@ void   *ls_xpool_realloc(ls_xpool_t *pool, void *pOld, uint32_t new_sz);
 void    ls_xpool_free(ls_xpool_t *pool, void *data);
 
 /**
- * @ls_xpool_isempty
+ *  
  * @brief Specifies whether or not a session memory pool object is empty.
  *
  * @param[in] pool - A pointer to an initialized session pool object.
@@ -134,7 +134,7 @@ void    ls_xpool_free(ls_xpool_t *pool, void *data);
 int     ls_xpool_isempty(ls_xpool_t *pool);
 
 /**
- * @ls_xpool_skipfree
+ *  
  * @brief Sets the mode of the session memory pool to \e not free memory
  *   blocks individually at this time.
  * @details This call may be used as an optimization when the pool
@@ -146,7 +146,7 @@ int     ls_xpool_isempty(ls_xpool_t *pool);
 void    ls_xpool_skipfree(ls_xpool_t *pool);
 
 /**
- * @ls_xpool_delete
+ *  
  * @brief Destroys then deletes a session memory pool object.
  * @details The object should have been created with a previous
  *   successful call to ls_xpool_new.

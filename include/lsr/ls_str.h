@@ -73,7 +73,7 @@ struct ls_strpair_s
  * @}
  */
 
-/** @ls_str_new
+/**  
  * @brief Creates a new lsr str object.  Initializes the
  * buffer and length to a deep copy of \e pStr and \e len.
  *
@@ -85,7 +85,7 @@ struct ls_strpair_s
  */
 ls_str_t *ls_str_new(const char *pStr, size_t len);
 
-/** @ls_str
+/**
  * @brief Initializes a given lsr str.  Initializes the
  * buffer and length to a deep copy of \e pStr and \e len.
  *
@@ -98,7 +98,7 @@ ls_str_t *ls_str_new(const char *pStr, size_t len);
  */
 ls_str_t *ls_str(ls_str_t *pThis, const char *pStr, size_t len);
 
-/** @ls_str_copy
+/**  
  * @brief Copies the source lsr str to the dest lsr str.  Makes a
  * deep copy of the string.  Must be destroyed with ls_str_d
  *
@@ -110,7 +110,7 @@ ls_str_t *ls_str(ls_str_t *pThis, const char *pStr, size_t len);
  */
 ls_str_t *ls_str_copy(ls_str_t *dest, const ls_str_t *src);
 
-/** @ls_str_d
+/**  
  * @brief Destroys the internals of the lsr str object.  DOES NOT FREE pThis!
  * The opposite of ls_str.
  *
@@ -121,7 +121,7 @@ ls_str_t *ls_str_copy(ls_str_t *dest, const ls_str_t *src);
  */
 void       ls_str_d(ls_str_t *pThis);
 
-/** @ls_str_delete
+/**  
  * @brief Destroys and deletes the lsr str object. The opposite of ls_str_new.
  * @details The object should have been created with a previous
  *   successful call to ls_str_new.
@@ -133,7 +133,7 @@ void       ls_str_d(ls_str_t *pThis);
  */
 void       ls_str_delete(ls_str_t *pThis);
 
-/** @ls_str_blank
+/**  
  * @brief Clears the internals of the lsr str object.  DOES NOT FREE THE BUF!
  *
  * @param[in] pThis - A pointer to an initialized lsr str object.
@@ -142,7 +142,7 @@ void       ls_str_delete(ls_str_t *pThis);
 ls_inline void ls_str_blank(ls_str_t *pThis)
 {   pThis->ptr = NULL; pThis->len = 0;       }
 
-/** @ls_str_len
+/**  
  * @brief Gets the length of the lsr str object.
  *
  * @param[in] pThis - A pointer to an initialized lsr str object.
@@ -151,7 +151,7 @@ ls_inline void ls_str_blank(ls_str_t *pThis)
 ls_inline size_t        ls_str_len(const ls_str_t *pThis)
 {   return pThis->len;    }
 
-/** @ls_str_setlen
+/**  
  * @brief Sets the length of the string.
  *
  * @param[in] pThis - A pointer to an initialized lsr str object.
@@ -161,7 +161,7 @@ ls_inline size_t        ls_str_len(const ls_str_t *pThis)
 ls_inline void          ls_str_setlen(ls_str_t *pThis, size_t len)
 {   pThis->len = len;    }
 
-/** @ls_str_buf
+/**  
  * @brief Gets a char * of the string.
  *
  * @param[in] pThis - A pointer to an initialized lsr str object.
@@ -170,7 +170,7 @@ ls_inline void          ls_str_setlen(ls_str_t *pThis, size_t len)
 ls_inline char         *ls_str_buf(const ls_str_t *pThis)
 {   return pThis->ptr;   }
 
-/** @ls_str_cstr
+/**  
  * @brief Gets a \e const char * of the string.
  *
  * @param[in] pThis - A pointer to an initialized lsr str object.
@@ -179,7 +179,7 @@ ls_inline char         *ls_str_buf(const ls_str_t *pThis)
 ls_inline const char   *ls_str_cstr(const ls_str_t *pThis)
 {   return pThis->ptr;   }
 
-/** @ls_str_prealloc
+/**  
  * @brief Preallocates space in the lsr str object.
  * @details Useful for when you want a buffer created for later use.
  *
@@ -189,7 +189,7 @@ ls_inline const char   *ls_str_cstr(const ls_str_t *pThis)
  */
 char   *ls_str_prealloc(ls_str_t *pThis, size_t size);
 
-/** @ls_str_dup
+/**  
  * @brief Sets the lsr str object to \e pStr.  Will create a deep copy.
  *
  * @param[in] pThis - A pointer to an initialized lsr str object.
@@ -199,7 +199,7 @@ char   *ls_str_prealloc(ls_str_t *pThis, size_t size);
  */
 size_t   ls_str_dup(ls_str_t *pThis, const char *pStr, size_t len);
 
-/** @ls_str_append
+/**  
  * @brief Appends the current lsr str object with \e pStr.  Will allocate a deep copy.
  *
  * @param[in] pThis - A pointer to an initialized lsr str object.
@@ -209,17 +209,17 @@ size_t   ls_str_dup(ls_str_t *pThis, const char *pStr, size_t len);
  */
 void    ls_str_append(ls_str_t *pThis, const char *pStr, size_t len);
 
-/** @ls_str_cmp
+/**  
  * @brief A comparison function for lsr str. Case Sensitive.
  * @details This may be used for lsr hash or map comparison.
  *
  * @param[in] pVal1 - The first lsr str object to compare.
  * @param[in] pVal2 - The second lsr str object to compare.
- * @return Result according to #ls_hash_val_comp.
+ * @return Result according to strncmp().
  */
 int     ls_str_cmp(const void *pVal1, const void *pVal2);
 
-/** @ls_str_bcmp
+/**  
  * @brief A binary comparison function for lsr str.
  * @details This may be used for lsr hash or map comparison.
  *
@@ -229,7 +229,7 @@ int     ls_str_cmp(const void *pVal1, const void *pVal2);
  */
 int     ls_str_bcmp(const void *pVal1, const void *pVal2);
 
-/** @ls_str_hf
+/**  
  * @brief A hash function for lsr str structure. Case Sensitive.
  * @details This may be used for lsr hash.
  *
@@ -238,7 +238,7 @@ int     ls_str_bcmp(const void *pVal1, const void *pVal2);
  */
 ls_hash_key_t  ls_str_hf(const void *pKey);
 
-/** @ls_str_hfxx
+/**  
  * @brief A hash function for lsr str structure using xxhash. Case Sensitive.
  * @details This may be used for lsr hash.
  *
@@ -248,7 +248,7 @@ ls_hash_key_t  ls_str_hf(const void *pKey);
 ls_hash_key_t  ls_str_xxh32(const void *pKey);
 
 
-/** @ls_str_xxh64
+/**  
  * @brief A hash function for lsr str structure using xxhash. Case Sensitive.
  * @details This may be used for lsr hash.
  *
@@ -258,7 +258,7 @@ ls_hash_key_t  ls_str_xxh32(const void *pKey);
 ls_hash_key_t  ls_str_xxh64(const void *pKey);
 
 
-/** @ls_str_cmpci
+/**  
  * @brief A comparison function for lsr str. Case Insensitive.
  * @details This may be used for lsr hash or map comparison.
  *
@@ -268,7 +268,7 @@ ls_hash_key_t  ls_str_xxh64(const void *pKey);
  */
 int             ls_str_cmpci(const void *pVal1, const void *pVal2);
 
-/** @ls_str_hfci
+/**  
  * @brief A hash function for lsr str. Case Insensitive.
  * @details This may be used for lsr hash.
  *
@@ -277,7 +277,7 @@ int             ls_str_cmpci(const void *pVal1, const void *pVal2);
  */
 ls_hash_key_t  ls_str_hfci(const void *pKey);
 
-/** @ls_str_set
+/**  
  * @brief Sets the lsr str object to the \e pStr.  WILL NOT MAKE A DEEP COPY!
  * @warning This may be used if the user does not want to create a deep
  * copy of the string.  However, with that said, the user is responsible
@@ -295,7 +295,7 @@ ls_inline void ls_str_set(ls_str_t *pThis, char *pStr, size_t len)
     pThis->len = len;
 }
 
-/** @ls_str_xnew
+/**  
  * @brief Creates a new lsr str object.
  * @details Initializes the buffer and length to a deep copy
  * of \e pStr and \e len from the given session pool.  Must delete
@@ -310,7 +310,7 @@ ls_inline void ls_str_set(ls_str_t *pThis, char *pStr, size_t len)
  */
 ls_str_t  *ls_str_xnew(const char *pStr, size_t len, ls_xpool_t *pool);
 
-/** @ls_str_x
+/**  
  * @brief Initializes a given lsr str from the session pool.  Initializes the
  * buffer and length to a deep copy of \e pStr and \e len.
  * @details Must destroy with \link #ls_str_xd destroy xp. \endlink
@@ -326,7 +326,7 @@ ls_str_t  *ls_str_xnew(const char *pStr, size_t len, ls_xpool_t *pool);
 ls_str_t  *ls_str_x(ls_str_t *pThis, const char *pStr, size_t len,
                     ls_xpool_t *pool);
 
-/** @ls_str_xcopy
+/**  
  * @brief Copies the source lsr str object to the destination lsr str object.  Makes a
  * deep copy of the string.  Must destroy with \link #ls_str_xd destroy xp. \endlink
  *
@@ -340,7 +340,7 @@ ls_str_t  *ls_str_x(ls_str_t *pThis, const char *pStr, size_t len,
 ls_str_t  *ls_str_xcopy(ls_str_t *dest, const ls_str_t *src,
                         ls_xpool_t *pool);
 
-/** @ls_str_xd
+/**  
  * @brief Destroys the internals of the lsr str object.  DOES NOT FREE pThis!
  * The opposite of ls_str_x.
  *
@@ -352,7 +352,7 @@ ls_str_t  *ls_str_xcopy(ls_str_t *dest, const ls_str_t *src,
  */
 void        ls_str_xd(ls_str_t *pThis, ls_xpool_t *pool);
 
-/** @ls_str_xdelete
+/**  
  * @brief Destroys and deletes the lsr str object. The opposite of ls_str_xnew.
  * @details The object should have been created with a previous
  *   successful call to ls_str_xnew.
@@ -365,7 +365,7 @@ void        ls_str_xd(ls_str_t *pThis, ls_xpool_t *pool);
  */
 void        ls_str_xdelete(ls_str_t *pThis, ls_xpool_t *pool);
 
-/** @ls_str_xprealloc
+/**  
  * @brief Preallocates space in the lsr str object from the session pool.
  * @details Useful for when you want a buffer created for later use.
  *
@@ -376,7 +376,7 @@ void        ls_str_xdelete(ls_str_t *pThis, ls_xpool_t *pool);
  */
 char   *ls_str_xprealloc(ls_str_t *pThis, int size, ls_xpool_t *pool);
 
-/** @ls_str_xsetstr
+/**  
  * @brief Sets the lsr str object to \e pStr.  Will create a deep copy.
  *
  * @param[in] pThis - A pointer to an initialized lsr str object.
@@ -388,7 +388,7 @@ char   *ls_str_xprealloc(ls_str_t *pThis, int size, ls_xpool_t *pool);
 size_t  ls_str_xsetstr(ls_str_t *pThis, const char *pStr, size_t len,
                        ls_xpool_t *pool);
 
-/** @ls_str_xappend
+/**  
  * @brief Appends the current lsr str object with \e pStr.  Will allocate a deep copy
  * from the session pool.
  *
@@ -402,7 +402,7 @@ void    ls_str_xappend(ls_str_t *pThis, const char *pStr, size_t len,
                        ls_xpool_t *pool);
 
 
-/** @LS_STR_CONST
+/**
  * @brief Initialize const ls_str_t object with const string literal
  *     const ls_str_t abc = LS_STR_CONST("abc");
  *
@@ -412,7 +412,7 @@ void    ls_str_xappend(ls_str_t *pThis, const char *pStr, size_t len,
 #define LS_STR_CONST(x)         { (char*)x, sizeof(x) - 1 }
 
 
-/** @LS_STRPAIR_CONST
+/**
  * @brief Initialize const ls_strpair_t object with const string literal
  *     const ls_strpair_t abc = LS_STRPAIR_CONST("abc", "def");
  *

@@ -75,7 +75,7 @@ typedef struct ls_xbuf_s
     ls_xpool_t    *pool;
 } ls_xbuf_t;
 
-/** @ls_buf_xnew
+/**
  * @brief Creates and initializes a new buffer from the session pool.
  *
  * @param[in] size - The initial size to set the buffer to.
@@ -86,7 +86,7 @@ typedef struct ls_xbuf_s
  */
 ls_buf_t *ls_buf_xnew(int size, ls_xpool_t *pool);
 
-/** @ls_buf_x
+/**
  * @brief Initializes the buffer to a given size from a given
  *  session pool.
  *
@@ -99,7 +99,7 @@ ls_buf_t *ls_buf_xnew(int size, ls_xpool_t *pool);
  */
 int ls_buf_x(ls_buf_t *pThis, int size, ls_xpool_t *pool);
 
-/** @ls_buf_xd
+/**
  * @brief Destroys the buffer.  DOES NOT FREE \e pThis!
  *
  * @param[in] pThis - A pointer to an initialized lsr buf object.
@@ -110,7 +110,7 @@ int ls_buf_x(ls_buf_t *pThis, int size, ls_xpool_t *pool);
  */
 void ls_buf_xd(ls_buf_t *pThis, ls_xpool_t *pool);
 
-/** @ls_buf_xdelete
+/**
  * @brief Deletes the buffer, opposite of \link #ls_buf_xnew buf xnew \endlink
  * @details If a buf was created with \link #ls_buf_xnew buf xnew, \endlink
  *  it must be deleted with \link #ls_buf_xdelete buf xdelete. \endlink
@@ -123,7 +123,7 @@ void ls_buf_xd(ls_buf_t *pThis, ls_xpool_t *pool);
  */
 void ls_buf_xdelete(ls_buf_t *pThis, ls_xpool_t *pool);
 
-/** @ls_buf_new
+/**
  * @brief Creates and initializes a new buffer.
  *
  * @param[in] size - The initial size to set the buffer to.
@@ -134,7 +134,7 @@ void ls_buf_xdelete(ls_buf_t *pThis, ls_xpool_t *pool);
 ls_inline ls_buf_t *ls_buf_new(int size)
 {   return ls_buf_xnew(size, NULL);  }
 
-/** @ls_buf
+/**
  * @brief Initializes the buffer to a given size.
  *
  * @param[in] pThis - A pointer to an allocated lsr buf object.
@@ -146,7 +146,7 @@ ls_inline ls_buf_t *ls_buf_new(int size)
 ls_inline int ls_buf(ls_buf_t *pThis, int size)
 {   return ls_buf_x(pThis, size, NULL);  }
 
-/** @ls_buf_d
+/**
  * @brief Destroys the buffer.  DOES NOT FREE \e pThis!
  *
  * @param[in] pThis - A pointer to an initialized lsr buf object.
@@ -157,7 +157,7 @@ ls_inline int ls_buf(ls_buf_t *pThis, int size)
 ls_inline void ls_buf_d(ls_buf_t *pThis)
 {   ls_buf_xd(pThis, NULL);  }
 
-/** @ls_buf_delete
+/**
  * @brief Deletes the buffer, opposite of \link #ls_buf_new buf new \endlink
  * @details If a buf was created with \link #ls_buf_new buf new, \endlink
  *  it must be deleted with \link #ls_buf_delete buf delete. \endlink
@@ -170,7 +170,7 @@ ls_inline void ls_buf_d(ls_buf_t *pThis)
 ls_inline void ls_buf_delete(ls_buf_t *pThis)
 {   ls_buf_xdelete(pThis, NULL); }
 
-/** @ls_buf_xreserve
+/**
  * @brief Reserves \e size total bytes for the buffer from the session pool.
  *  If \e size is lower than the current size, it will shrink.
  *
@@ -181,7 +181,7 @@ ls_inline void ls_buf_delete(ls_buf_t *pThis)
  */
 int ls_buf_xreserve(ls_buf_t *pThis, int size, ls_xpool_t *pool);
 
-/** @ls_buf_xgrow
+/**
  * @brief Extends the buffer by \e size bytes.
  * @details Allocates from the given session pool.
  *
@@ -192,7 +192,7 @@ int ls_buf_xreserve(ls_buf_t *pThis, int size, ls_xpool_t *pool);
  */
 int ls_buf_xgrow(ls_buf_t *pThis, int size, ls_xpool_t *pool);
 
-/** @ls_buf_xappend2
+/**
  * @brief Appends the buffer with a given buffer.
  * @details It will check if there is enough space in the buffer and will grow
  *  the buffer from the session pool if there is not enough space.
@@ -206,7 +206,7 @@ int ls_buf_xgrow(ls_buf_t *pThis, int size, ls_xpool_t *pool);
 int ls_buf_xappend2(
     ls_buf_t *pThis, const char *pBuf, int size, ls_xpool_t *pool);
 
-/** @ls_buf_xappend
+/**
  * @brief Appends the buffer with a given buffer.
  * @details Since the size is not passed in,
  *  it will have to calculate the length.
@@ -222,7 +222,7 @@ ls_inline int ls_buf_xappend(
     ls_buf_t *pThis, const char *pBuf, ls_xpool_t *pool)
 {   return ls_buf_xappend2(pThis, pBuf, strlen(pBuf), pool); }
 
-/** @ls_buf_reserve
+/**
  * @brief Reserves \e size total bytes for the buffer.
  *  If \e size is lower than the current size, it will shrink.
  *
@@ -233,7 +233,7 @@ ls_inline int ls_buf_xappend(
 ls_inline int ls_buf_reserve(ls_buf_t *pThis, int size)
 {   return ls_buf_xreserve(pThis, size, NULL);   }
 
-/** @ls_buf_available
+/**
  * @brief Gets the number of bytes left in the buffer.
  *
  * @param[in] pThis - A pointer to an initialized lsr buf object.
@@ -242,7 +242,7 @@ ls_inline int ls_buf_reserve(ls_buf_t *pThis, int size)
 ls_inline int ls_buf_available(const ls_buf_t *pThis)
 {   return pThis->pbufend - pThis->pend;    }
 
-/** @ls_buf_begin
+/**
  * @brief Gets the beginning of the buffer.
  *
  * @param[in] pThis - A pointer to an initialized lsr buf object.
@@ -251,7 +251,7 @@ ls_inline int ls_buf_available(const ls_buf_t *pThis)
 ls_inline char *ls_buf_begin(const ls_buf_t *pThis)
 {   return pThis->pbuf;   }
 
-/** @ls_buf_end
+/**
  * @brief Gets the end of the buffer.
  *
  * @param[in] pThis - A pointer to an initialized lsr buf object.
@@ -260,7 +260,7 @@ ls_inline char *ls_buf_begin(const ls_buf_t *pThis)
 ls_inline char *ls_buf_end(const ls_buf_t *pThis)
 {   return pThis->pend;   }
 
-/** @ls_buf_getp
+/**
  * @brief Gets a pointer of a given offset from the start of the buffer.
  *
  * @param[in] pThis - A pointer to an initialized lsr buf object.
@@ -270,7 +270,7 @@ ls_inline char *ls_buf_end(const ls_buf_t *pThis)
 ls_inline char *ls_buf_getp(const ls_buf_t *pThis, int offset)
 {   return pThis->pbuf + offset; }
 
-/** @ls_buf_used
+/**
  * @brief Tells the buffer that the user appended \e size more bytes.
  * @details
  *  Do not call this after the calls \link #ls_buf_append buf append,\endlink
@@ -287,7 +287,7 @@ ls_inline char *ls_buf_getp(const ls_buf_t *pThis, int offset)
 ls_inline void ls_buf_used(ls_buf_t *pThis, int size)
 {   pThis->pend += size;     }
 
-/** @ls_buf_clear
+/**
  * @brief Clears the buffer to 0 bytes used.
  *
  * @param[in] pThis - A pointer to an initialized lsr buf object.
@@ -296,7 +296,7 @@ ls_inline void ls_buf_used(ls_buf_t *pThis, int size)
 ls_inline void ls_buf_clear(ls_buf_t *pThis)
 {   pThis->pend = pThis->pbuf;    }
 
-/** @ls_buf_capacity
+/**
  * @brief Gets the total capacity of the buffer
  *
  * @param[in] pThis - A pointer to an initialized lsr buf object.
@@ -305,7 +305,7 @@ ls_inline void ls_buf_clear(ls_buf_t *pThis)
 ls_inline int ls_buf_capacity(const ls_buf_t *pThis)
 {   return pThis->pbufend - pThis->pbuf;  }
 
-/** @ls_buf_size
+/**
  * @brief Gets the size used in the buffer so far.
  *
  * @param[in] pThis - A pointer to an initialized lsr buf object.
@@ -314,7 +314,7 @@ ls_inline int ls_buf_capacity(const ls_buf_t *pThis)
 ls_inline int ls_buf_size(const ls_buf_t *pThis)
 {   return pThis->pend - pThis->pbuf;   }
 
-/** @ls_buf_resize
+/**
  * @brief Resizes the used amount to \e size bytes.
  * @details The size must be less than or equal to capacity.
  *
@@ -328,7 +328,7 @@ ls_inline void ls_buf_resize(ls_buf_t *pThis, int size)
     pThis->pend = pThis->pbuf + size;
 }
 
-/** @ls_buf_grow
+/**
  * @brief Extends the buffer by \e size bytes.
  *
  * @param[in] pThis - A pointer to an initialized lsr buf object.
@@ -338,7 +338,7 @@ ls_inline void ls_buf_resize(ls_buf_t *pThis, int size)
 ls_inline int ls_buf_grow(ls_buf_t *pThis, int size)
 {   return ls_buf_xgrow(pThis, size, NULL);  }
 
-/** @ls_buf_unsafeapp
+/**
  * @brief Appends the buffer with a given buffer.
  * @details This function is unsafe in that it will not check
  *  if there is enough space allocated.
@@ -357,7 +357,7 @@ ls_inline int ls_buf_unsafeapp(ls_buf_t *pThis, const char *pBuf, int size)
     return size;
 }
 
-/** @ls_buf_unsafeappch
+/**
  * @brief Appends the buffer with a character.
  * @details This function is unsafe in that it will not check
  *  if there is enough space allocated.
@@ -371,7 +371,7 @@ ls_inline int ls_buf_unsafeapp(ls_buf_t *pThis, const char *pBuf, int size)
 ls_inline void ls_buf_unsafeappch(ls_buf_t *pThis, char ch)
 {   *pThis->pend++ = ch;   }
 
-/** @ls_buf_append2
+/**
  * @brief Appends the buffer with a given buffer.
  * @details It will check if there is enough space in the buffer and will
  *  grow the buffer if there is not enough space.
@@ -384,7 +384,7 @@ ls_inline void ls_buf_unsafeappch(ls_buf_t *pThis, char ch)
 ls_inline int ls_buf_append2(ls_buf_t *pThis, const char *pBuf, int size)
 {   return ls_buf_xappend2(pThis, pBuf, size, NULL);     }
 
-/** @ls_buf_append
+/**
  * @brief Appends the buffer with a given buffer.
  * @details Since the size is not passed in,
  *  it will have to calculate the length.
@@ -398,7 +398,7 @@ ls_inline int ls_buf_append2(ls_buf_t *pThis, const char *pBuf, int size)
 ls_inline int ls_buf_append(ls_buf_t *pThis, const char *pBuf)
 {   return ls_buf_xappend2(pThis, pBuf, strlen(pBuf), NULL); }
 
-/** @ls_buf_empty
+/**
  * @brief Specifies whether or not a lsr buf object is empty.
  *
  * @param[in] pThis - A pointer to an initialized lsr buf object.
@@ -407,7 +407,7 @@ ls_inline int ls_buf_append(ls_buf_t *pThis, const char *pBuf)
 ls_inline int ls_buf_empty(const ls_buf_t *pThis)
 {   return (pThis->pbuf == pThis->pend);  }
 
-/** @ls_buf_full
+/**
  * @brief Specifies whether or not a lsr buf object is full.
  *
  * @param[in] pThis - A pointer to an initialized lsr buf object.
@@ -416,7 +416,7 @@ ls_inline int ls_buf_empty(const ls_buf_t *pThis)
 ls_inline int ls_buf_full(const ls_buf_t *pThis)
 {   return (pThis->pend == pThis->pbufend); }
 
-/** @ls_buf_getoffset
+/**
  * @brief Given a pointer, calculates the offset relative to the start of
  *  the buffer.
  *
@@ -427,7 +427,7 @@ ls_inline int ls_buf_full(const ls_buf_t *pThis)
 ls_inline int ls_buf_getoffset(const ls_buf_t *pThis, const char *p)
 {   return p - pThis->pbuf;    }
 
-/** @ls_buf_popfrontto
+/**
  * @brief Pops the front \e size bytes from \e pThis and stores in \e pBuf.
  *
  * @param[in] pThis - A pointer to an initialized lsr buf object.
@@ -437,7 +437,7 @@ ls_inline int ls_buf_getoffset(const ls_buf_t *pThis, const char *p)
  */
 int ls_buf_popfrontto(ls_buf_t *pThis, char *pBuf, int size);
 
-/** @ls_buf_popfront
+/**
  * @brief Pops the front \e size bytes from \e pThis.
  *
  * @param[in] pThis - A pointer to an initialized lsr buf object.
@@ -446,7 +446,7 @@ int ls_buf_popfrontto(ls_buf_t *pThis, char *pBuf, int size);
  */
 int ls_buf_popfront(ls_buf_t *pThis, int size);
 
-/** @ls_buf_popend
+/**
  * @brief Pops the ending \e size bytes from \e pThis.
  *
  * @param[in] pThis - A pointer to an initialized lsr buf object.
@@ -455,7 +455,7 @@ int ls_buf_popfront(ls_buf_t *pThis, int size);
  */
 int ls_buf_popend(ls_buf_t *pThis, int size);
 
-/** @ls_buf_swap
+/**
  * @brief Swaps the contents of the two buffers.
  *
  * @param[in,out] pThis - A pointer to an initialized lsr buf object.
@@ -464,7 +464,7 @@ int ls_buf_popend(ls_buf_t *pThis, int size);
  */
 void ls_buf_swap(ls_buf_t *pThis, ls_buf_t *pRhs);
 
-/** @ls_xbuf_new
+/**
  * @brief Creates and initializes a new buffer from the session pool.
  *
  * @param[in] size - The initial size to set the buffer to.
@@ -475,7 +475,7 @@ void ls_buf_swap(ls_buf_t *pThis, ls_buf_t *pRhs);
  */
 ls_xbuf_t *ls_xbuf_new(int size, ls_xpool_t *pool);
 
-/** @ls_xbuf
+/**
  * @brief Initializes the buffer to a given size.
  *
  * @param[in] pThis - A pointer to an allocated lsr xbuf object.
@@ -485,7 +485,7 @@ ls_xbuf_t *ls_xbuf_new(int size, ls_xpool_t *pool);
  */
 int ls_xbuf(ls_xbuf_t *pThis, int size, ls_xpool_t *pool);
 
-/** @ls_xbuf_d
+/**
  * @brief Destroys the buffer.  DOES NOT FREE \e pThis!
  *
  * @param[in] pThis - A pointer to an initialized lsr xbuf object.
@@ -495,7 +495,7 @@ int ls_xbuf(ls_xbuf_t *pThis, int size, ls_xpool_t *pool);
  */
 void ls_xbuf_d(ls_xbuf_t *pThis);
 
-/** @ls_xbuf_delete
+/**
  * @brief Deletes the buffer, opposite of \link #ls_xbuf_new xbuf new \endlink
  * @details If a buf was created with \link #ls_xbuf_new xbuf new, \endlink
  * it must be deleted with \link #ls_xbuf_delete xbuf delete. \endlink
@@ -507,7 +507,7 @@ void ls_xbuf_d(ls_xbuf_t *pThis);
  */
 void ls_xbuf_delete(ls_xbuf_t *pThis);
 
-/** @ls_xbuf_reserve
+/**
  * @brief Reserves \e size total bytes for the buffer.
  *  If \e size is lower than the current size, it will shrink.
  *
@@ -520,7 +520,7 @@ void ls_xbuf_delete(ls_xbuf_t *pThis);
 ls_inline int ls_xbuf_reserve(ls_xbuf_t *pThis, int size)
 {   return ls_buf_xreserve(&pThis->buf, size, pThis->pool); }
 
-/** @ls_xbuf_available
+/**
  * @brief Gets the number of bytes left in the buffer.
  *
  * @param[in] pThis - A pointer to an initialized lsr xbuf object.
@@ -529,7 +529,7 @@ ls_inline int ls_xbuf_reserve(ls_xbuf_t *pThis, int size)
 ls_inline int ls_xbuf_available(const ls_xbuf_t *pThis)
 {   return pThis->buf.pbufend - pThis->buf.pend;    }
 
-/** @ls_xbuf_begin
+/**
  * @brief Gets the beginning of the buffer.
  *
  * @param[in] pThis - A pointer to an initialized lsr xbuf object.
@@ -538,7 +538,7 @@ ls_inline int ls_xbuf_available(const ls_xbuf_t *pThis)
 ls_inline char *ls_xbuf_begin(const ls_xbuf_t *pThis)
 {   return pThis->buf.pbuf;     }
 
-/** @ls_xbuf_end
+/**
  * @brief Gets the end of the buffer.
  *
  * @param[in] pThis - A pointer to an initialized lsr xbuf object.
@@ -547,7 +547,7 @@ ls_inline char *ls_xbuf_begin(const ls_xbuf_t *pThis)
 ls_inline char *ls_xbuf_end(const ls_xbuf_t *pThis)
 {   return pThis->buf.pend;    }
 
-/** @ls_xbuf_getp
+/**
  * @brief Gets a pointer of a given offset from the start of the buffer.
  *
  * @param[in] pThis - A pointer to an initialized lsr xbuf object.
@@ -557,7 +557,7 @@ ls_inline char *ls_xbuf_end(const ls_xbuf_t *pThis)
 ls_inline char *ls_xbuf_getp(const ls_xbuf_t *pThis, int offset)
 {   return pThis->buf.pbuf + offset; }
 
-/** @ls_xbuf_used
+/**
  * @brief Tells the buffer that the user appended \e size more bytes.
  * @details
  *  Do not call this after the calls \link #ls_xbuf_append xbuf append,\endlink
@@ -572,7 +572,7 @@ ls_inline char *ls_xbuf_getp(const ls_xbuf_t *pThis, int offset)
 ls_inline void ls_xbuf_used(ls_xbuf_t *pThis, int size)
 {   pThis->buf.pend += size;     }
 
-/** @ls_xbuf_clear
+/**
  * @brief Clears the buffer to 0 bytes used.
  *
  * @param[in] pThis - A pointer to an initialized lsr xbuf object.
@@ -581,7 +581,7 @@ ls_inline void ls_xbuf_used(ls_xbuf_t *pThis, int size)
 ls_inline void ls_xbuf_clear(ls_xbuf_t *pThis)
 {   pThis->buf.pend = pThis->buf.pbuf;    }
 
-/** @ls_xbuf_capacity
+/**
  * @brief Gets the total capacity of the buffer
  *
  * @param[in] pThis - A pointer to an initialized lsr xbuf object.
@@ -590,7 +590,7 @@ ls_inline void ls_xbuf_clear(ls_xbuf_t *pThis)
 ls_inline int ls_xbuf_capacity(const ls_xbuf_t *pThis)
 {   return pThis->buf.pbufend - pThis->buf.pbuf;  }
 
-/** @ls_xbuf_size
+/**
  * @brief Gets the size used in the buffer so far.
  *
  * @param[in] pThis - A pointer to an initialized lsr xbuf object.
@@ -599,7 +599,7 @@ ls_inline int ls_xbuf_capacity(const ls_xbuf_t *pThis)
 ls_inline int ls_xbuf_size(const ls_xbuf_t *pThis)
 {   return pThis->buf.pend - pThis->buf.pbuf;   }
 
-/** @ls_xbuf_resize
+/**
  * @brief Resizes the used amount to \e size bytes.
  * @details The size must be less than or equal to capacity.
  *
@@ -610,7 +610,7 @@ ls_inline int ls_xbuf_size(const ls_xbuf_t *pThis)
 ls_inline void ls_xbuf_resize(ls_xbuf_t *pThis, int size)
 {   ls_buf_resize(&pThis->buf, size);  }
 
-/** @ls_xbuf_grow
+/**  
  * @brief Extends the buffer by \e size bytes.
  *
  * @param[in] pThis - A pointer to an initialized lsr xbuf object.
@@ -620,7 +620,7 @@ ls_inline void ls_xbuf_resize(ls_xbuf_t *pThis, int size)
 ls_inline int ls_xbuf_grow(ls_xbuf_t *pThis, int size)
 {   return ls_buf_xgrow(&pThis->buf, size, pThis->pool);    }
 
-/** @ls_xbuf_unsafeapp
+/**  
  * @brief Appends the buffer with a given buffer.
  * @details This function is unsafe in that it will not check
  *  if there is enough space allocated.
@@ -636,7 +636,7 @@ ls_inline int ls_xbuf_unsafeapp(ls_xbuf_t *pThis, const char *pBuf,
                                 int size)
 {   return ls_buf_unsafeapp(&pThis->buf, pBuf, size);  }
 
-/** @ls_xbuf_unsafeappch
+/**  
  * @brief Appends the buffer with a character.
  * @details This function is unsafe in that it will not check
  *  if there is enough space allocated.
@@ -650,7 +650,7 @@ ls_inline int ls_xbuf_unsafeapp(ls_xbuf_t *pThis, const char *pBuf,
 ls_inline void ls_xbuf_unsafeappch(ls_xbuf_t *pThis, char ch)
 {   *pThis->buf.pend++ = ch;   }
 
-/** @ls_xbuf_append2
+/**  
  * @brief Appends the buffer with a given buffer.
  * @details It will check if there is enough space in the buffer and will grow
  *  the buffer if there is not enough space.
@@ -663,7 +663,7 @@ ls_inline void ls_xbuf_unsafeappch(ls_xbuf_t *pThis, char ch)
 ls_inline int ls_xbuf_append2(ls_xbuf_t *pThis, const char *pBuf, int size)
 {   return ls_buf_xappend2(&pThis->buf, pBuf, size, pThis->pool);   }
 
-/** @ls_xbuf_append
+/**  
  * @brief Appends the buffer with a given buffer.
  * @details Since the size is not passed in,
  *  it will have to calculate the length.
@@ -677,7 +677,7 @@ ls_inline int ls_xbuf_append2(ls_xbuf_t *pThis, const char *pBuf, int size)
 ls_inline int ls_xbuf_append(ls_xbuf_t *pThis, const char *pBuf)
 {   return ls_xbuf_append2(pThis, pBuf, strlen(pBuf)); }
 
-/** @ls_xbuf_empty
+/**  
  * @brief Specifies whether or not a lsr xbuf object is empty.
  *
  * @param[in] pThis - A pointer to an initialized lsr xbuf object.
@@ -686,7 +686,7 @@ ls_inline int ls_xbuf_append(ls_xbuf_t *pThis, const char *pBuf)
 ls_inline int ls_xbuf_empty(const ls_xbuf_t *pThis)
 {   return (pThis->buf.pbuf == pThis->buf.pend);  }
 
-/** @ls_xbuf_full
+/**  
  * @brief Specifies whether or not a lsr xbuf object is full.
  *
  * @param[in] pThis - A pointer to an initialized lsr xbuf object.
@@ -695,7 +695,7 @@ ls_inline int ls_xbuf_empty(const ls_xbuf_t *pThis)
 ls_inline int ls_xbuf_full(const ls_xbuf_t *pThis)
 {   return (pThis->buf.pend == pThis->buf.pbufend); }
 
-/** @ls_xbuf_getoffset
+/**  
  * @brief Given a pointer, calculates the offset relative to the start of
  *  the buffer.
  *
@@ -706,7 +706,7 @@ ls_inline int ls_xbuf_full(const ls_xbuf_t *pThis)
 ls_inline int ls_xbuf_getoffset(const ls_xbuf_t *pThis, const char *p)
 {   return p - pThis->buf.pbuf;    }
 
-/** @ls_xbuf_popfrontto
+/**  
  * @brief Pops the front \e size bytes from \e pThis and stores in \e pBuf.
  *
  * @param[in] pThis - A pointer to an initialized lsr xbuf object.
@@ -717,7 +717,7 @@ ls_inline int ls_xbuf_getoffset(const ls_xbuf_t *pThis, const char *p)
 ls_inline int ls_xbuf_popfrontto(ls_xbuf_t *pThis, char *pBuf, int size)
 {   return ls_buf_popfrontto(&pThis->buf, pBuf, size);    }
 
-/** @ls_xbuf_popfront
+/**  
  * @brief Pops the front \e size bytes from \e pThis.
  *
  * @param[in] pThis - A pointer to an initialized lsr xbuf object.
@@ -727,7 +727,7 @@ ls_inline int ls_xbuf_popfrontto(ls_xbuf_t *pThis, char *pBuf, int size)
 ls_inline int ls_xbuf_popfront(ls_xbuf_t *pThis, int size)
 {   return ls_buf_popfront(&pThis->buf, size);    }
 
-/** @ls_xbuf_popend
+/**  
  * @brief Pops the ending \e size bytes from \e pThis.
  *
  * @param[in] pThis - A pointer to an initialized lsr xbuf object.
@@ -737,7 +737,7 @@ ls_inline int ls_xbuf_popfront(ls_xbuf_t *pThis, int size)
 ls_inline int ls_xbuf_popend(ls_xbuf_t *pThis, int size)
 {   return ls_buf_popend(&pThis->buf, size);    }
 
-/** @ls_xbuf_swap
+/**  
  * @brief Swaps the contents of the two buffers.
  *
  * @param[in,out] pThis - A pointer to an initialized lsr xbuf object.

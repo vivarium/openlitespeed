@@ -77,7 +77,7 @@ struct ls_objpool_s
     ls_objpool_releaseobjfn releaseobj_fn;
 };
 
-/** @ls_objpool
+/**  
  * @brief Initializes an object pool object.
  * @details Chunk size determines how many pointers should be allocated
  * each time an allocation is needed.  If chunkSize is 0, default is set
@@ -94,7 +94,7 @@ struct ls_objpool_s
 void ls_objpool(ls_objpool_t *pThis, int chunkSize,
                 ls_objpool_getnewfn getNewFn, ls_objpool_releaseobjfn releaseFn);
 
-/** @ls_objpool
+/**  
  * @brief Destroys the contents of an initialized object pool object.
  *
  * @param[in] pThis - A pointer to an initialized object pool object.
@@ -104,7 +104,7 @@ void ls_objpool(ls_objpool_t *pThis, int chunkSize,
  */
 void ls_objpool_d(ls_objpool_t *pThis);
 
-/** @ls_objpool_get
+/**  
  * @brief Gets a pointer from the object pool.
  * @details Will allocate more if there are none left.
  *
@@ -113,7 +113,7 @@ void ls_objpool_d(ls_objpool_t *pThis);
  */
 void *ls_objpool_get(ls_objpool_t *pThis);
 
-/** @ls_objpool_getmulti
+/**  
  * @brief Gets an array of pointers from the object pool and stores
  * them in the provided structure.
  *
@@ -125,7 +125,7 @@ void *ls_objpool_get(ls_objpool_t *pThis);
  */
 int ls_objpool_getmulti(ls_objpool_t *pThis, void **pObj, int n);
 
-/** @ls_objpool_recycle
+/**  
  * @brief Returns the pointer to the pool.
  *
  * @param[in] pThis - A pointer to an initialized object pool object.
@@ -138,7 +138,7 @@ ls_inline void ls_objpool_recycle(ls_objpool_t *pThis, void *pObj)
         ls_ptrlist_unsafepushback(&pThis->freelist, pObj);
 }
 
-/** @ls_objpool_recyclemulti
+/**  
  * @brief Recycles an array of pointers to the object pool from the
  * provided pointer.
  *
@@ -154,7 +154,7 @@ ls_inline void ls_objpool_recyclemulti(ls_objpool_t *pThis, void **pObj,
         ls_ptrlist_unsafepushbackn(&pThis->freelist, pObj, n);
 }
 
-/** @ls_objpool_size
+/**  
  * @brief Gets the current number of pointers \e available in the object pool.
  *
  * @param[in] pThis - A pointer to an initialized object pool object.
@@ -163,7 +163,7 @@ ls_inline void ls_objpool_recyclemulti(ls_objpool_t *pThis, void **pObj,
 ls_inline int ls_objpool_size(const ls_objpool_t *pThis)
 {   return ls_ptrlist_size(&pThis->freelist);  }
 
-/** @ls_objpool_shrinkto
+/**  
  * @brief Shrinks the pool to contain sz pointers.
  * @details If the current \link #ls_objpool_size size\endlink
  * is less than the size given, this function will do nothing.
@@ -184,7 +184,7 @@ ls_inline void ls_objpool_shrinkto(ls_objpool_t *pThis, int sz)
     }
 }
 
-/** @ls_objpool_begin
+/**  
  * @brief Gets the iterator beginning of a object pool object.
  *
  * @param[in] pThis - A pointer to an initialized object pool object.
@@ -193,7 +193,7 @@ ls_inline void ls_objpool_shrinkto(ls_objpool_t *pThis, int sz)
 ls_inline ls_ptrlist_iter ls_objpool_begin(ls_objpool_t *pThis)
 {   return ls_ptrlist_begin(&pThis->freelist); }
 
-/** @ls_objpool_end
+/**  
  * @brief Gets the iterator end of a object pool object.
  *
  * @param[in] pThis - A pointer to an initialized object pool object.
@@ -202,7 +202,7 @@ ls_inline ls_ptrlist_iter ls_objpool_begin(ls_objpool_t *pThis)
 ls_inline ls_ptrlist_iter ls_objpool_end(ls_objpool_t *pThis)
 {   return ls_ptrlist_end(&pThis->freelist); }
 
-/** @ls_objpool_applyall
+/**  
  * @brief Applies fn to all the pointers in the object pool object.
  * @details Param may be used as a user data to give to the function if needed.
  *
@@ -221,7 +221,7 @@ ls_inline void ls_objpool_applyall(ls_objpool_t *pThis,
         (*fn)(*iter, param);
 }
 
-/** @ls_objpool_poolsize
+/**  
  * @brief Gets the \e total number of pointers created by the object pool object.
  * @details This includes all pointers that the user may have gotten.
  *
@@ -231,7 +231,7 @@ ls_inline void ls_objpool_applyall(ls_objpool_t *pThis,
 ls_inline int ls_objpool_poolsize(const ls_objpool_t *pThis)
 {   return pThis->poolsize;   }
 
-/** @ls_objpool_capacity
+/**  
  * @brief Gets the storage capacity of an object pool object;
  *   \e i.e., how many pointers it may hold.
  *

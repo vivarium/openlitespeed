@@ -36,7 +36,7 @@ extern "C" {
 #endif
 
 /**
- * @skip_leading_space
+ *
  * @brief Skips past leading spaces and tabs in a string.
  *
  * @param[in,out] p - A pointer to an input string pointer,
@@ -51,7 +51,7 @@ ls_inline void skip_leading_space(const char **p)
 }
 
 /**
- * @skip_trailing_space
+ *
  * @brief Skips trailing spaces and tabs in a string.
  *
  * @param[in,out] p - A pointer to an input string pointer,
@@ -66,7 +66,7 @@ ls_inline void skip_trailing_space(const char **p)
 }
 
 /**
- * @hexdigit
+ *
  * @brief Gets a binary value for a hexadecimal digit character.
  *
  * @param[in] ch - A hex digit character.
@@ -90,7 +90,7 @@ typedef struct ls_parse_s
 } ls_parse_t;
 
 /**
- * @ls_parse
+ *
  * @brief Initializes a string parsing object.
  * @details This object manages the parsing of strings specified by the user.
  *
@@ -112,7 +112,7 @@ ls_inline void ls_parse(
 }
 
 /**
- * @ls_parse_new
+ *  
  * @brief Creates a new string parsing object.
  * @details The routine allocates and initializes an object
  *   which manages the parsing of strings specified by the user.
@@ -128,7 +128,7 @@ ls_parse_t *ls_parse_new(const char *pBegin, const char *pEnd,
                          const char *delim);
 
 /**
- * @ls_parse_d
+ *  
  * @brief Destroys the contents of a string parsing object.
  *
  * @param[in] pThis - A pointer to an initialized string parsing object.
@@ -140,7 +140,7 @@ ls_inline void ls_parse_d(ls_parse_t *pThis)
 {}
 
 /**
- * @ls_parse_delete
+ *  
  * @brief Destroys then deletes a string parsing object.
  * @details The object should have been created with a previous
  *   successful call to ls_parse_new.
@@ -153,7 +153,7 @@ ls_inline void ls_parse_d(ls_parse_t *pThis)
 void ls_parse_delete(ls_parse_t *pThis);
 
 /**
- * @ls_parse_isend
+ *  
  * @brief Specifies whether or not the string has been fully parsed (is the end).
  *
  * @param[in] pThis - A pointer to an initialized string parsing object.
@@ -163,7 +163,7 @@ ls_inline int ls_parse_isend(const ls_parse_t *pThis)
 {   return pThis->pend <= pThis->pbegin;   }
 
 /**
- * @ls_parse_parse
+ *  
  * @brief Parses or continues to parse the string
  *   managed by the string parsing object.
  *
@@ -173,7 +173,7 @@ ls_inline int ls_parse_isend(const ls_parse_t *pThis)
 const char *ls_parse_parse(ls_parse_t *pThis);
 
 /**
- * @ls_parse_trimparse
+ *  
  * @brief Parses or continues to parse the string
  *   managed by the string parsing object,
  *   trimming white space from the beginning and end of each token.
@@ -191,7 +191,7 @@ ls_inline const char *ls_parse_trimparse(ls_parse_t *pThis)
 }
 
 /**
- * @ls_parse_getstrend
+ *  
  * @brief Gets the end of the current string token.
  *
  * @param[in] pThis - A pointer to an initialized string parsing object.
@@ -203,7 +203,7 @@ ls_inline const char *ls_parse_getstrend(const ls_parse_t *pThis)
 extern const char ls_s_hex[17];
 
 /**
- * @ls_strupper
+ * 
  * @brief Converts a character string to upper case.
  *
  * @param[in] pSrc - A pointer to the source string.
@@ -213,7 +213,7 @@ extern const char ls_s_hex[17];
 char *ls_strupper(const char *pSrc, char *pDest);
 
 /**
- * @ls_strnupper
+ *  
  * @brief Converts a maximum defined length character string to upper case.
  * @details The destination is null-terminated if and only if
  *   there is sufficient space.
@@ -227,7 +227,7 @@ char *ls_strupper(const char *pSrc, char *pDest);
 char *ls_strnupper(const char *pSrc, char *pDest, int *pCnt);
 
 /**
- * @ls_strlower
+ *  
  * @brief Converts a character string to lower case.
  *
  * @param[in] pSrc - A pointer to the source string.
@@ -237,7 +237,7 @@ char *ls_strnupper(const char *pSrc, char *pDest, int *pCnt);
 char *ls_strlower(const char *pSrc, char *pDest);
 
 /**
- * @ls_strnlower
+ *  
  * @brief Converts a maximum defined length character string to lower case.
  * @details The destination is null-terminated if and only if
  *   there is sufficient space.
@@ -251,7 +251,7 @@ char *ls_strlower(const char *pSrc, char *pDest);
 char *ls_strnlower(const char *pSrc, char *pDest, int *pCnt);
 
 /**
- * @ls_strtrim
+ *  
  * @brief Trims white space from the beginning and end of a string.
  *
  * @param[in] p - A pointer to the source string.
@@ -261,7 +261,7 @@ char *ls_strnlower(const char *pSrc, char *pDest, int *pCnt);
 char *ls_strtrim(char *p);
 
 /**
- * @ls_strtrim2
+ *  
  * @brief Trims white space from the beginning and end of a string.
  *
  * @param[in,out] pBegin - On input, a pointer to the source string pointer;
@@ -273,7 +273,7 @@ char *ls_strtrim(char *p);
 int    ls_strtrim2(const char **pBegin, const char **pEnd);
 
 /**
- * @ls_hexencode
+ *  
  * @brief Converts a character buffer to a corresponding string
  *   of ascii hexadecimal digits.
  * @details It is permissible for the destination pointer to be
@@ -291,7 +291,7 @@ int    ls_strtrim2(const char **pBegin, const char **pEnd);
 int    ls_hexencode(const char *pSrc, int len, char *pDest);
 
 /**
- * @ls_hexdecode
+ *  
  * @brief Converts a character buffer of ascii hexadecimal digits
  *   to its corresponding characters.
  * @details It is permissible for the destination pointer to be
@@ -305,7 +305,7 @@ int    ls_hexencode(const char *pSrc, int len, char *pDest);
 int    ls_hexdecode(const char *pSrc, int len, char *pDest);
 
 /**
- * @ls_strmatch
+ *  
  * @brief Determines whether or not a string matches a specified pattern.
  * @details Pattern matching includes the special wildcard characters:\n
  *   \arg '?' Question Mark - Matches exactly one of any character
@@ -327,7 +327,7 @@ int    ls_strmatch(const char *pSrc, const char *pEnd,
                    ls_str_t *const *begin, ls_str_t *const *end, int case_sens);
 
 /**
- * @ls_parsematchpattern
+ *  
  * @brief Separates a pattern string into its component tokens.
  * @details Pattern matching includes the special wildcard characters:\n
  *   \arg '?' Question Mark - Matches exactly one of any character
@@ -344,7 +344,7 @@ int    ls_strmatch(const char *pSrc, const char *pEnd,
 ls_strlist_t *ls_parsematchpattern(const char *pPattern);
 
 /**
- * @ls_strnextarg
+ *  
  * @brief Gets the next token (argument) from a string.
  *
  * @param[in,out] pStr - A pointer to a string pointer.
@@ -358,7 +358,7 @@ ls_strlist_t *ls_parsematchpattern(const char *pPattern);
 const char *ls_strnextarg(const char **pStr, const char *pDelim);
 
 /**
- * @ls_getline
+ *  
  * @brief Gets the next newline in a character buffer.
  *
  * @param[in] pBegin - A pointer to the beginning of the buffer.
@@ -368,7 +368,7 @@ const char *ls_strnextarg(const char **pStr, const char *pDelim);
  */
 const char *ls_getline(const char *pBegin, const char *pEnd);
 
-/** @ls_getconfline
+/**  
  * @brief Gets a line from a block of configuration.
  * @details A line will have any surrounding delimiters removed from the beginning and the end.
  *
@@ -383,7 +383,7 @@ const char *ls_getconfline(const char **pParseBegin, const char *pParseEnd,
                            const char **pLineEnd);
 
 /**
- * @ls_parsenextarg
+ *  
  * @brief Parses a string returning the next argument,
  *   and advancing the buffer pointer.
  * @details The routine correctly handles quotes and white space.
@@ -400,7 +400,7 @@ int    ls_parsenextarg(const char **pRuleStr, const char *pEnd,
                        const char **pArgBegin, const char **pArgEnd, const char **pError);
 
 /**
- * @ls_convertmatchtoreg
+ *  
  * @brief Converts a string from a regular expression format.
  *
  * @param[in] pStr - A pointer to the beginning of the string.
@@ -410,7 +410,7 @@ int    ls_parsenextarg(const char **pRuleStr, const char *pEnd,
 char *ls_convertmatchtoreg(char *pStr, char *pBufEnd);
 
 /**
- * @ls_findclosebracket
+ *  
  * @brief Finds the matching closing character from inside a \e bracket.
  * @details The routine correctly handles nesting.
  *
@@ -425,7 +425,7 @@ const char *ls_findclosebracket(const char *pBegin, const char *pEnd,
                                 char chOpen, char chClose);
 
 /**
- * @ls_findcharinbracket
+ *  
  * @brief Finds a specified character inside a \e bracket.
  * @details The character must be found in the current \e bracket level
  *   before the bracket close.
@@ -443,7 +443,7 @@ const char *ls_findcharinbracket(const char *pBegin, const char *pEnd,
                                  char searched, char chOpen, char chClose);
 
 /**
- * @ls_offset2string
+ *  
  * @brief Converts an offset to an ascii string.
  *
  * @param[out] pBuf - A pointer to the output buffer.
@@ -454,7 +454,7 @@ const char *ls_findcharinbracket(const char *pBegin, const char *pEnd,
 int    ls_offset2string(char *pBuf, int len, off_t val);
 
 /**
- * @ls_unescapequote
+ *  
  * @brief Removes the backslash escapes for a specified character in a buffer.
  *
  * @param[in] pBegin - A pointer to the beginning of the buffer.
@@ -465,7 +465,7 @@ int    ls_offset2string(char *pBuf, int len, off_t val);
 int    ls_unescapequote(char *pBegin, char *pEnd, int ch);
 
 /**
- * @ls_lookupsubstring
+ *  
  * @brief Finds a string key/value pair within a specified input buffer.
  * @details The input buffer is expected to contain a series of
  *   key/value pairs separated by a separator character.
@@ -485,7 +485,7 @@ const char *ls_lookupsubstring(const char *pInput, const char *pEnd,
                                const char *key, int keyLen, int *retLen, char sep, char comp);
 
 /**
- * @ls_mempbrk
+ *  
  * @brief Finds a character within a specified input buffer.
  *
  * @param[in] pInput - A pointer to the beginning of the input buffer.
@@ -500,7 +500,7 @@ const char *ls_mempbrk(
     const char *pInput, int iSize, const char *accept, int acceptLen);
 
 /**
- * @ls_memspn
+ *  
  * @brief Scans memory for a given set of bytes.
  *
  * @param[in] pInput - A pointer to the beginning of the input buffer.
@@ -516,7 +516,7 @@ size_t ls_memspn(
     const char *pInput, int iSize, const char *accept, int acceptLen);
 
 /**
- * @ls_memspn
+ *  
  * @brief Scans memory for bytes \e not within a given set.
  *
  * @param[in] pInput - A pointer to the beginning of the input buffer.

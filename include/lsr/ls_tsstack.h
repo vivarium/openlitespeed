@@ -50,7 +50,7 @@ typedef struct ls_tsstack_s
     ls_spinlock_t   lock;
 } ls_tsstack_t;
 
-/** @ls_tsstack_init
+/**  
  * @brief Initializes a thread safe stack object.
  * @details The function initializes an object to manage a
  * node-based stack (LIFO).
@@ -66,7 +66,7 @@ ls_inline void ls_tsstack_init(ls_tsstack_t *pThis)
     ls_spinlock_setup(&pThis->lock);
 }
 
-/** @ls_tsstack_destroy
+/**  
  * @brief Destroys a thread safe stack object.
  *
  * @param[in] pThis - A pointer to an initialized thread safe stack object.
@@ -80,7 +80,7 @@ ls_inline void ls_tsstack_destroy(ls_tsstack_t *pThis)
     ls_spinlock_unlock(&pThis->lock);
 }
 
-/** @ls_tsstack_new
+/**  
  * @brief Creates a new thread safe stack object.
  * @details The function allocates and initializes an object
  * to manage a node-based stack (LIFO).
@@ -92,7 +92,7 @@ ls_inline void ls_tsstack_destroy(ls_tsstack_t *pThis)
  */
 ls_tsstack_t *ls_tsstack_new();
 
-/** @ls_tsstack_delete
+/**  
  * @brief Destroys then deletes a thread safe stack object.
  * @details The object should have been created with a previous
  * successful call to ls_tsstack_new.
@@ -104,7 +104,7 @@ ls_tsstack_t *ls_tsstack_new();
  */
 void ls_tsstack_delete(ls_tsstack_t *pThis);
 
-/** @ls_tsstack_trypush
+/**  
  * @brief Tries to push an object onto the top of a thread safe stack.
  * @details This function will try to push onto the stack only once.
  * It will return immediately, regardless of the result.
@@ -123,7 +123,7 @@ ls_inline int ls_tsstack_trypush(ls_tsstack_t *pThis, ls_nodei_t *pNode)
     return 0;
 }
 
-/** @ls_tsstack_push
+/**  
  * @brief Pushes an object onto the top of a thread safe stack.
  * @details This function will block until it succeeds.
  *
@@ -141,7 +141,7 @@ ls_inline void ls_tsstack_push(ls_tsstack_t *pThis, ls_nodei_t *pNode)
     }
 }
 
-/** @ls_tsstack_trypop
+/**  
  * @brief Tries to pop an object from the top of a thread safe stack.
  * @details This function will try to pop from the stack only once.
  * It will return immediately, regardless of result.
@@ -162,7 +162,7 @@ ls_inline int ls_tsstack_trypop(ls_tsstack_t *pThis, ls_nodei_t **pRet)
     return 0;
 }
 
-/** @ls_tsstack_pop
+/**  
  * @brief Pops an object from the top of a thread safe stack.
  * @details This function will block until it succeeds.
  *

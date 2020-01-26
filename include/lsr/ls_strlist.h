@@ -60,7 +60,7 @@ typedef ls_str_t *const  *ls_const_strlist_iter;
 
 
 /**
- * @ls_strlist
+ *
  * @brief Initializes a string list object.
  * @details This object manages pointers to ls_str_t objects.
  *   An initial size is specified, but the size may change with other
@@ -77,7 +77,7 @@ ls_inline void ls_strlist(ls_strlist_t *pThis, size_t initSize)
 {   ls_ptrlist(pThis, initSize);   }
 
 /**
- * @ls_strlist_copy
+ *  
  * @brief Copies a string list object.
  *
  * @param[in] pThis - A pointer to an allocated string list object (destination).
@@ -87,7 +87,7 @@ ls_inline void ls_strlist(ls_strlist_t *pThis, size_t initSize)
 void ls_strlist_copy(ls_strlist_t *pThis, const ls_strlist_t *pRhs);
 
 /**
- * @ls_strlist_new
+ *  
  * @brief Creates a new string list object.
  * @details The routine allocates and initializes an object
  *   which manages pointers to ls_str_t objects.
@@ -103,7 +103,7 @@ void ls_strlist_copy(ls_strlist_t *pThis, const ls_strlist_t *pRhs);
 ls_strlist_t *ls_strlist_new(size_t initSize);
 
 /**
- * @ls_strlist_d
+ *  
  * @brief Deletes the elements and destroys the contents of a string list object.
  *
  * @param[in] pThis - A pointer to an initialized string list object.
@@ -114,7 +114,7 @@ ls_strlist_t *ls_strlist_new(size_t initSize);
 void ls_strlist_d(ls_strlist_t *pThis);
 
 /**
- * @ls_strlist_delete
+ *  
  * @brief Deletes the elements and destroys the contents of a string list object,
  *   then deletes the object.
  * @details The object should have been created with a previous
@@ -130,7 +130,7 @@ void ls_strlist_delete(ls_strlist_t *pThis);
 /* derived from ls_ptrlist */
 
 /**
- * @ls_strlist_resize
+ *  
  * @brief Changes the storage or data size in a string list object.
  * @details If the new size is greater than the current capacity,
  *   the storage is extended with the existing data remaining intact.
@@ -144,7 +144,7 @@ ls_inline int ls_strlist_resize(ls_strlist_t *pThis, size_t sz)
 {   return ls_ptrlist_resize(pThis, sz);   }
 
 /**
- * @ls_strlist_size
+ *  
  * @brief Gets the current size of a string list object.
  *
  * @param[in] pThis - A pointer to an initialized string list object.
@@ -154,7 +154,7 @@ ls_inline ssize_t ls_strlist_size(const ls_strlist_t *pThis)
 {   return ls_ptrlist_size(pThis);   }
 
 /**
- * @ls_strlist_empty
+ *  
  * @brief Specifies whether or not a string list object contains any elements.
  *
  * @param[in] pThis - A pointer to an initialized string list object.
@@ -164,7 +164,7 @@ ls_inline bool ls_strlist_empty(const ls_strlist_t *pThis)
 {   return ls_ptrlist_empty(pThis);   }
 
 /**
- * @ls_strlist_full
+ *  
  * @brief Specifies whether or not a string list object is at full capacity.
  *
  * @param[in] pThis - A pointer to an initialized string list object.
@@ -174,7 +174,7 @@ ls_inline bool ls_strlist_full(const ls_strlist_t *pThis)
 {   return ls_ptrlist_full(pThis);   }
 
 /**
- * @ls_strlist_capacity
+ *  
  * @brief Gets the storage capacity of a string list object;
  *   \e i.e., how many elements it may hold.
  *
@@ -185,7 +185,7 @@ ls_inline size_t ls_strlist_capacity(const ls_strlist_t *pThis)
 {   return ls_ptrlist_capacity(pThis);   }
 
 /**
- * @ls_strlist_begin
+ *  
  * @brief Gets the iterator beginning of a string list object.
  *
  * @param[in] pThis - A pointer to an initialized string list object.
@@ -195,7 +195,7 @@ ls_inline ls_strlist_iter ls_strlist_begin(ls_strlist_t *pThis)
 {   return (ls_strlist_iter)ls_ptrlist_begin(pThis);   }
 
 /**
- * @ls_strlist_end
+ *  
  * @brief Gets the iterator end of a string list object.
  *
  * @param[in] pThis - A pointer to an initialized string list object.
@@ -205,7 +205,7 @@ ls_inline ls_strlist_iter ls_strlist_end(ls_strlist_t *pThis)
 {   return (ls_strlist_iter)ls_ptrlist_end(pThis);   }
 
 /**
- * @ls_strlist_back
+ *  
  * @brief Gets the last element in a string list object.
  * @details The routine does \e not change anything in the object.
  *
@@ -216,7 +216,7 @@ ls_inline ls_str_t *ls_strlist_back(const ls_strlist_t *pThis)
 {   return (ls_str_t *)ls_ptrlist_back(pThis);   }
 
 /**
- * @ls_strlist_reserve
+ *  
  * @brief Reserves (allocates) storage in a string list object.
  * @details If the object currently contains data elements,
  *   the storage is extended with the existing data remaining intact.
@@ -229,7 +229,7 @@ ls_inline int ls_strlist_reserve(ls_strlist_t *pThis, size_t sz)
 {   return ls_ptrlist_reserve(pThis, sz);   }
 
 /**
- * @ls_strlist_grow
+ *  
  * @brief Extends (increases) the storage capacity of a string list object.
  *
  * @param[in] pThis - A pointer to an initialized string list object.
@@ -240,7 +240,7 @@ ls_inline int ls_strlist_grow(ls_strlist_t *pThis, size_t sz)
 {   return ls_ptrlist_grow(pThis, sz);   }
 
 /**
- * @ls_strlist_erase
+ *  
  * @brief Erases (deletes) an element from a string list object.
  * @details This decreases the size of the string list object by one.
  *
@@ -263,7 +263,7 @@ ls_inline ls_strlist_iter ls_strlist_erase(
 }
 
 /**
- * @ls_strlist_unsafepushback
+ *  
  * @brief Adds (pushes) an element to the end of a string list object.
  * @details This function is unsafe in that it will not check if there is enough space
  * allocated.
@@ -279,7 +279,7 @@ ls_inline void ls_strlist_unsafepushback(
 {   ls_ptrlist_unsafepushback(pThis, (void *)pPointer);   }
 
 /**
- * @ls_strlist_unsafepushbackn
+ *  
  * @brief Adds (pushes) a number of elements to the end of a string list object.
  * @details This function is unsafe in that it will not check if there is enough space
  * allocated.
@@ -296,7 +296,7 @@ ls_inline void ls_strlist_unsafepushbackn(
 {   ls_ptrlist_unsafepushbackn(pThis, (void **)pPointer, n);   }
 
 /**
- * @ls_strlist_unsafepopbackn
+ *  
  * @brief Pops a number of elements from the end of a string list object.
  * @details This function is unsafe in that it will not check if there is enough space
  * allocated.
@@ -313,7 +313,7 @@ ls_inline void ls_strlist_unsafepopbackn(
 {   ls_ptrlist_unsafepopbackn(pThis, (void **)pPointer, n);   }
 
 /**
- * @ls_strlist_pushback
+ *  
  * @brief Adds an element to the end of a string list object.
  * @details If the string list object is at capacity, the storage is extended.
  *
@@ -326,7 +326,7 @@ ls_inline int ls_strlist_pushback(
 {   return ls_ptrlist_pushback(pThis, (void *)pPointer);   }
 
 /**
- * @ls_strlist_pushback2
+ *  
  * @brief Adds a list of elements to the end of a string list object.
  * @details If the string list object is at capacity, the storage is extended.
  *
@@ -340,7 +340,7 @@ ls_inline int ls_strlist_pushback2(
 {   return ls_ptrlist_pushback2(pThis, plist);   }
 
 /**
- * @ls_strlist_popback
+ *  
  * @brief Pops an element from the end of a string list object.
  * @details This decreases the size of the string list object by one.
  *
@@ -352,7 +352,7 @@ ls_inline ls_str_t *ls_strlist_popback(ls_strlist_t *pThis)
 {   return (ls_str_t *)ls_ptrlist_popback(pThis);   }
 
 /**
- * @ls_strlist_popfront
+ *  
  * @brief Pops a number of elements from the beginning (front)
  *   of a string list object.
  * @details The number of elements returned cannot be greater
@@ -372,7 +372,7 @@ ls_inline int ls_strlist_popfront(
 /* specialized ls_strlist */
 
 /**
- * @ls_strlist_releaseobjs
+ *  
  * @brief Deletes all elements from a string list object, and empties the object.
  *
  * @param[in] pThis - A pointer to an initialized string list object.
@@ -385,7 +385,7 @@ ls_inline int ls_strlist_popfront(
 void ls_strlist_releaseobjs(ls_strlist_t *pThis);
 
 /**
- * @ls_strlist_foreach
+ *  
  * @brief Iterates through a list of elements
  *   calling the specified function for each.
  *
@@ -399,7 +399,7 @@ ls_inline int ls_strlist_foreach(
 {   return ls_ptrlist_foreach((void **)beg, (void **)end, fn);   }
 
 /**
- * @ls_strlist_add
+ *  
  * @brief Creates and adds an element to the end of a string list object.
  * @details If the string list object is at capacity, the storage is extended.
  *
@@ -416,7 +416,7 @@ const ls_str_t *ls_strlist_add(
     ls_strlist_t *pThis, const char *pStr, int len);
 
 /**
- * @ls_strlist_remove
+ *  
  * @brief Removes and deletes an element from a string list object.
  *
  * @param[in] pThis - A pointer to an initialized string list object.
@@ -429,7 +429,7 @@ const ls_str_t *ls_strlist_add(
 void ls_strlist_remove(ls_strlist_t *pThis, const char *pStr);
 
 /**
- * @ls_strlist_clear
+ *  
  * @brief Deletes all elements from a string list object, and empties the object.
  * @details It is identical to ls_strlist_releaseobjs.
  *
@@ -443,7 +443,7 @@ void ls_strlist_remove(ls_strlist_t *pThis, const char *pStr);
 void ls_strlist_clear(ls_strlist_t *pThis);
 
 /**
- * @ls_strlist_sort
+ *  
  * @brief Sorts the elements in a string list object.
  * @details The routine uses qsort(3) with strcmp(3) as the compare function.
  *
@@ -453,7 +453,7 @@ void ls_strlist_clear(ls_strlist_t *pThis);
 void ls_strlist_sort(ls_strlist_t *pThis);
 
 /**
- * @ls_strlist_insert
+ *  
  * @brief Adds an element to a string list object, then sorts the object.
  * @details If the string list object is at capacity, the storage is extended.
  *
@@ -470,7 +470,7 @@ void ls_strlist_sort(ls_strlist_t *pThis);
 void ls_strlist_insert(ls_strlist_t *pThis, ls_str_t *pDir);
 
 /**
- * @ls_strlist_find
+ *  
  * @brief Finds an element in a string list object.
  * @details The routine uses a linear search algorithm and strcmp(3).
  *
@@ -486,7 +486,7 @@ const ls_str_t *ls_strlist_find(const ls_strlist_t *pThis,
                                 const char *pStr);
 
 /**
- * @ls_strlist_lowerbound
+ *  
  * @brief Gets an element or the lower bound in a sorted string list object.
  * @details The string list object elements must be sorted,
  *   as the routine uses a binary search algorithm.
@@ -501,7 +501,7 @@ ls_const_strlist_iter ls_strlist_lowerbound(
     const ls_strlist_t *pThis, const char *pStr);
 
 /**
- * @ls_strlist_bfind
+ *  
  * @brief Finds an element in a sorted string list object.
  * @details The string list object elements must be sorted,
  *   as the routine uses a binary search algorithm.
@@ -517,7 +517,7 @@ ls_const_strlist_iter ls_strlist_lowerbound(
 ls_str_t *ls_strlist_bfind(const ls_strlist_t *pThis, const char *pStr);
 
 /**
- * @ls_strlist_split
+ *  
  * @brief Parses (splits) a buffer into tokens which are added to the specified
  *   string list object.
  *

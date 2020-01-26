@@ -79,7 +79,7 @@ struct ls_ptrlist_s
 };
 
 /**
- * @ls_ptrlist
+ *  
  * @brief Initializes a pointer list object.
  * @details This object manages pointers to generic (void *) objects.
  *   An initial size is specified, but the size may change with other
@@ -95,7 +95,7 @@ struct ls_ptrlist_s
 void ls_ptrlist(ls_ptrlist_t *pThis, size_t initSize);
 
 /**
- * @ls_ptrlist_copy
+ *  
  * @brief Copies a pointer list object.
  *
  * @param[in] pThis - A pointer to an allocated pointer list object (destination).
@@ -105,7 +105,7 @@ void ls_ptrlist(ls_ptrlist_t *pThis, size_t initSize);
 void ls_ptrlist_copy(ls_ptrlist_t *pThis, const ls_ptrlist_t *pRhs);
 
 /**
- * @ls_ptrlist_new
+ *  
  * @brief Creates a new pointer list object.
  * @details The routine allocates and initializes an object
  *   which manages pointers to generic (void *) objects.
@@ -121,7 +121,7 @@ void ls_ptrlist_copy(ls_ptrlist_t *pThis, const ls_ptrlist_t *pRhs);
 ls_ptrlist_t *ls_ptrlist_new(size_t initSize);
 
 /**
- * @ls_ptrlist_d
+ *  
  * @brief Destroys the contents of a pointer list object.
  *
  * @param[in] pThis - A pointer to an initialized pointer list object.
@@ -132,7 +132,7 @@ ls_ptrlist_t *ls_ptrlist_new(size_t initSize);
 void ls_ptrlist_d(ls_ptrlist_t *pThis);
 
 /**
- * @ls_ptrlist_delete
+ *  
  * @brief Destroys then deletes a pointer list object.
  * @details The object should have been created with a previous
  *   successful call to ls_ptrlist_new.
@@ -145,7 +145,7 @@ void ls_ptrlist_d(ls_ptrlist_t *pThis);
 void ls_ptrlist_delete(ls_ptrlist_t *pThis);
 
 /**
- * @ls_ptrlist_resize
+ *  
  * @brief Changes the total storage or list size in a pointer list object.
  * @details If the new size is greater than the current capacity,
  *   the storage is extended with the existing data remaining intact.
@@ -158,7 +158,7 @@ void ls_ptrlist_delete(ls_ptrlist_t *pThis);
 int ls_ptrlist_resize(ls_ptrlist_t *pThis, size_t sz);
 
 /**
- * @ls_ptrlist_size
+ *  
  * @brief Gets the current size of a pointer list object.
  *
  * @param[in] pThis - A pointer to an initialized pointer list object.
@@ -168,7 +168,7 @@ ls_inline ssize_t ls_ptrlist_size(const ls_ptrlist_t *pThis)
 {   return pThis->pend - pThis->pstore;   }
 
 /**
- * @ls_ptrlist_empty
+ *  
  * @brief Specifies whether or not a pointer list object contains any elements.
  *
  * @param[in] pThis - A pointer to an initialized pointer list object.
@@ -178,7 +178,7 @@ ls_inline bool ls_ptrlist_empty(const ls_ptrlist_t *pThis)
 {   return pThis->pend == pThis->pstore;   }
 
 /**
- * @ls_ptrlist_full
+ *  
  * @brief Specifies whether or not a pointer list object is at full capacity.
  *
  * @param[in] pThis - A pointer to an initialized pointer list object.
@@ -188,7 +188,7 @@ ls_inline bool ls_ptrlist_full(const ls_ptrlist_t *pThis)
 {   return pThis->pend == pThis->pstoreend;   }
 
 /**
- * @ls_ptrlist_capacity
+ *  
  * @brief Gets the storage capacity of a pointer list object;
  *   \e i.e., how many elements it may hold.
  *
@@ -199,7 +199,7 @@ ls_inline size_t ls_ptrlist_capacity(const ls_ptrlist_t *pThis)
 {   return pThis->pstoreend - pThis->pstore;   }
 
 /**
- * @ls_ptrlist_clear
+ *  
  * @brief Clears (empties, deletes) a pointer list object of all its elements.
  *
  * @param[in] pThis - A pointer to an initialized pointer list object.
@@ -209,7 +209,7 @@ ls_inline void ls_ptrlist_clear(ls_ptrlist_t *pThis)
 {   pThis->pend = pThis->pstore;   }
 
 /**
- * @ls_ptrlist_begin
+ *  
  * @brief Gets the iterator beginning of a pointer list object.
  *
  * @param[in] pThis - A pointer to an initialized pointer list object.
@@ -219,7 +219,7 @@ ls_inline ls_ptrlist_iter ls_ptrlist_begin(ls_ptrlist_t *pThis)
 {   return pThis->pstore;   }
 
 /**
- * @ls_ptrlist_end
+ *  
  * @brief Gets the iterator end of a pointer list object.
  *
  * @param[in] pThis - A pointer to an initialized pointer list object.
@@ -229,7 +229,7 @@ ls_inline ls_ptrlist_iter ls_ptrlist_end(ls_ptrlist_t *pThis)
 {   return pThis->pend;   }
 
 /**
- * @ls_ptrlist_back
+ *  
  * @brief Gets the last element (pointer) in a pointer list object.
  * @details The routine does \e not change anything in the object.
  *
@@ -240,7 +240,7 @@ ls_inline void *ls_ptrlist_back(const ls_ptrlist_t *pThis)
 {   return *(pThis->pend - 1);   }
 
 /**
- * @ls_ptrlist_reserve
+ *  
  * @brief Reserves storage in a pointer list object.
  * @details If the object currently contains data elements,
  *   the storage is extended with the existing data remaining intact.
@@ -252,7 +252,7 @@ ls_inline void *ls_ptrlist_back(const ls_ptrlist_t *pThis)
 int ls_ptrlist_reserve(ls_ptrlist_t *pThis, size_t sz);
 
 /**
- * @ls_ptrlist_grow
+ *  
  * @brief Extends (increases) the storage capacity of a pointer list object.
  *
  * @param[in] pThis - A pointer to an initialized pointer list object.
@@ -262,7 +262,7 @@ int ls_ptrlist_reserve(ls_ptrlist_t *pThis, size_t sz);
 int ls_ptrlist_grow(ls_ptrlist_t *pThis, size_t sz);
 
 /**
- * @ls_ptrlist_erase
+ *  
  * @brief Erases (deletes) an element from a pointer list object.
  * @details This decreases the size of the pointer list object by one.
  *
@@ -288,7 +288,7 @@ ls_inline ls_ptrlist_iter ls_ptrlist_erase(
 }
 
 /**
- * @ls_ptrlist_unsafepushback
+ *  
  * @brief Adds (pushes) an element to the end of a pointer list object.
  * @details This function is unsafe in that it will not check if there
  * is enough space allocated.
@@ -304,7 +304,7 @@ ls_inline void ls_ptrlist_unsafepushback(
 {   *pThis->pend++ = pPointer;   }
 
 /**
- * @ls_ptrlist_unsafepushbackn
+ *  
  * @brief Adds (pushes) a number of elements to the end
  *   of a pointer list object.
  * @details This function is unsafe in that it will not check if there
@@ -321,7 +321,7 @@ void ls_ptrlist_unsafepushbackn(
     ls_ptrlist_t *pThis, void **pPointer, int n);
 
 /**
- * @ls_ptrlist_unsafepopbackn
+ *  
  * @brief Pops a number of elements from the end
  *   of a pointer list object.
  * @details This function is unsafe in that it will not check if there
@@ -338,7 +338,7 @@ void ls_ptrlist_unsafepopbackn(
     ls_ptrlist_t *pThis, void **pPointer, int n);
 
 /**
- * @ls_ptrlist_pushback
+ *  
  * @brief Adds an element to the end of a pointer list object.
  * @details If the pointer list object is at capacity, the storage is extended.
  *
@@ -349,7 +349,7 @@ void ls_ptrlist_unsafepopbackn(
 int  ls_ptrlist_pushback(ls_ptrlist_t *pThis, void *pPointer);
 
 /**
- * @ls_ptrlist_pushback2
+ *  
  * @brief Adds a list of elements to the end of a pointer list object.
  * @details If the pointer list object is at capacity, the storage is extended.
  *
@@ -361,7 +361,7 @@ int  ls_ptrlist_pushback(ls_ptrlist_t *pThis, void *pPointer);
 int  ls_ptrlist_pushback2(ls_ptrlist_t *pThis, const ls_ptrlist_t *plist);
 
 /**
- * @ls_ptrlist_popback
+ *  
  * @brief Pops an element from the end of a pointer list object.
  * @details This decreases the size of the pointer list object by one.
  *
@@ -373,7 +373,7 @@ ls_inline void *ls_ptrlist_popback(ls_ptrlist_t *pThis)
 {   --pThis->pend;     return *pThis->pend;   }
 
 /**
- * @ls_ptrlist_popfront
+ *  
  * @brief Pops a number of elements from the beginning (front)
  *   of a pointer list object.
  * @details The number of elements returned cannot be greater
@@ -403,7 +403,7 @@ ls_inline int ls_ptrlist_popfront(
 }
 
 /**
- * @ls_ptrlist_sort
+ *  
  * @brief Sorts the elements in a pointer list object.
  * @details The routine uses qsort(3).
  *
@@ -415,7 +415,7 @@ void ls_ptrlist_sort(
     ls_ptrlist_t *pThis, int (*compare)(const void *, const void *));
 
 /**
- * @ls_ptrlist_swap
+ *  
  * @brief Exchanges (swaps) the contents of two pointer list objects.
  *
  * @param[in] pThis - A pointer to an initialized pointer list object.
@@ -426,7 +426,7 @@ void ls_ptrlist_swap(
     ls_ptrlist_t *pThis, ls_ptrlist_t *pRhs);
 
 /**
- * @ls_ptrlist_lowerbound
+ *  
  * @brief Gets an element or the lower bound in a sorted pointer list object.
  * @details The pointer list object elements must be sorted,
  *   as the routine uses a binary search algorithm.
@@ -444,7 +444,7 @@ ls_const_ptrlist_iter ls_ptrlist_lowerbound(
     const void *pKey, int (*compare)(const void *, const void *));
 
 /**
- * @ls_ptrlist_bfind
+ *  
  * @brief Finds an element in a sorted pointer list object.
  * @details The pointer list object elements must be sorted,
  *   as the routine uses a binary search algorithm.
@@ -462,7 +462,7 @@ ls_const_ptrlist_iter ls_ptrlist_bfind(
     const void *pKey, int (*compare)(const void *, const void *));
 
 /**
- * @ls_ptrlist_foreach
+ *  
  * @brief Iterates through a list of elements
  *   calling the specified function for each.
  *

@@ -33,7 +33,7 @@ extern "C" {
 typedef struct ls_llxq_s    ls_llxq_t;
 
 /**
- * @ls_llxq_new
+ *  
  * @brief Creates a new lockless queue object.
  * @details The routine allocates and initializes an object
  *  to manage a queue of objects without the use of locks.
@@ -48,7 +48,7 @@ typedef struct ls_llxq_s    ls_llxq_t;
 ls_llxq_t *ls_llxq_new(unsigned int size);
 
 /**
- * @ls_llxq_init
+ *  
  * @brief Initializes a lockless queue object.
  *
  * @param[in] pThis - A pointer to an allocated lockless queue object.
@@ -61,7 +61,7 @@ ls_llxq_t *ls_llxq_new(unsigned int size);
 int ls_llxq_init(ls_llxq_t *pThis, unsigned int size);
 
 /**
- * @ls_llxq_destroy
+ *  
  * @brief Destroys a lockless queue object.
  *
  * @param[in] pThis - A pointer to an initialized lockless queue object.
@@ -72,7 +72,7 @@ int ls_llxq_init(ls_llxq_t *pThis, unsigned int size);
 void ls_llxq_destroy(ls_llxq_t *pThis);
 
 /**
- * @ls_llxq_delete
+ *  
  * @brief Destroys then deletes a lockless queue object.
  * @details The object should have been created with a previous
  *   successful call to ls_llxq_new.
@@ -85,7 +85,7 @@ void ls_llxq_destroy(ls_llxq_t *pThis);
 void ls_llxq_delete(ls_llxq_t *pThis);
 
 /**
- * @ls_llxq_newqueue
+ *  
  * @brief Adds a new circular queue to a lockless queue object.
  * @details The new queue immediately becomes the one used for
  *   producers to \e put on, while previous queues continue to
@@ -108,7 +108,7 @@ void ls_llxq_delete(ls_llxq_t *pThis);
 int ls_llxq_newqueue(ls_llxq_t *pThis, unsigned int size);
 
 /**
- * @ls_llxq_put
+ *  
  * @brief Put an object on a lockless queue.
  * @details If the current circular queue buffer is filled,
  *   a new one is created up to the system defined maximum.
@@ -120,7 +120,7 @@ int ls_llxq_newqueue(ls_llxq_t *pThis, unsigned int size);
 int ls_llxq_put(ls_llxq_t *pThis, void *data);
 
 /**
- * @ls_llxq_timedput
+ *  
  * @brief Put an object on a lockless queue.
  *
  * @param[in] pThis - A pointer to an initialized lockless queue object.
@@ -133,7 +133,7 @@ int ls_llxq_timedput(ls_llxq_t *pThis, void *data,
                      struct timespec *timeout);
 
 /**
- * @ls_llxq_timedget
+ *  
  * @brief Get an object from a lockless queue.
  *
  * @param[in] pThis - A pointer to an initialized lockless queue object.

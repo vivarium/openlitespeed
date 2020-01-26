@@ -30,7 +30,7 @@
 extern "C" {
 #endif
 
-/** @ls_crc64
+/**
  * @brief Calculates the crc code for a chunk of data.
  *
  * @param[in] crc - The initial crc state.

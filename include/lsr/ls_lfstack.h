@@ -44,7 +44,7 @@ extern "C" {
 
 typedef struct ls_lfstack_s ls_lfstack_t;
 
-/** @ls_lfstack_new
+/**  
  * @brief Creates a new lock free stack object.
  * @details This function allocates and initializes an object
  * to manage a node-based stack (LIFO) without the use of locks.
@@ -56,7 +56,7 @@ typedef struct ls_lfstack_s ls_lfstack_t;
  */
 ls_lfstack_t *ls_lfstack_new();
 
-/** @ls_lfstack_init
+/**  
  * @brief Initializes a lock free stack object.
  * @details This function initializes an object to manage a
  * node-based stack (LIFO) without the use of locks.
@@ -68,7 +68,7 @@ ls_lfstack_t *ls_lfstack_new();
  */
 void ls_lfstack_init(ls_lfstack_t *pThis);
 
-/** @ls_lfstack_destroy
+/**  
  * @brief Destroys a lock free stack object.
  *
  * @param[in] pThis - A pointer to an initialized lock free stack object.
@@ -78,7 +78,7 @@ void ls_lfstack_init(ls_lfstack_t *pThis);
  */
 void ls_lfstack_destroy(ls_lfstack_t *pThis);
 
-/** @ls_lfstack_delete
+/**  
  * @brief Destroys then deletes a lock free stack object.
  * @details The object should have been created with a previous
  * successful call to ls_lfstack_new.
@@ -90,7 +90,7 @@ void ls_lfstack_destroy(ls_lfstack_t *pThis);
  */
 void ls_lfstack_delete(ls_lfstack_t *pThis);
 
-/** @ls_lfstack_push
+/**  
  * @brief Pushes an object onto the top of a lock free stack.
  * @details This function will block until it succeeds.
  *
@@ -100,7 +100,7 @@ void ls_lfstack_delete(ls_lfstack_t *pThis);
  */
 int ls_lfstack_push(ls_lfstack_t *pThis, ls_lfnodei_t *pNode);
 
-/** @ls_lfstack_pop
+/**  
  * @brief Pops an object from the top of a lock free stack.
  * @details This function will block until it succeeds.
  *

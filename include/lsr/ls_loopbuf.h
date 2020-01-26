@@ -82,7 +82,7 @@ struct ls_xloopbuf_s
     ls_xpool_t    *pool;
 };
 
-/** @ls_loopbuf_xnew
+/**  
  * @brief Create a new loopbuf structure with an initial capacity from
  * a session pool.
  *
@@ -94,7 +94,7 @@ struct ls_xloopbuf_s
  */
 ls_loopbuf_t *ls_loopbuf_xnew(int size, ls_xpool_t *pool);
 
-/** @ls_loopbuf_x
+/**  
  * @brief Initializes a given loopbuf to an initial capacity from
  * a session pool.
  *
@@ -108,7 +108,7 @@ ls_loopbuf_t *ls_loopbuf_xnew(int size, ls_xpool_t *pool);
 ls_loopbuf_t *ls_loopbuf_x(ls_loopbuf_t *pThis, int size,
                            ls_xpool_t *pool);
 
-/** @ls_loopbuf_xd
+/**  
  * @brief Destroys the loopbuf.  DOES NOT FREE pThis!
  * @details Use with ls_loopbuf_x.
  *
@@ -120,7 +120,7 @@ ls_loopbuf_t *ls_loopbuf_x(ls_loopbuf_t *pThis, int size,
  */
 void ls_loopbuf_xd(ls_loopbuf_t *pThis, ls_xpool_t *pool);
 
-/** @ls_loopbuf_xdelete
+/**  
  * @brief Deletes the loopbuf, opposite of \link #ls_loopbuf_xnew loopbuf xnew \endlink
  * @details If a loopbuf was created with \link #ls_loopbuf_xnew loopbuf xnew, \endlink
  * it must be deleted with \link #ls_loopbuf_xdelete loopbuf xdelete. \endlink
@@ -133,7 +133,7 @@ void ls_loopbuf_xd(ls_loopbuf_t *pThis, ls_xpool_t *pool);
  */
 void ls_loopbuf_xdelete(ls_loopbuf_t *pThis, ls_xpool_t *pool);
 
-/** @ls_loopbuf_new
+/**  
  * @brief Create a new loopbuf structure with an initial capacity.
  *
  * @param[in] size - The initial capacity for the loopbuf (bytes).
@@ -143,7 +143,7 @@ void ls_loopbuf_xdelete(ls_loopbuf_t *pThis, ls_xpool_t *pool);
  */
 ls_loopbuf_t *ls_loopbuf_new(int size);
 
-/** @ls_loopbuf
+/**  
  * @brief Initializes a given loopbuf to an initial capacity.
  *
  * @param[in] pThis - A pointer to an allocated loopbuf object.
@@ -154,7 +154,7 @@ ls_loopbuf_t *ls_loopbuf_new(int size);
  */
 ls_loopbuf_t *ls_loopbuf(ls_loopbuf_t *pThis, int size);
 
-/** @ls_loopbuf_d
+/**  
  * @brief Destroys the loopbuf.  DOES NOT FREE pThis!
  * @details Use with ls_loopbuf.
  *
@@ -166,7 +166,7 @@ ls_loopbuf_t *ls_loopbuf(ls_loopbuf_t *pThis, int size);
 ls_inline void ls_loopbuf_d(ls_loopbuf_t *pThis)
 {   ls_loopbuf_xd(pThis, NULL);  }
 
-/** @ls_loopbuf_delete
+/**  
  * @brief Deletes the loopbuf, opposite of \link #ls_loopbuf_new loopbuf new \endlink
  * @details If a loopbuf was created with \link #ls_loopbuf_new loopbuf new. \endlink
  * it must be deleted with \link #ls_loopbuf_delete loopbuf delete; \endlink
@@ -180,7 +180,7 @@ ls_inline void ls_loopbuf_d(ls_loopbuf_t *pThis)
  */
 void ls_loopbuf_delete(ls_loopbuf_t *pThis);
 
-/** @ls_loopbuf_xreserve
+/**  
  * @brief Reserves size total bytes for the loopbuf from the session pool.
  * If size is lower than the current size, it will not shrink.
  *
@@ -191,7 +191,7 @@ void ls_loopbuf_delete(ls_loopbuf_t *pThis);
  */
 int ls_loopbuf_xreserve(ls_loopbuf_t *pThis, int size, ls_xpool_t *pool);
 
-/** @ls_loopbuf_xappend
+/**  
  * @brief Appends the loopbuf with the specified buffer.
  * @details This function appends the loopbuf with the specified buffer.  It will check
  * if there is enough space in the loopbuf and will grow the loopbuf from the
@@ -206,7 +206,7 @@ int ls_loopbuf_xreserve(ls_loopbuf_t *pThis, int size, ls_xpool_t *pool);
 int ls_loopbuf_xappend(
     ls_loopbuf_t *pThis, const char *pBuf, int size, ls_xpool_t *pool);
 
-/** @ls_loopbuf_xguarantee
+/**  
  * @brief Guarantees size more bytes for the loopbuf.  If size is lower than the
  * available amount, it will not allocate any more.  Allocates from the given session pool.
  *
@@ -217,7 +217,7 @@ int ls_loopbuf_xappend(
  */
 int ls_loopbuf_xguarantee(ls_loopbuf_t *pThis, int size, ls_xpool_t *pool);
 
-/** @ls_loopbuf_xstraight
+/**  
  * @brief Straighten the loopbuf.
  * @details If the loopbuf is split in two parts due to looping, this function
  * makes it one whole again.
@@ -228,7 +228,7 @@ int ls_loopbuf_xguarantee(ls_loopbuf_t *pThis, int size, ls_xpool_t *pool);
  */
 void ls_loopbuf_xstraight(ls_loopbuf_t *pThis, ls_xpool_t *pool);
 
-/** @ls_loopbuf_available
+/**  
  * @brief Gets the number of bytes left in the loopbuf.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -236,7 +236,7 @@ void ls_loopbuf_xstraight(ls_loopbuf_t *pThis, ls_xpool_t *pool);
  */
 int ls_loopbuf_available(const ls_loopbuf_t *pThis);
 
-/** @ls_loopbuf_contiguous
+/**  
  * @brief Gets the number of contiguous bytes left in the loopbuf.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -244,7 +244,7 @@ int ls_loopbuf_available(const ls_loopbuf_t *pThis);
  */
 int ls_loopbuf_contiguous(const ls_loopbuf_t *pThis);
 
-/** @ls_loopbuf_used
+/**  
  * @brief Tells the loopbuf that the user used size more bytes from
  * the end of the loopbuf.
  * @details Do not call this after the calls
@@ -258,7 +258,7 @@ int ls_loopbuf_contiguous(const ls_loopbuf_t *pThis);
  */
 void ls_loopbuf_used(ls_loopbuf_t *pThis, int size);
 
-/** @ls_loopbuf_reserve
+/**  
  * @brief Reserves size total bytes for the loopbuf.  If size is lower than the current
  * size, it will not shrink.
  *
@@ -269,7 +269,7 @@ void ls_loopbuf_used(ls_loopbuf_t *pThis, int size);
 ls_inline int ls_loopbuf_reserve(ls_loopbuf_t *pThis, int size)
 {   return ls_loopbuf_xreserve(pThis, size, NULL);   }
 
-/** @ls_loopbuf_append
+/**  
  * @brief Appends the loopbuf with the specified buffer.
  * @details This function appends the loopbuf with the specified buffer.  It will check
  * if there is enough space in the loopbuf and will grow the loopbuf if there
@@ -284,7 +284,7 @@ ls_inline int ls_loopbuf_append(ls_loopbuf_t *pThis, const char *pBuf,
                                 int size)
 {   return ls_loopbuf_xappend(pThis, pBuf, size, NULL);  }
 
-/** @ls_loopbuf_guarantee
+/**  
  * @brief Guarantees size more bytes for the loopbuf.  If size is lower than the
  * available amount, it will not allocate any more.
  *
@@ -295,7 +295,7 @@ ls_inline int ls_loopbuf_append(ls_loopbuf_t *pThis, const char *pBuf,
 ls_inline int ls_loopbuf_guarantee(ls_loopbuf_t *pThis, int size)
 {   return ls_loopbuf_xguarantee(pThis, size, NULL); }
 
-/** @ls_loopbuf_straight
+/**  
  * @brief Straighten the loopbuf.
  * @details If the loopbuf is split in two parts due to looping, this function
  * makes it one whole again.
@@ -306,7 +306,7 @@ ls_inline int ls_loopbuf_guarantee(ls_loopbuf_t *pThis, int size)
 ls_inline void ls_loopbuf_straight(ls_loopbuf_t *pThis)
 {   return ls_loopbuf_xstraight(pThis, NULL);    }
 
-/** @ls_loopbuf_moveto
+/**  
  * @brief Moves the front size bytes from pThis to pBuf.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -316,7 +316,7 @@ ls_inline void ls_loopbuf_straight(ls_loopbuf_t *pThis)
  */
 int ls_loopbuf_moveto(ls_loopbuf_t *pThis, char *pBuf, int size);
 
-/** @ls_loopbuf_popfront
+/**  
  * @brief Pops the front size bytes from pThis.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -325,7 +325,7 @@ int ls_loopbuf_moveto(ls_loopbuf_t *pThis, char *pBuf, int size);
  */
 int ls_loopbuf_popfront(ls_loopbuf_t *pThis, int size);
 
-/** @ls_loopbuf_popback
+/**  
  * @brief Pops the ending size bytes from pThis.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -334,7 +334,7 @@ int ls_loopbuf_popfront(ls_loopbuf_t *pThis, int size);
  */
 int ls_loopbuf_popback(ls_loopbuf_t *pThis, int size);
 
-/** @ls_loopbuf_swap
+/**  
  * @brief Swaps the contents of the two loopbufs.
  * @param[in,out] lhs - A pointer to an initialized loopbuf object.
  * @param[in,out] rhs - A pointer to another initialized loopbuf object.
@@ -342,7 +342,7 @@ int ls_loopbuf_popback(ls_loopbuf_t *pThis, int size);
  */
 void ls_loopbuf_swap(ls_loopbuf_t *lhs, ls_loopbuf_t *rhs);
 
-/** @ls_loopbuf_update
+/**  
  * @brief Update the loopbuf at the offset to the contents of pBuf.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -354,7 +354,7 @@ void ls_loopbuf_swap(ls_loopbuf_t *lhs, ls_loopbuf_t *rhs);
 void ls_loopbuf_update(
     ls_loopbuf_t *pThis, int offset, const char *pBuf, int size);
 
-/** @ls_loopbuf_search
+/**  
  * @brief Searches the loopbuf starting at the offset for the pattern.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -366,7 +366,7 @@ void ls_loopbuf_update(
 char *ls_loopbuf_search(
     ls_loopbuf_t *pThis, int offset, const char *accept, int acceptLen);
 
-/** @ls_loopbuf_blksize
+/**  
  * @brief Gets the front block size.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -379,7 +379,7 @@ ls_inline int ls_loopbuf_blksize(const ls_loopbuf_t *pThis)
     return pThis->pend - pThis->phead;
 }
 
-/** @ls_loopbuf_size
+/**  
  * @brief Gets the size used in the loopbuf so far.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -393,7 +393,7 @@ ls_inline int ls_loopbuf_size(const ls_loopbuf_t *pThis)
     return ret + pThis->sizemax;
 }
 
-/** @ls_loopbuf_capacity
+/**  
  * @brief Gets the total capacity of the loopbuf.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -402,7 +402,7 @@ ls_inline int ls_loopbuf_size(const ls_loopbuf_t *pThis)
 ls_inline int ls_loopbuf_capacity(const ls_loopbuf_t *pThis)
 {   return pThis->sizemax;  }
 
-/** @ls_loopbuf_empty
+/**  
  * @brief Specifies whether or not the loopbuf is empty.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -411,7 +411,7 @@ ls_inline int ls_loopbuf_capacity(const ls_loopbuf_t *pThis)
 ls_inline int ls_loopbuf_empty(const ls_loopbuf_t *pThis)
 {   return (pThis->phead == pThis->pend);  }
 
-/** @ls_loopbuf_full
+/**  
  * @brief Specifies whether or not the loopbuf is full.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -420,7 +420,7 @@ ls_inline int ls_loopbuf_empty(const ls_loopbuf_t *pThis)
 ls_inline int ls_loopbuf_full(const ls_loopbuf_t *pThis)
 {   return  ls_loopbuf_size(pThis) == pThis->sizemax - 1; }
 
-/** @ls_loopbuf_begin
+/**  
  * @brief Gets a pointer to the beginning of the used data.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -429,7 +429,7 @@ ls_inline int ls_loopbuf_full(const ls_loopbuf_t *pThis)
 ls_inline char *ls_loopbuf_begin(const ls_loopbuf_t *pThis)
 {   return pThis->phead;  }
 
-/** @ls_loopbuf_end
+/**  
  * @brief Gets a pointer to the end of the used data.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -438,7 +438,7 @@ ls_inline char *ls_loopbuf_begin(const ls_loopbuf_t *pThis)
 ls_inline char *ls_loopbuf_end(const ls_loopbuf_t *pThis)
 {   return pThis->pend;  }
 
-/** @ls_loopbuf_getptr
+/**  
  * @brief Gets a pointer of a given offset from the loopbuf.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -452,7 +452,7 @@ ls_inline char *ls_loopbuf_getptr(const ls_loopbuf_t *pThis, int offset)
            % pThis->sizemax;
 }
 
-/** @ls_loopbuf_getoffset
+/**  
  * @brief Given a pointer, calculates the offset relative to the start of
  * the used data.
  *
@@ -468,7 +468,7 @@ ls_inline int ls_loopbuf_getoffset(const ls_loopbuf_t *pThis,
     return (p - pThis->phead + pThis->sizemax) % pThis->sizemax;
 }
 
-/** @ls_loopbuf_clear
+/**  
  * @brief Clears the loopbuf to 0 bytes used.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -477,7 +477,7 @@ ls_inline int ls_loopbuf_getoffset(const ls_loopbuf_t *pThis,
 ls_inline void ls_loopbuf_clear(ls_loopbuf_t *pThis)
 {   pThis->phead = pThis->pend = pThis->pbuf;    }
 
-/** @ls_loopbuf_unsafeapp
+/**  
  * @brief Appends the loopbuf with a character.
  * @details This function is unsafe in that it will not check if there is enough space
  * allocated.  This function exists to speed up the append process if the user can
@@ -494,7 +494,7 @@ ls_inline void ls_loopbuf_unsafeapp(ls_loopbuf_t *pThis, char ch)
         pThis->pend = pThis->pbuf;
 }
 
-/** @ls_loopbuf_inc
+/**  
  * @brief Increments the pointer.  If it is currently pointing to the end of the loopbuf,
  * then the increment will point to the beginning of the loopbuf.
  *
@@ -511,7 +511,7 @@ ls_inline char *ls_loopbuf_inc(ls_loopbuf_t *pThis, char **pPos)
 }
 
 //NOTICE: The number of segments must match the count of iovec structs in order to use iov_insert.
-/** @ls_loopbuf_getnumseg
+/**  
  * @brief Gets the number of segments the data is stored as.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -520,7 +520,7 @@ ls_inline char *ls_loopbuf_inc(ls_loopbuf_t *pThis, char **pPos)
 ls_inline int ls_loopbuf_getnumseg(ls_loopbuf_t *pThis)
 {   return pThis->pend > pThis->phead ? 1 : 2;  }
 
-/** @ls_loopbuf_insiov
+/**  
  * @brief Inserts the contents of the loopbuf into the vector.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -534,7 +534,7 @@ int ls_loopbuf_insiov(ls_loopbuf_t *pThis, struct iovec *vect, int count);
 
 
 
-/** @ls_xloopbuf_new
+/**  
  * @brief Create a new xloopbuf structure with an initial capacity from
  * a session pool.
  *
@@ -546,7 +546,7 @@ int ls_loopbuf_insiov(ls_loopbuf_t *pThis, struct iovec *vect, int count);
  */
 ls_xloopbuf_t *ls_xloopbuf_new(int size, ls_xpool_t *pool);
 
-/** @ls_xloopbuf
+/**  
  * @brief Initializes a given xloopbuf to an initial capacity from
  * a session pool.
  *
@@ -560,7 +560,7 @@ ls_xloopbuf_t *ls_xloopbuf_new(int size, ls_xpool_t *pool);
 ls_xloopbuf_t *ls_xloopbuf(ls_xloopbuf_t *pThis, int size,
                            ls_xpool_t *pool);
 
-/** @ls_xloopbuf_d
+/**  
  * @brief Destroys the xloopbuf.  DOES NOT FREE pThis!
  * @details Use with ls_xloopbuf.
  *
@@ -571,7 +571,7 @@ ls_xloopbuf_t *ls_xloopbuf(ls_xloopbuf_t *pThis, int size,
  */
 void ls_xloopbuf_d(ls_xloopbuf_t *pThis);
 
-/** @ls_xloopbuf_delete
+/**  
  * @brief Deletes the xloopbuf, opposite of \link #ls_xloopbuf_new xloopbuf new \endlink
  * @details If a xloopbuf was created with \link #ls_xloopbuf_new xloopbuf new, \endlink
  * it must be deleted with \link #ls_xloopbuf_delete xloopbuf delete. \endlink
@@ -583,7 +583,7 @@ void ls_xloopbuf_d(ls_xloopbuf_t *pThis);
  */
 void ls_xloopbuf_delete(ls_xloopbuf_t *pThis);
 
-/** @ls_xloopbuf_reserve
+/**  
  * @brief Reserves size total bytes for the xloopbuf.  If size is lower than the current
  * size, it will not shrink.
  *
@@ -594,7 +594,7 @@ void ls_xloopbuf_delete(ls_xloopbuf_t *pThis);
 ls_inline int ls_xloopbuf_reserve(ls_xloopbuf_t *pThis, int size)
 {   return ls_loopbuf_xreserve(&pThis->loopbuf, size, pThis->pool); }
 
-/** @ls_xloopbuf_append
+/**  
  * @brief Appends the xloopbuf with the specified buffer.
  * @details This function appends the xloopbuf with the specified buffer.  It will check
  * if there is enough space in the xloopbuf and will grow the xloopbuf if there
@@ -609,7 +609,7 @@ ls_inline int ls_xloopbuf_append(ls_xloopbuf_t *pThis, const char *pBuf,
                                  int size)
 {   return ls_loopbuf_xappend(&pThis->loopbuf, pBuf, size, pThis->pool);    }
 
-/** @ls_xloopbuf_guarantee
+/**  
  * @brief Guarantees size more bytes for the xloopbuf.  If size is lower than the
  * available amount, it will not allocate any more.
  *
@@ -620,7 +620,7 @@ ls_inline int ls_xloopbuf_append(ls_xloopbuf_t *pThis, const char *pBuf,
 ls_inline int ls_xloopbuf_guarantee(ls_xloopbuf_t *pThis, int size)
 {   return ls_loopbuf_xguarantee(&pThis->loopbuf, size, pThis->pool);   }
 
-/** @ls_xloopbuf_swap
+/**  
  * @brief Swaps the contents of the two xloopbufs.
  *
  * @param[in,out] lhs - A pointer to an initialized xloopbuf object.
@@ -629,7 +629,7 @@ ls_inline int ls_xloopbuf_guarantee(ls_xloopbuf_t *pThis, int size)
  */
 void ls_xloopbuf_swap(ls_xloopbuf_t *lhs, ls_xloopbuf_t *rhs);
 
-/** @ls_xloopbuf_straight
+/**  
  * @brief Straighten the xloopbuf.
  * @details If the xloopbuf is split in two parts due to looping, this function
  * makes it one whole again.
@@ -640,7 +640,7 @@ void ls_xloopbuf_swap(ls_xloopbuf_t *lhs, ls_xloopbuf_t *rhs);
 ls_inline void ls_xloopbuf_straight(ls_xloopbuf_t *pThis)
 {   ls_loopbuf_xstraight(&pThis->loopbuf, pThis->pool); }
 
-/** @ls_xloopbuf_available
+/**  
  * @brief Gets the number of bytes left in the xloopbuf.
  *
  * @param[in] pThis - A pointer to an initialized loopbuf object.
@@ -649,7 +649,7 @@ ls_inline void ls_xloopbuf_straight(ls_xloopbuf_t *pThis)
 ls_inline int ls_xloopbuf_available(const ls_xloopbuf_t *pThis)
 {   return ls_loopbuf_available(&pThis->loopbuf);  }
 
-/** @ls_xloopbuf_contiguous
+/**  
  * @brief Gets the number of contiguous bytes left in the xloopbuf.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -658,7 +658,7 @@ ls_inline int ls_xloopbuf_available(const ls_xloopbuf_t *pThis)
 ls_inline int ls_xloopbuf_contiguous(const ls_xloopbuf_t *pThis)
 {   return ls_loopbuf_contiguous(&pThis->loopbuf); }
 
-/** @ls_xloopbuf_used
+/**  
  * @brief Tells the xloopbuf that the user used size more bytes from
  * the end of the xloopbuf.
  * @details Do not call this after the call
@@ -672,7 +672,7 @@ ls_inline int ls_xloopbuf_contiguous(const ls_xloopbuf_t *pThis)
 ls_inline void ls_xloopbuf_used(ls_xloopbuf_t *pThis, int size)
 {   ls_loopbuf_used(&pThis->loopbuf, size);    }
 
-/** @ls_xloopbuf_update
+/**  
  * @brief Update the xloopbuf at the offset to the contents of pBuf.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -685,7 +685,7 @@ ls_inline void ls_xloopbuf_update(
     ls_xloopbuf_t *pThis, int offset, const char *pBuf, int size)
 {   ls_loopbuf_update(&pThis->loopbuf, offset, pBuf, size);    }
 
-/** @ls_xloopbuf_search
+/**  
  * @brief Searches the xloopbuf starting at the offset for the pattern.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -698,7 +698,7 @@ ls_inline char *ls_xloopbuf_search(
     ls_xloopbuf_t *pThis, int offset, const char *accept, int acceptLen)
 {   return ls_loopbuf_search(&pThis->loopbuf, offset, accept, acceptLen);  }
 
-/** @ls_xloopbuf_moveto
+/**  
  * @brief Moves the front size bytes from pThis to pBuf.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -710,7 +710,7 @@ ls_inline int ls_xloopbuf_moveto(ls_xloopbuf_t *pThis, char *pBuf,
                                  int size)
 {   return ls_loopbuf_moveto(&pThis->loopbuf, pBuf, size);    }
 
-/** @ls_xloopbuf_popfront
+/**  
  * @brief Pops the front size bytes from pThis.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -720,7 +720,7 @@ ls_inline int ls_xloopbuf_moveto(ls_xloopbuf_t *pThis, char *pBuf,
 ls_inline int ls_xloopbuf_popfront(ls_xloopbuf_t *pThis, int size)
 {   return ls_loopbuf_popfront(&pThis->loopbuf, size);    }
 
-/** @ls_xloopbuf_popback
+/**  
  * @brief Pops the ending size bytes from pThis.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -730,7 +730,7 @@ ls_inline int ls_xloopbuf_popfront(ls_xloopbuf_t *pThis, int size)
 ls_inline int ls_xloopbuf_popback(ls_xloopbuf_t *pThis, int size)
 {   return ls_loopbuf_popback(&pThis->loopbuf, size); }
 
-/** @ls_xloopbuf_blksize
+/**  
  * @brief Gets the front block size.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -739,7 +739,7 @@ ls_inline int ls_xloopbuf_popback(ls_xloopbuf_t *pThis, int size)
 ls_inline int ls_xloopbuf_blksize(const ls_xloopbuf_t *pThis)
 {   return ls_loopbuf_blksize(&pThis->loopbuf); }
 
-/** @ls_xloopbuf_size
+/**  
  * @brief Gets the size used in the xloopbuf so far.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -748,7 +748,7 @@ ls_inline int ls_xloopbuf_blksize(const ls_xloopbuf_t *pThis)
 ls_inline int ls_xloopbuf_size(const ls_xloopbuf_t *pThis)
 {   return ls_loopbuf_size(&pThis->loopbuf);   }
 
-/** @ls_xloopbuf_capacity
+/**  
  * @brief Gets the total capacity of the xloopbuf.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -757,7 +757,7 @@ ls_inline int ls_xloopbuf_size(const ls_xloopbuf_t *pThis)
 ls_inline int ls_xloopbuf_capacity(const ls_xloopbuf_t *pThis)
 {   return pThis->loopbuf.sizemax;    }
 
-/** @ls_xloopbuf_empty
+/**  
  * @brief Specifies whether or not the xloopbuf is empty.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -766,7 +766,7 @@ ls_inline int ls_xloopbuf_capacity(const ls_xloopbuf_t *pThis)
 ls_inline int ls_xloopbuf_empty(const ls_xloopbuf_t *pThis)
 {   return (pThis->loopbuf.phead == pThis->loopbuf.pend); }
 
-/** @ls_xloopbuf_full
+/**  
  * @brief Specifies whether or not the xloopbuf is full.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -775,7 +775,7 @@ ls_inline int ls_xloopbuf_empty(const ls_xloopbuf_t *pThis)
 ls_inline int ls_xloopbuf_full(const ls_xloopbuf_t *pThis)
 {   return ls_xloopbuf_size(pThis) == pThis->loopbuf.sizemax - 1;  }
 
-/** @ls_xloopbuf_begin
+/**  
  * @brief Gets a pointer to the beginning of the used data.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -784,7 +784,7 @@ ls_inline int ls_xloopbuf_full(const ls_xloopbuf_t *pThis)
 ls_inline char *ls_xloopbuf_begin(const ls_xloopbuf_t *pThis)
 {   return pThis->loopbuf.phead;    }
 
-/** @ls_xloopbuf_end
+/**  
  * @brief Gets a pointer to the end of the used data.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -793,7 +793,7 @@ ls_inline char *ls_xloopbuf_begin(const ls_xloopbuf_t *pThis)
 ls_inline char *ls_xloopbuf_end(const ls_xloopbuf_t *pThis)
 {   return pThis->loopbuf.pend; }
 
-/** @ls_xloopbuf_getptr
+/**  
  * @brief Gets a pointer of a given offset from the xloopbuf.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -803,7 +803,7 @@ ls_inline char *ls_xloopbuf_end(const ls_xloopbuf_t *pThis)
 ls_inline char *ls_xloopbuf_getptr(const ls_xloopbuf_t *pThis, int size)
 {   return ls_loopbuf_getptr(&pThis->loopbuf, size);  }
 
-/** @ls_xloopbuf_getoffset
+/**  
  * @brief Given a pointer, calculates the offset relative to the start of
  * the used data.
  *
@@ -815,7 +815,7 @@ ls_inline int ls_xloopbuf_getoffset(const ls_xloopbuf_t *pThis,
                                     const char *p)
 {   return ls_loopbuf_getoffset(&pThis->loopbuf, p);  }
 
-/** @ls_xloopbuf_clear
+/**  
  * @brief Clears the xloopbuf to 0 bytes used.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -824,7 +824,7 @@ ls_inline int ls_xloopbuf_getoffset(const ls_xloopbuf_t *pThis,
 ls_inline void ls_xloopbuf_clear(ls_xloopbuf_t *pThis)
 {   pThis->loopbuf.phead = pThis->loopbuf.pend = pThis->loopbuf.pbuf;    }
 
-/** @ls_xloopbuf_unsafeapp
+/**  
  * @brief Appends the xloopbuf with a character.
  * @details This function is unsafe in that it will not check if there is enough space
  * allocated.  This function exists to speed up the append process if the user can
@@ -837,7 +837,7 @@ ls_inline void ls_xloopbuf_clear(ls_xloopbuf_t *pThis)
 ls_inline void ls_xloopbuf_unsafeapp(ls_xloopbuf_t *pThis, char ch)
 {   ls_loopbuf_unsafeapp(&pThis->loopbuf, ch); }
 
-/** @ls_xloopbuf_inc
+/**  
  * @brief Increments the pointer.  If it is currently pointing to the end of the xloopbuf,
  * then the increment will point to the beginning of the xloopbuf.
  *
@@ -849,7 +849,7 @@ ls_inline char *ls_xloopbuf_inc(ls_xloopbuf_t *pThis, char **pPos)
 {   return ls_loopbuf_inc(&pThis->loopbuf, pPos);   }
 
 //NOTICE: The number of segments must match the count of iovec structs in order to use iov_insert.
-/** @ls_xloopbuf_getnumseg
+/**  
  * @brief Gets the number of segments the data is stored as.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.
@@ -858,7 +858,7 @@ ls_inline char *ls_xloopbuf_inc(ls_xloopbuf_t *pThis, char **pPos)
 ls_inline int ls_xloopbuf_getnumseg(ls_xloopbuf_t *pThis)
 {   return pThis->loopbuf.pend > pThis->loopbuf.phead ? 1 : 2;  }
 
-/** @ls_xloopbuf_insiov
+/**  
  * @brief Inserts the contents of the xloopbuf into the vector.
  *
  * @param[in] pThis - A pointer to an initialized xloopbuf object.

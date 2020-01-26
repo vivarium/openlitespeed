@@ -48,7 +48,7 @@ typedef struct ls_stack_s
     ls_nodei_t *phead;
 } ls_stack_t;
 
-/** @ls_stack_init
+/**  
  * @brief Initializes a simple stack object.
  * @details The function initalizes an object to manage a
  * node-based stack (LIFO). This implementation is
@@ -64,7 +64,7 @@ ls_inline void ls_stack_init(ls_stack_t *pThis)
     pThis->phead = NULL;
 }
 
-/** @ls_stack_destroy
+/**  
  * @brief Destroys a stack object.
  *
  * @param[in] pThis - A pointer to an initialized stack object.
@@ -77,7 +77,7 @@ ls_inline void ls_stack_destroy(ls_stack_t *pThis)
     pThis->phead = NULL;
 }
 
-/** @ls_stack_new
+/**  
  * @brief Creates a new stack object.
  * @details The function allocates and initalizes an object
  * to manage a node-based stack (LIFO).  This implementation is
@@ -89,7 +89,7 @@ ls_inline void ls_stack_destroy(ls_stack_t *pThis)
  */
 ls_stack_t *ls_stack_new();
 
-/** @ls_stack_delete
+/**  
  * @brief Destroys then deletes a stack object.
  * @details The object should have been created with a previous
  * successful call to ls_stack_new.
@@ -101,7 +101,7 @@ ls_stack_t *ls_stack_new();
  */
 void ls_stack_delete(ls_stack_t *pThis);
 
-/** @ls_stack_push
+/**  
  * @brief Pushes an object onto the top of a stack.
  *
  * @param[in] pThis - A pointer to an initalized stack object.
@@ -114,7 +114,7 @@ ls_inline void ls_stack_push(ls_stack_t *pThis, ls_nodei_t *pNode)
     pThis->phead = pNode;
 }
 
-/** @ls_stack_pop
+/**  
  * @brief Pops an object from the top of a stack.
  *
  * @param[in] pThis - A pointer to an initialized stack object.

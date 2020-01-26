@@ -68,7 +68,7 @@ typedef struct ls_sha1_ctx_s
 } ls_sha1_ctx_t;
 #endif
 
-/** @ls_sha1_init
+/**  
  * @brief Initializes the SHA1 ctx.  Must be called first if the user is
  * doing the calls him/herself.
  *
@@ -77,7 +77,7 @@ typedef struct ls_sha1_ctx_s
  */
 int             ls_sha1_init(ls_sha1_ctx_t *ctx);
 
-/** @ls_sha1_free
+/**  
  * @brief Sets everything in the ctx to 0.
  *
  * @param[in] ctx - A pointer to an initialized ctx.
@@ -85,7 +85,7 @@ int             ls_sha1_init(ls_sha1_ctx_t *ctx);
  */
 void            ls_sha1_free(ls_sha1_ctx_t *ctx);
 
-/** @ls_sha1_update
+/**  
  * @brief Updates the SHA1 with a new buffer.
  *
  * @param[in] ctx - A pointer to an initialized ctx.
@@ -96,7 +96,7 @@ void            ls_sha1_free(ls_sha1_ctx_t *ctx);
 int             ls_sha1_update(ls_sha1_ctx_t *ctx,
                                const unsigned char *input, size_t ilen);
 
-/** @ls_sha1_finish
+/**  
  * @brief Calculates the result after finishing the SHA1.
  *
  * @param[in] ctx - A pointer to an initialized ctx.
@@ -105,7 +105,7 @@ int             ls_sha1_update(ls_sha1_ctx_t *ctx,
  */
 int             ls_sha1_finish(ls_sha1_ctx_t *ctx, unsigned char *output);
 
-/** @ls_sha1
+/**  
  * @brief Calculates the entire input buffer and returns the result.
  *
  * @param[in] input - A pointer to the buffer to calculate.

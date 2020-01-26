@@ -52,7 +52,7 @@ struct ls_aho_s
 };
 
 
-/** @ls_aho_new
+/**
  * @brief Creates a new Aho tree object,
  *  sets case sensitivity based on parameter.
  *
@@ -64,7 +64,7 @@ struct ls_aho_s
  */
 ls_aho_t *ls_aho_new(int case_sensitive);
 
-/** @ls_aho
+/**
  * @brief Initializes an Aho tree object that's passed in.
  *
  * @param[in] pThis - A pointer to an allocated Aho tree object.
@@ -76,7 +76,7 @@ ls_aho_t *ls_aho_new(int case_sensitive);
  */
 int ls_aho(ls_aho_t *pThis, int case_sensitive);
 
-/** @ls_aho_d
+/**
  * @brief Destroys the Aho tree, opposite of ls_aho
  * @details If an Aho Tree was initialized with ls_aho,
  *  it is assumed that the user is responsible
@@ -90,7 +90,7 @@ int ls_aho(ls_aho_t *pThis, int case_sensitive);
  */
 void ls_aho_d(ls_aho_t *pThis);
 
-/** @ls_aho_delete
+/**
  * @brief Deletes the Aho tree, opposite of ls_aho_new
  * @details If an Aho Tree was created with ls_aho_new, it must be deleted with
  *  ls_aho_delete; otherwise, there will be a memory leak.  This function does
@@ -103,7 +103,7 @@ void ls_aho_d(ls_aho_t *pThis);
  */
 void ls_aho_delete(ls_aho_t *pThis);
 
-/** @ls_aho_addpattern
+/**
  * @brief Adds parameter pattern of length \e size to the Aho tree.
  *  Should be called after initialization
  * and before \link #ls_aho_maketree make tree.\endlink
@@ -125,7 +125,7 @@ void ls_aho_delete(ls_aho_t *pThis);
 int ls_aho_addpattern(ls_aho_t *pThis, const char *pattern, size_t size, 
                       void *pattern_ctx);
 
-/** @ls_aho_addfromfile
+/**
  * @brief Adds patterns found in the file to the Aho tree.
  *  Should be called after initialization
  *  and before \link #ls_aho_maketree make tree.\endlink
@@ -146,7 +146,7 @@ int ls_aho_addpattern(ls_aho_t *pThis, const char *pattern, size_t size,
  */
 int ls_aho_addfromfile(ls_aho_t *pThis, const char *filename);
 
-/** @ls_aho_maketree
+/**  
  * @brief Finishes up the structure of the tree after all patterns are added.
  *  Called after patterns are added and before
  *  \link #ls_aho_optimizetree optimize tree.\endlink
@@ -159,7 +159,7 @@ int ls_aho_addfromfile(ls_aho_t *pThis, const char *filename);
  */
 int ls_aho_maketree(ls_aho_t *pThis, int optimize);
 
-/** @ls_aho_optimizetree
+/**
  * @brief Optimizes the tree for searches.  Must be called after make tree.
  *
  * @param[in] pThis - A pointer to an initialized Aho tree object to optimize.
@@ -169,7 +169,7 @@ int ls_aho_maketree(ls_aho_t *pThis, int optimize);
  */
 int ls_aho_optimizetree(ls_aho_t *pThis);
 
-/** @ls_aho_search
+/**
  * @brief Searches for pattern matches starting from a given start state.
  * Must be called after tree optimization.
  *
@@ -188,7 +188,7 @@ int ls_aho_optimizetree(ls_aho_t *pThis);
  *  Will be set to -1 if the string is not found.
  * @param[out] out_last_state - A pointer to the ending state
  *  after searching the string.
- *  This can be the final character of the pattern if it matched,
+ * @param[out] pattern_ctx This can be the final character of the pattern if it matched,
  *  or the last one reached when finished with the string.
  * @return Non-zero for match, 0 for no match.
  *

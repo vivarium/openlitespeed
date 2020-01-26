@@ -99,7 +99,7 @@ struct ls_map_s
 };
 
 
-/** @ls_map_new
+/**  
  * @brief Creates a new map.  Allocates from the global pool unless the pool parameter specifies a session pool.
  * Initializes the map according to the parameters.
  * @details The user may create his/her own val comp associated with his/her key structure,
@@ -116,7 +116,7 @@ struct ls_map_s
  */
 ls_map_t  *ls_map_new(ls_map_value_compare vc, ls_xpool_t *pool);
 
-/** @ls_map
+/**  
  * @brief Initializes the map.  Allocates from the global pool unless the pool parameter specifies a session pool.
  * @details The user may create his/her own val comp associated with his/her key structure,
  * but some sample ones for char * and ipv6 values are provided in ls_hash.h.
@@ -133,7 +133,7 @@ ls_map_t  *ls_map_new(ls_map_value_compare vc, ls_xpool_t *pool);
 ls_map_t  *ls_map(ls_map_t *pThis, ls_map_value_compare vc,
                   ls_xpool_t *pool);
 
-/** @ls_map_d
+/**  
  * @brief Destroys the map.  Does not free the map structure itself, only the internals.
  * @note This function should be used in conjunction with ls_map.
  * The user is responsible for freeing the data itself.  This function only frees structures
@@ -146,7 +146,7 @@ ls_map_t  *ls_map(ls_map_t *pThis, ls_map_value_compare vc,
  */
 void ls_map_d(ls_map_t *pThis);
 
-/** @ls_map_delete
+/**  
  * @brief Deletes the map.  Frees the map internals and the map structure itself.
  * @note This function should be used in conjunction with ls_map_new.
  * The user is responsible for freeing the data itself.  This function only frees structures
@@ -159,7 +159,7 @@ void ls_map_d(ls_map_t *pThis);
  */
 void ls_map_delete(ls_map_t *pThis);
 
-/** @ls_map_getnodekey
+/**  
  * @brief Gets the node's key.
  *
  * @param[in] node - The node to extract the key from.
@@ -167,7 +167,7 @@ void ls_map_delete(ls_map_t *pThis);
  */
 const void *ls_map_getnodekey(ls_map_iter node);
 
-/** @ls_map_getnodeval
+/**  
  * @brief Gets the node's value.
  *
  * @param[in] node - The node to extract the value from.
@@ -176,7 +176,7 @@ const void *ls_map_getnodekey(ls_map_iter node);
 void *ls_map_getnodeval(ls_map_iter node);
 
 
-/** @ls_map_clear
+/**  
  * @brief Empties the map of and frees the nodes and resets the size.
  * @note The values will not be freed in this function.  It is the user's
  * responsibility to free them.
@@ -186,7 +186,7 @@ void *ls_map_getnodeval(ls_map_iter node);
  */
 void ls_map_clear(ls_map_t *pThis);
 
-/** @ls_map_releasenodes
+/**  
  * @brief Releases node and any children it may have.
  * @note The values will not be freed in this function.  It is the user's
  * responsibility to free them.
@@ -197,7 +197,7 @@ void ls_map_clear(ls_map_t *pThis);
  */
 void ls_map_releasenodes(ls_map_t *pThis, ls_map_iter node);
 
-/** @ls_map_swap
+/**  
  * @brief Swaps the lhs and rhs maps.
  *
  * @param[in,out] lhs - A pointer to an initialized map.
@@ -206,7 +206,7 @@ void ls_map_releasenodes(ls_map_t *pThis, ls_map_iter node);
  */
 void ls_map_swap(ls_map_t *lhs, ls_map_t *rhs);
 
-/** @ls_map_insert
+/**  
  * @brief Inserts a node with the given key and value in the map.
  * @note \b IMPORTANT: The key \b MUST \b BE a part of the value structure.
  *
@@ -217,7 +217,7 @@ void ls_map_swap(ls_map_t *lhs, ls_map_t *rhs);
  */
 int ls_map_insert(ls_map_t *pThis, const void *pKey, void *pValue);
 
-/** @ls_map_find
+/**  
  * @brief Finds the node with the given key in the map.
  *
  * @param[in] pThis - A pointer to an initialized map.
@@ -226,7 +226,7 @@ int ls_map_insert(ls_map_t *pThis, const void *pKey, void *pValue);
  */
 ls_map_iter ls_map_find(ls_map_t *pThis, const void *pKey);
 
-/** @ls_map_update
+/**  
  * @brief Updates a node with the given key in the map.  Can use
  * the key or the node parameter to search with.
  * @note \b IMPORTANT: The key \b MUST \b BE a part of the value structure.
@@ -241,7 +241,7 @@ ls_map_iter ls_map_find(ls_map_t *pThis, const void *pKey);
 void *ls_map_update(ls_map_t *pThis, const void *pKey, void *pValue,
                     ls_map_iter node);
 
-/** @ls_map_detachnode
+/**  
  * @brief Detaches the node from the tree, but does \b NOT delete it.
  * @details These routines allow the user to remove a node from the tree,
  * then reattach with an updated key.
@@ -254,7 +254,7 @@ void *ls_map_update(ls_map_t *pThis, const void *pKey, void *pValue,
  */
 void *ls_map_detachnode(ls_map_t *pThis, ls_map_iter node);
 
-/** @ls_map_attachnode
+/**  
  * @brief Attaches the node to the tree.
  * @note \b IMPORTANT: The node must be detached first.
  * @details These routines allow the user to remove a node from the tree,
@@ -262,14 +262,14 @@ void *ls_map_detachnode(ls_map_t *pThis, ls_map_iter node);
  *
  * @param[in] pThis - A pointer to an initialized map.
  * @param[in] pKey - The key of the node.
- * @param[in] pValue - The new value of the node.
+ * @param[in] pVal - The new value of the node.
  * @return 0 on success, -1 on failure.
  *
  * @see ls_map_detachnode
  */
 int ls_map_attachnode(ls_map_t *pThis, const void *pKey, void *pVal);
 
-/** @ls_map_deletenode
+/**  
  * @brief Deletes the node from the map.
  *
  * @param[in] pThis - A pointer to an initialized map.
@@ -278,7 +278,7 @@ int ls_map_attachnode(ls_map_t *pThis, const void *pKey, void *pVal);
  */
 void *ls_map_deletenode(ls_map_t *pThis, ls_map_iter node);
 
-/** @ls_map_begin
+/**  
  * @brief Gets the first node of the map.
  *
  * @param[in] pThis - A pointer to an initialized source map.
@@ -286,7 +286,7 @@ void *ls_map_deletenode(ls_map_t *pThis, ls_map_iter node);
  */
 ls_map_iter ls_map_begin(ls_map_t *pThis);
 
-/** @ls_map_end
+/**  
  * @brief Gets the end node of the map.
  *
  * @param[in] pThis - A pointer to an initialized map.
@@ -294,7 +294,7 @@ ls_map_iter ls_map_begin(ls_map_t *pThis);
  */
 ls_map_iter ls_map_end(ls_map_t *pThis);
 
-/** @ls_map_next
+/**  
  * @brief Gets the next node of the map.
  *
  * @param[in] pThis - A pointer to an initialized map.
@@ -303,7 +303,7 @@ ls_map_iter ls_map_end(ls_map_t *pThis);
  */
 ls_map_iter ls_map_next(ls_map_t *pThis, ls_map_iter node);
 
-/** @ls_map_foreach
+/**  
  * @brief Runs a function for each node in the map.  The function must
  * follow the #ls_map_foreach_fn format.
  *
@@ -317,7 +317,7 @@ ls_map_iter ls_map_next(ls_map_t *pThis, ls_map_iter node);
 int ls_map_foreach(ls_map_t *pThis, ls_map_iter beg,
                    ls_map_iter end, ls_map_foreach_fn fun);
 
-/** @ls_map_foreach2
+/**  
  * @brief Runs a function for each node in the map.  The function must
  * follow the #ls_map_foreach2_fn format.
  *
@@ -332,7 +332,7 @@ int ls_map_foreach(ls_map_t *pThis, ls_map_iter beg,
 int ls_map_foreach2(ls_map_t *pThis, ls_map_iter beg,
                     ls_map_iter end, ls_map_foreach2_fn fun, void *pUData);
 
-/** @ls_map_empty
+/**  
  * @brief Specifies whether or not the map is empty.
  *
  * @param[in] pThis - A pointer to an initialized map.
@@ -341,7 +341,7 @@ int ls_map_foreach2(ls_map_t *pThis, ls_map_iter beg,
 ls_inline int ls_map_empty(const ls_map_t *pThis)
 {    return pThis->sizenow == 0;  }
 
-/** @ls_map_size
+/**  
  * @brief Gets the current size of the map.
  *
  * @param[in] pThis - A pointer to an initialized map.
@@ -350,7 +350,7 @@ ls_inline int ls_map_empty(const ls_map_t *pThis)
 ls_inline size_t ls_map_size(const ls_map_t *pThis)
 {    return pThis->sizenow;       }
 
-/** @ls_map_val_comp
+/**  
  * @brief Gets the comparison function of the map.
  *
  * @param[in] pThis - A pointer to an initialized source map.

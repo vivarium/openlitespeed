@@ -56,7 +56,7 @@ typedef struct ls_dlink_s
 
 
 /**
- * @ls_link
+ *  
  * @brief Initializes a singly linked list object.
  *
  * @param[in] pThis - A pointer to an allocated linked list object.
@@ -69,7 +69,7 @@ ls_inline void ls_link(ls_link_t *pThis, ls_link_t *next)
 {   pThis->next = next;  pThis->pobj = NULL;  }
 
 /**
- * @ls_link_new
+ *  
  * @brief Creates (allocates and initializes)
  *   a new singly linked list object.
  *
@@ -88,7 +88,7 @@ ls_inline ls_link_t *ls_link_new(ls_link_t *next)
 }
 
 /**
- * @ls_link_d
+ *  
  * @brief Destroys a singly linked list object.
  *
  * @param[in] pThis - A pointer to an initialized linked list object.
@@ -100,7 +100,7 @@ ls_inline void ls_link_d(ls_link_t *pThis)
 {}
 
 /**
- * @ls_link_delete
+ *  
  * @brief Destroys a singly linked list object, then deletes the object.
  * @details The object should have been created with a previous
  *   successful call to ls_link_new.
@@ -114,7 +114,7 @@ ls_inline void ls_link_delete(ls_link_t *pThis)
 {   ls_link_d(pThis);  ls_pfree(pThis);   }
 
 /**
- * @ls_link_getobj
+ *  
  * @brief Gets the object referenced by a singly linked list object.
  *
  * @param[in] pThis - A pointer to an initialized linked list object.
@@ -124,7 +124,7 @@ ls_inline void *ls_link_getobj(const ls_link_t *pThis)
 {   return pThis->pobj;  }
 
 /**
- * @ls_link_setobj
+ *  
  * @brief Sets the object referenced by a singly linked list object.
  *
  * @param[in] pThis - A pointer to an initialized linked list object.
@@ -135,7 +135,7 @@ ls_inline void ls_link_setobj(ls_link_t *pThis, void *pObj)
 {   pThis->pobj = pObj;  }
 
 /**
- * @ls_link_next
+ *  
  * @brief Gets the next object in a singly linked list relative to pThis.
  *
  * @param[in] pThis - A pointer to an initialized linked list object.
@@ -147,7 +147,7 @@ ls_inline ls_link_t *ls_link_next(const ls_link_t *pThis)
 {   return pThis->next;  }
 
 /**
- * @ls_link_setnext
+ *  
  * @brief Sets the next link object in a singly linked list relative to pThis.
  *
  * @param[in] pThis - A pointer to an initialized linked list object.
@@ -160,7 +160,7 @@ ls_inline void ls_link_setnext(ls_link_t *pThis, ls_link_t *pNext)
 {   pThis->next = pNext;  }
 
 /**
- * @ls_link_addnext
+ *  
  * @brief Adds the next object to a singly linked list relative to pThis.
  *
  * @param[in] pThis - A pointer to an initialized linked list object.
@@ -177,7 +177,7 @@ ls_inline void ls_link_addnext(ls_link_t *pThis, ls_link_t *pNext)
 }
 
 /**
- * @ls_link_removenext
+ *  
  * @brief Removes the \e next object from a singly linked list relative to pThis.
  *
  * @param[in] pThis - A pointer to an initialized linked list object.
@@ -198,7 +198,7 @@ ls_inline ls_link_t *ls_link_removenext(ls_link_t *pThis)
 
 
 /**
- * @ls_dlink
+ *  
  * @brief Initializes a doubly linked list object.
  *
  * @param[in] pThis - A pointer to an allocated doubly linked list object.
@@ -217,7 +217,7 @@ ls_inline void ls_dlink(
 }
 
 /**
- * @ls_dlink_new
+ *  
  * @brief Creates (allocates and initializes)
  *   a new doubly linked list object.
  *
@@ -237,7 +237,7 @@ ls_inline ls_dlink_t *ls_dlink_new(ls_dlink_t *prev, ls_dlink_t *next)
 }
 
 /**
- * @ls_dlink_d
+ *  
  * @brief Destroys a doubly linked list object.
  *
  * @param[in] pThis - A pointer to an initialized doubly linked list object.
@@ -249,7 +249,7 @@ ls_inline void ls_dlink_d(ls_dlink_t *pThis)
 {}
 
 /**
- * @ls_dlink_delete
+ *  
  * @brief Destroys a doubly linked list object, then deletes the object.
  * @details The object should have been created with a previous
  *   successful call to ls_dlink_new.
@@ -263,7 +263,7 @@ ls_inline void ls_dlink_delete(ls_dlink_t *pThis)
 {   ls_dlink_d(pThis);  ls_pfree(pThis);   }
 
 /**
- * @ls_dlink_getobj
+ *  
  * @brief Gets the object referenced by a doubly linked list object.
  *
  * @param[in] pThis - A pointer to an initialized doubly linked list object.
@@ -273,7 +273,7 @@ ls_inline void *ls_dlink_getobj(const ls_dlink_t *pThis)
 {   return pThis->pobj;  }
 
 /**
- * @ls_dlink_setobj
+ *  
  * @brief Sets the object referenced by a doubly linked list object.
  *
  * @param[in] pThis - A pointer to an initialized doubly linked list object.
@@ -284,7 +284,7 @@ ls_inline void ls_dlink_setobj(ls_dlink_t *pThis, void *pObj)
 {   pThis->pobj = pObj;  }
 
 /**
- * @ls_dlink_prev
+ *  
  * @brief Gets the previous object in a doubly linked list relative to pThis.
  *
  * @param[in] pThis - A pointer to an initialized doubly linked list object.
@@ -296,7 +296,7 @@ ls_inline ls_dlink_t *ls_dlink_prev(const ls_dlink_t *pThis)
 {   return pThis->prev;  }
 
 /**
- * @ls_dlink_setprev
+ *  
  * @brief Sets the previous object in a doubly linked list relative to pThis.
  *
  * @param[in] pThis - A pointer to an initialized doubly linked list object.
@@ -309,7 +309,7 @@ ls_inline void ls_dlink_setprev(ls_dlink_t *pThis, ls_dlink_t *pPrev)
 {   pThis->prev = pPrev;  }
 
 /**
- * @ls_dlink_next
+ *  
  * @brief Gets the next object in a doubly linked list relative to pThis.
  *
  * @param[in] pThis - A pointer to an initialized doubly linked list object.
@@ -321,7 +321,7 @@ ls_inline ls_dlink_t *ls_dlink_next(const ls_dlink_t *pThis)
 {   return pThis->next;  }
 
 /**
- * @ls_dlink_setnext
+ *  
  * @brief Sets the next object in a doubly linked list relative to pThis.
  *
  * @param[in] pThis - A pointer to an initialized doubly linked list object.
@@ -334,7 +334,7 @@ ls_inline void ls_dlink_setnext(ls_dlink_t *pThis, ls_dlink_t *pNext)
 {   pThis->next = pNext;  }
 
 /**
- * @ls_dlink_addnext
+ *  
  * @brief Adds the \e next object to a doubly linked list relative to pThis.
  *
  * @param[in] pThis - A pointer to an initialized doubly linked list object.
@@ -355,7 +355,7 @@ ls_inline void ls_dlink_addnext(ls_dlink_t *pThis, ls_dlink_t *pNext)
 }
 
 /**
- * @ls_dlink_removenext
+ *  
  * @brief Removes the \e next object from a doubly linked list relative to pThis.
  *
  * @param[in] pThis - A pointer to an initialized doubly linked list object.
@@ -379,7 +379,7 @@ ls_inline ls_dlink_t *ls_dlink_removenext(ls_dlink_t *pThis)
 }
 
 /**
- * @ls_dlink_addprev
+ *  
  * @brief Adds the \e previous object to a doubly linked list relative to pThis.
  *
  * @param[in] pThis - A pointer to an initialized doubly linked list object.
@@ -401,7 +401,7 @@ ls_inline void ls_dlink_addprev(ls_dlink_t *pThis, ls_dlink_t *pPrev)
 }
 
 /**
- * @ls_dlink_removeprev
+ *  
  * @brief Removes the \e previous object from a doubly linked list relative to pThis.
  *
  * @param[in] pThis - A pointer to an initialized doubly linked list object.
@@ -423,7 +423,7 @@ ls_inline ls_dlink_t *ls_dlink_removeprev(ls_dlink_t *pThis)
 }
 
 /**
- * @ls_dlink_remove
+ *  
  * @brief Removes an object from a doubly linked list.
  *
  * @param[in] pThis - A pointer to the initialized doubly linked list object

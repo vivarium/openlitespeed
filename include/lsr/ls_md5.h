@@ -58,7 +58,7 @@ typedef struct ls_md5_ctx_s
 } ls_md5_ctx_t;
 #endif
 
-/** @ls_md5_init
+/**  
  * @brief Initializes the MD5 ctx.  Must be called first if the user is
  * doing the calls him/herself.
  *
@@ -66,7 +66,7 @@ typedef struct ls_md5_ctx_s
  */
 int             ls_md5_init(ls_md5_ctx_t *ctx);
 
-/** @ls_md5_update
+/**  
  * @brief Updates the MD5 with a new buffer.
  *
  * @param[in] ctx - A pointer to an initialized ctx.
@@ -76,7 +76,7 @@ int             ls_md5_init(ls_md5_ctx_t *ctx);
 int             ls_md5_update(ls_md5_ctx_t *ctx, const void *p,
                               size_t len);
 
-/** @ls_md5_final
+/**  
  * @brief Calculates the result after finishing the MD5.
  *
  * @param[out] ret - A pointer to the result of the hash.
@@ -84,7 +84,7 @@ int             ls_md5_update(ls_md5_ctx_t *ctx, const void *p,
  */
 int             ls_md5_final(unsigned char *ret, ls_md5_ctx_t *ctx);
 
-/** @ls_md5
+/**  
  * @brief Calculates the \e p buffer and returns the result.
  *
  * @param[in] p - A pointer to the buffer to calculate.

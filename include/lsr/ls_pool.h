@@ -33,7 +33,7 @@ extern "C" {
 
 
 /**
- * @ls_pinit
+ *  
  * @brief Initializes the global memory pool.
  *   This routine must be called before the memory pool is used.
  *
@@ -42,7 +42,7 @@ extern "C" {
 void ls_pinit();
 
 /**
- * @ls_palloc
+ *  
  * @brief Allocates memory from the global memory pool.
  * @details The allocated memory is not initialized.
  *
@@ -54,7 +54,7 @@ void ls_pinit();
 void *ls_palloc(size_t size);
 
 /**
- * @ls_pfree
+ *  
  * @brief Frees (releases) memory back to the global memory pool.
  * @details The memory pointer must be one returned from a previous
  *   successful call to ls_palloc.
@@ -67,7 +67,7 @@ void *ls_palloc(size_t size);
 void   ls_pfree(void *p);
 
 /**
- * @ls_prealloc
+ *  
  * @brief Changes the size of a block of memory allocated
  *   from the global memory pool.
  * @details The new memory contents will be unchanged
@@ -85,7 +85,7 @@ void   ls_pfree(void *p);
 void *ls_prealloc(void *p, size_t new_sz);
 
 /**
- * @ls_dupstr2
+ *  
  * @brief Duplicates a buffer (or string).
  * @details The new memory for the duplication is allocated from the
  *   global memory pool.
@@ -97,7 +97,7 @@ void *ls_prealloc(void *p, size_t new_sz);
 char *ls_pdupstr2(const char *p, int len);
 
 /**
- * @ls_dupstr
+ *  
  * @brief Duplicates a null-terminated string.
  * @details The new memory for the duplication is allocated from the
  *   global memory pool.
@@ -109,7 +109,7 @@ char *ls_pdupstr2(const char *p, int len);
 char *ls_pdupstr(const char *p);
 
 /**
- * @ls_preserve
+ *  
  * @brief Changes the size of a block of memory allocated
  *   from the global memory pool.
  * @details If new_sz is equal or smaller than the current 
@@ -130,7 +130,7 @@ void *ls_preserve(void *pOld, size_t new_sz);
 
 
 /**
- * @ls_palloc_slab
+ *  
  * @brief Allocates memory from the global memory pool.
  * @details The allocated memory is not initialized.
  *
@@ -142,7 +142,7 @@ void *ls_preserve(void *pOld, size_t new_sz);
 void *ls_palloc_slab(size_t size);
 
 /**
- * @ls_pfree
+ *  
  * @brief Frees (releases) memory back to the global memory pool.
  * @details The memory pointer must be one returned from a previous
  *   successful call to ls_palloc.
@@ -156,7 +156,7 @@ void *ls_palloc_slab(size_t size);
 void   ls_pfree_slab(void *p, size_t size);
 
 /**
- * @ls_prealloc_slab
+ *  
  * @brief Changes the size of a block of memory allocated
  *   from the global memory pool.
  * @details The new memory contents will be unchanged

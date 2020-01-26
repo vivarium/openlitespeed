@@ -116,7 +116,7 @@ struct ls_hash_s
     ls_hash_find_fn     find_fn;
 };
 
-/** @ls_hash_new
+/**  
  * @brief Creates a new hash table.  Allocates from the global pool
  *  unless the pool parameter specifies a session pool.
  *  Initializes the table according to the parameters.
@@ -141,7 +141,7 @@ struct ls_hash_s
 ls_hash_t *ls_hash_new(size_t init_size,
                        ls_hash_hasher hf, ls_hash_keycmp_ne vc, ls_xpool_t *pool);
 
-/** @ls_hash
+/**  
  * @brief Initializes the hash table.  Allocates from the global pool
  *  unless the pool parameter specifies a session pool.
  * @details The user may create his/her own hash function and val comp
@@ -165,7 +165,7 @@ ls_hash_t *ls_hash_new(size_t init_size,
 ls_hash_t *ls_hash(ls_hash_t *pThis, size_t init_size,
                    ls_hash_hasher hf, ls_hash_keycmp_ne vc, ls_xpool_t *pool);
 
-/** @ls_hash_d
+/**  
  * @brief Destroys the table.
  *  Does not free the hash structure itself, only the internals.
  * @note This function should be used in conjunction with ls_hash.
@@ -179,7 +179,7 @@ ls_hash_t *ls_hash(ls_hash_t *pThis, size_t init_size,
  */
 void ls_hash_d(ls_hash_t *pThis);
 
-/** @ls_hash_delete
+/**  
  * @brief Deletes the table.  Frees the table and the hash structure itself.
  * @note This function should be used in conjunction with ls_hash_new.
  *  The user is responsible for freeing the data itself.
@@ -192,7 +192,7 @@ void ls_hash_d(ls_hash_t *pThis);
  */
 void ls_hash_delete(ls_hash_t *pThis);
 
-/** @ls_hash_getkey
+/**  
  * @brief Given a hash element, returns the key.
  *
  * @param[in] pElem - A pointer to the hash element to get the key from.
@@ -200,7 +200,7 @@ void ls_hash_delete(ls_hash_t *pThis);
  */
 const void *ls_hash_getkey(ls_hashelem_t *pElem);
 
-/** @ls_hash_getdata
+/**  
  * @brief Given a hash element, returns the data/value.
  *
  * @param[in] pElem - A pointer to the hash element to get the data from.
@@ -208,7 +208,7 @@ const void *ls_hash_getkey(ls_hashelem_t *pElem);
  */
 void *ls_hash_getdata(ls_hashelem_t *pElem);
 
-/** @ls_hash_gethkey
+/**  
  * @brief Given a hash element, returns the hash key.
  *
  * @param[in] pElem - A pointer to the hash element to get the hash key from.
@@ -216,7 +216,7 @@ void *ls_hash_getdata(ls_hashelem_t *pElem);
  */
 ls_hash_key_t ls_hash_gethkey(ls_hashelem_t *pElem);
 
-/** @ls_hash_getnext
+/**  
  * @brief Given a hash element, returns the next hash element in the same
  *  array slot.
  *
@@ -225,7 +225,7 @@ ls_hash_key_t ls_hash_gethkey(ls_hashelem_t *pElem);
  */
 ls_hashelem_t *ls_hash_getnext(ls_hashelem_t *pElem);
 
-/** @ls_hash_hfstring
+/**  
  * @brief A provided hash function for strings.  Case sensitive.
  *
  * @param[in] __s - The string to calculate.
@@ -233,7 +233,7 @@ ls_hashelem_t *ls_hash_getnext(ls_hashelem_t *pElem);
  */
 ls_hash_key_t ls_hash_hfstring(const void *__s);
 
-/** @ls_hash_cmpstring
+/**  
  * @brief A provided comparison function for strings.  Case sensitive.
  *
  * @param[in] pVal1 - The first string to compare.
@@ -242,7 +242,7 @@ ls_hash_key_t ls_hash_hfstring(const void *__s);
  */
 int ls_hash_cmpstring(const void *pVal1, const void *pVal2);
 
-/** @ls_hash_hfcistring
+/**  
  * @brief A provided hash function for strings.  Case insensitive.
  *
  * @param[in] __s - The string to calculate.
@@ -250,7 +250,7 @@ int ls_hash_cmpstring(const void *pVal1, const void *pVal2);
  */
 ls_hash_key_t ls_hash_hfcistring(const void *__s);
 
-/** @ls_hash_cmpcistring
+/**  
  * @brief A provided comparison function for strings.  Case insensitive.
  *
  * @param[in] pVal1 - The first string to compare.
@@ -259,7 +259,7 @@ ls_hash_key_t ls_hash_hfcistring(const void *__s);
  */
 int ls_hash_cmpcistring(const void *pVal1, const void *pVal2);
 
-/** @ls_hash_hfipv6
+/**  
  * @brief A provided hash function for ipv6 values (unsigned long).
  *
  * @param[in] pKey - A pointer to the value to calculate.
@@ -267,7 +267,7 @@ int ls_hash_cmpcistring(const void *pVal1, const void *pVal2);
  */
 ls_hash_key_t ls_hash_hfipv6(const void *pKey);
 
-/** @ls_hash_cmpipv6
+/**  
  * @brief A provided comparison function for ipv6 values (unsigned long).
  *
  * @param[in] pVal1 - The first value to compare.
@@ -276,7 +276,7 @@ ls_hash_key_t ls_hash_hfipv6(const void *pKey);
  */
 int ls_hash_cmpipv6(const void *pVal1, const void *pVal2);
 
-/** @ls_hash_clear
+/**  
  * @brief Empties the table of and frees the elements and resets the size.
  *
  * @param[in] pThis - A pointer to an initialized hash table object.
@@ -284,7 +284,7 @@ int ls_hash_cmpipv6(const void *pVal1, const void *pVal2);
  */
 void ls_hash_clear(ls_hash_t *pThis);
 
-/** @ls_hash_erase
+/**  
  * @brief Erases the element from the table.
  *
  * @param[in] pThis - A pointer to an initialized hash table object.
@@ -294,7 +294,7 @@ void ls_hash_clear(ls_hash_t *pThis);
  */
 void ls_hash_erase(ls_hash_t *pThis, ls_hash_iter iter);
 
-/** @ls_hash_swap
+/**  
  * @brief Swaps the lhs and rhs hash tables.
  *
  * @param[in,out] lhs - A pointer to an initialized hash table object.
@@ -303,7 +303,7 @@ void ls_hash_erase(ls_hash_t *pThis, ls_hash_iter iter);
  */
 void ls_hash_swap(ls_hash_t *lhs, ls_hash_t *rhs);
 
-/** @ls_hash_find
+/**  
  * @brief Finds the element with the given key in the hash table.
  *
  * @param[in] pThis - A pointer to an initialized hash table object.
@@ -313,7 +313,7 @@ void ls_hash_swap(ls_hash_t *lhs, ls_hash_t *rhs);
 ls_inline ls_hash_iter ls_hash_find(ls_hash_t *pThis, const void *pKey)
 {   return (pThis->find_fn)(pThis, pKey);             }
 
-/** @ls_hash_insert
+/**  
  * @brief Inserts an element with the given key and value in the hash table.
  * @note \b IMPORTANT: The key \b MUST \b BE a part of the value structure.
  *
@@ -326,7 +326,7 @@ ls_inline ls_hash_iter ls_hash_insert(
     ls_hash_t *pThis, const void *pKey, void *pValue)
 {   return (pThis->insert_fn)(pThis, pKey, pValue);   }
 
-/** @ls_hash_update
+/**  
  * @brief Updates an element with the given key in the hash table.
  *  Inserts if it doesn't exist.
  * @note \b IMPORTANT: The key \b MUST \b BE a part of the value structure.
@@ -341,7 +341,7 @@ ls_inline ls_hash_iter ls_hash_update(
     ls_hash_t *pThis, const void *pKey, void *pValue)
 {   return (pThis->update_fn)(pThis, pKey, pValue);   }
 
-/** @ls_hash_hash_function
+/**  
  * @brief Gets the hash function of the hash table.
  *
  * @param[in] pThis - A pointer to an initialized hash table object.
@@ -350,7 +350,7 @@ ls_inline ls_hash_iter ls_hash_update(
 ls_inline ls_hash_hasher ls_hash_hash_function(ls_hash_t *pThis)
 {   return pThis->hf_fn;    }
 
-/** @ls_hash_key_comp
+/**  
  * @brief Gets the comparison function of the hash table.
  *
  * @param[in] pThis - A pointer to an initialized hash table object.
@@ -359,7 +359,7 @@ ls_inline ls_hash_hasher ls_hash_hash_function(ls_hash_t *pThis)
 ls_inline ls_hash_keycmp_ne ls_hash_key_comp(ls_hash_t *pThis)
 {   return pThis->kc_fn;    }
 
-/** @ls_hash_setloadfactor
+/**  
  * @brief Sets the load factor of the hash table.
  *
  * @param[in] pThis - A pointer to an initialized hash table object.
@@ -369,7 +369,7 @@ ls_inline ls_hash_keycmp_ne ls_hash_key_comp(ls_hash_t *pThis)
 ls_inline void ls_hash_setloadfactor(ls_hash_t *pThis, int f)
 {    if (f > 0)    pThis->load_factor = f;  }
 
-/** @ls_hash_getgrowfactor
+/**  
  * @brief Sets the grow factor of the hash table.
  *
  * @param[in] pThis - A pointer to an initialized hash table object.
@@ -379,7 +379,7 @@ ls_inline void ls_hash_setloadfactor(ls_hash_t *pThis, int f)
 ls_inline void ls_hash_getgrowfactor(ls_hash_t *pThis, int f)
 {    if (f > 0)    pThis->grow_factor = f;  }
 
-/** @ls_hash_empty
+/**  
  * @brief Specifies whether or not the hash table is empty.
  *
  * @param[in] pThis - A pointer to an initialized hash table object.
@@ -388,7 +388,7 @@ ls_inline void ls_hash_getgrowfactor(ls_hash_t *pThis, int f)
 ls_inline int ls_hash_empty(const ls_hash_t *pThis)
 {   return pThis->sizenow == 0; }
 
-/** @ls_hash_size
+/**  
  * @brief Gets the current size of the hash table.
  *
  * @param[in] pThis - A pointer to an initialized hash table object.
@@ -397,7 +397,7 @@ ls_inline int ls_hash_empty(const ls_hash_t *pThis)
 ls_inline size_t ls_hash_size(const ls_hash_t *pThis)
 {   return pThis->sizenow;      }
 
-/** @ls_hash_capacity
+/**  
  * @brief Gets the current capacity of the hash table.
  *
  * @param[in] pThis - A pointer to an initialized hash table object.
@@ -406,7 +406,7 @@ ls_inline size_t ls_hash_size(const ls_hash_t *pThis)
 ls_inline size_t ls_hash_capacity(const ls_hash_t *pThis)
 {   return pThis->sizemax;  }
 
-/** @ls_hash_begin
+/**  
  * @brief Gets the first element of the hash table.
  *
  * @param[in] pThis - A pointer to an initialized hash table object.
@@ -414,7 +414,7 @@ ls_inline size_t ls_hash_capacity(const ls_hash_t *pThis)
  */
 ls_hash_iter ls_hash_begin(ls_hash_t *pThis);
 
-/** @ls_hash_end
+/**  
  * @brief Gets the end element of the hash table.
  *
  * @param[in] pThis - A pointer to an initialized hash table object.
@@ -423,7 +423,7 @@ ls_hash_iter ls_hash_begin(ls_hash_t *pThis);
 ls_inline ls_hash_iter ls_hash_end(ls_hash_t *pThis)
 {   return NULL;  }
 
-/** @ls_hash_next
+/**  
  * @brief Gets the next element of the hash table.
  *
  * @param[in] pThis - A pointer to an initialized hash table object.
@@ -432,7 +432,7 @@ ls_inline ls_hash_iter ls_hash_end(ls_hash_t *pThis)
  */
 ls_hash_iter ls_hash_next(ls_hash_t *pThis, ls_hash_iter iter);
 
-/** @ls_hash_foreach
+/**  
  * @brief Runs a function for each element in the hash table.
  *  The function must follow the #ls_hash_foreach_fn format.
  *
@@ -448,7 +448,7 @@ ls_hash_iter ls_hash_next(ls_hash_t *pThis, ls_hash_iter iter);
 int ls_hash_foreach(ls_hash_t *pThis,
                     ls_hash_iter beg, ls_hash_iter end, ls_hash_foreach_fn fun);
 
-/** @ls_hash_foreach2
+/**  
  * @brief Runs a function for each element in the hash table.
  *  The function must follow the #ls_hash_foreach2_fn format.
  *

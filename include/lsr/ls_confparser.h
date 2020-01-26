@@ -54,7 +54,7 @@ struct ls_confparser_s
 };
 
 
-/** @ls_confparser
+/**  
  * @brief Initializes the given confparser and its internal structures.
  *
  * @param[in] pThis - A pointer to an allocated confparser.
@@ -64,7 +64,7 @@ struct ls_confparser_s
  */
 void ls_confparser(ls_confparser_t *pThis);
 
-/** @ls_confparser_d
+/**  
  * @brief Destroys the given confparser and its internal structures.
  *  DOES NOT FREE pThis!
  *
@@ -75,7 +75,7 @@ void ls_confparser(ls_confparser_t *pThis);
  */
 void ls_confparser_d(ls_confparser_t *pThis);
 
-/** @ls_confparser_line
+/**  
  * @brief Parses a line and splits it into a list of parameters
  *  with the surrounding white spaces and quotes removed.
  * @details The returned list is an \link #ls_objarray_t object array \endlink
@@ -93,7 +93,7 @@ void ls_confparser_d(ls_confparser_t *pThis);
 ls_objarray_t *ls_confparser_line(ls_confparser_t *pThis,
                                   const char *pLine, const char *pLineEnd);
 
-/** @ls_confparser_linekv
+/**  
  * @brief Parses a line and splits it into an
  *  \link #ls_objarray_t object array \endlink containing a key
  *  and a value with the surrounding white spaces and quotes removed.
@@ -115,7 +115,7 @@ ls_objarray_t *ls_confparser_line(ls_confparser_t *pThis,
 ls_objarray_t *ls_confparser_linekv(ls_confparser_t *pThis,
                                     const char *pLine, const char *pLineEnd);
 
-/** @ls_confparser_multi
+/**  
  * @brief Parses a block of parameters (multiple lines)
  *  and splits it into a list of parameters
  *  with the surrounding white spaces and quotes removed.
@@ -134,7 +134,7 @@ ls_objarray_t *ls_confparser_linekv(ls_confparser_t *pThis,
 ls_objarray_t *ls_confparser_multi(ls_confparser_t *pThis,
                                    const char *pBlock, const char *pBlockEnd);
 
-/** @ls_confparser_getlist
+/**  
  * @brief Gets the list of a confparser.
  * @details The returned list is an \link #ls_objarray_t object array \endlink
  *  of \link ls_str.h lsr str structs.\endlink  Each str struct will have

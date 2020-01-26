@@ -55,7 +55,7 @@ typedef struct ls_dlinkq_s
 
 
 /**
- * @ls_linkq
+ *  
  * @brief Initializes a queue of singly linked list objects.
  *
  * @param[in] pThis - A pointer to an allocated linked list queue object.
@@ -70,7 +70,7 @@ ls_inline void ls_linkq(ls_linkq_t *pThis)
 }
 
 /**
- * @ls_linkq_new
+ *  
  * @brief Creates (allocates and initializes)
  *   a new queue of singly linked list objects.
  *
@@ -88,7 +88,7 @@ ls_inline ls_linkq_t *ls_linkq_new()
 }
 
 /**
- * @ls_linkq_d
+ *  
  * @brief Destroys the singly linked list <b> queue object</b>.
  * @note It is the user's responsibility to destroy or delete
  *   the linked list objects, depending on how the objects were created.
@@ -102,7 +102,7 @@ ls_inline void ls_linkq_d(ls_linkq_t *pThis)
 {}
 
 /**
- * @ls_linkq_delete
+ *  
  * @brief Destroys the singly linked list <b> queue object</b>,
  *   then deletes the object.
  * @details The object should have been created with a previous
@@ -119,7 +119,7 @@ ls_inline void ls_linkq_delete(ls_linkq_t *pThis)
 {   ls_linkq_d(pThis);  ls_pfree(pThis);   }
 
 /**
- * @ls_linkq_size
+ *  
  * @brief Gets the size of a singly linked list queue object.
  *
  * @param[in] pThis - A pointer to an initialized linked list queue object.
@@ -129,7 +129,7 @@ ls_inline int ls_linkq_size(const ls_linkq_t *pThis)
 {   return pThis->m_iTotal;  }
 
 /**
- * @ls_linkq_push
+ *  
  * @brief Pushes an element to a linked list queue object.
  *
  * @param[in] pThis - A pointer to an initialized linked list queue object.
@@ -140,7 +140,7 @@ ls_inline void ls_linkq_push(ls_linkq_t *pThis,  ls_link_t *pObj)
 {   ls_link_addnext(&pThis->m_head, pObj);  ++pThis->m_iTotal;  }
 
 /**
- * @ls_linkq_pop
+ *  
  * @brief Pops an element from a linked list queue object.
  *
  * @param[in] pThis - A pointer to an initialized linked list queue object.
@@ -158,7 +158,7 @@ ls_inline ls_link_t *ls_linkq_pop(ls_linkq_t *pThis)
 }
 
 /**
- * @ls_linkq_begin
+ *  
  * @brief Gets a pointer to the linked list object at the head (beginning)
  *   of a linked list queue object.
  * @details The routine does \e not pop anything from the object.
@@ -170,7 +170,7 @@ ls_inline ls_link_t *ls_linkq_begin(const ls_linkq_t *pThis)
 {   return ls_link_next(&pThis->m_head);  }
 
 /**
- * @ls_linkq_end
+ *  
  * @brief Gets the end of a linked list queue object.
  *
  * @param[in] pThis - A pointer to an initialized linked list queue object.
@@ -180,7 +180,7 @@ ls_inline ls_link_t *ls_linkq_end(const ls_linkq_t *pThis)
 {   return NULL;  }
 
 /**
- * @ls_linkq_head
+ *  
  * @brief Gets the head of a linked list queue object.
  *
  * @param[in] pThis - A pointer to an initialized linked list queue object.
@@ -190,7 +190,7 @@ ls_inline ls_link_t *ls_linkq_head(ls_linkq_t *pThis)
 {   return &pThis->m_head;  }
 
 /**
- * @ls_linkq_removenext
+ *  
  * @brief Removes a linked list element from a linked list queue object.
  *
  * @param[in] pThis - A pointer to an initialized linked list queue object.
@@ -204,7 +204,7 @@ ls_inline ls_link_t *ls_linkq_removenext(
 {    --pThis->m_iTotal;  return ls_link_removenext(pObj);  }
 
 /**
- * @ls_linkq_addnext
+ *  
  * @brief Adds a linked list element to a linked list queue object.
  *
  * @param[in] pThis - A pointer to an initialized linked list queue object.
@@ -218,7 +218,7 @@ ls_inline void ls_linkq_addnext(
 {   ++pThis->m_iTotal;  ls_link_addnext(pObj, pNext);  }
 
 /**
- * @ls_dlinkq
+ *  
  * @brief Initializes a queue of doubly linked list objects.
  *
  * @param[in] pThis - A pointer to an allocated doubly linked list queue object.
@@ -233,7 +233,7 @@ ls_inline void ls_dlinkq(ls_dlinkq_t *pThis)
 }
 
 /**
- * @ls_dlinkq_new
+ *  
  * @brief Creates (allocates and initializes)
  *   a new queue of doubly linked list objects.
  *
@@ -251,7 +251,7 @@ ls_inline ls_dlinkq_t *ls_dlinkq_new()
 }
 
 /**
- * @ls_dlinkq_d
+ *  
  * @brief Destroys the doubly linked list <b> queue object</b>.
  * @note It is the user's responsibility to destroy or delete
  *   the linked list objects, depending on how the objects were created.
@@ -266,7 +266,7 @@ ls_inline void ls_dlinkq_d(ls_dlinkq_t *pThis)
 {}
 
 /**
- * @ls_dlinkq_delete
+ *  
  * @brief Destroys the doubly linked list <b> queue object</b>,
  *   then deletes the object.
  * @details The object should have been created with a previous
@@ -284,7 +284,7 @@ ls_inline void ls_dlinkq_delete(ls_dlinkq_t *pThis)
 {   ls_dlinkq_d(pThis);  ls_pfree(pThis);   }
 
 /**
- * @ls_dlinkq_size
+ *  
  * @brief Gets the size of a doubly linked list queue object.
  *
  * @param[in] pThis - A pointer to an initialized doubly linked list queue
@@ -295,7 +295,7 @@ ls_inline int ls_dlinkq_size(const ls_dlinkq_t *pThis)
 {   return pThis->m_iTotal;  }
 
 /**
- * @ls_dlinkq_empty
+ *  
  * @brief Specifies whether or not a doubly linked list queue object
  *   contains any elements.
  *
@@ -307,7 +307,7 @@ ls_inline bool ls_dlinkq_empty(const ls_dlinkq_t *pThis)
 {   return ls_dlink_next(&pThis->m_head) == &pThis->m_head;  }
 
 /**
- * @ls_dlinkq_append
+ *  
  * @brief Pushes an element to the end of a doubly linked list queue object.
  *
  * @param[in] pThis - A pointer to an initialized doubly linked list queue
@@ -322,7 +322,7 @@ ls_inline void ls_dlinkq_append(ls_dlinkq_t *pThis, ls_dlink_t *pReq)
 }
 
 /**
- * @ls_dlinkq_pushfront
+ *  
  * @brief Pushes an element to the beginning (front)
  *   of a doubly linked list queue object.
  *
@@ -337,7 +337,7 @@ ls_inline void ls_dlinkq_pushfront(ls_dlinkq_t *pThis, ls_dlink_t *pReq)
 }
 
 /**
- * @ls_dlinkq_remove
+ *  
  * @brief Removes a linked list element from a doubly linked list queue object.
  *
  * @param[in] pThis - A pointer to an initialized doubly linked list queue
@@ -356,7 +356,7 @@ ls_inline void ls_dlinkq_remove(ls_dlinkq_t *pThis, ls_dlink_t *pReq)
 }
 
 /**
- * @ls_dlinkq_popfront
+ *  
  * @brief Pops an element from the beginning (front)
  *   of a doubly linked list queue object.
  *
@@ -377,7 +377,7 @@ ls_inline ls_dlink_t *ls_dlinkq_popfront(ls_dlinkq_t *pThis)
 }
 
 /**
- * @ls_dlinkq_begin
+ *  
  * @brief Gets a pointer to the linked list object at the head (beginning)
  *   of a doubly linked list queue object.
  * @details The routine does \e not pop anything from the object.
@@ -390,7 +390,7 @@ ls_inline ls_dlink_t *ls_dlinkq_begin(ls_dlinkq_t *pThis)
 {   return ls_dlink_next(&pThis->m_head);  }
 
 /**
- * @ls_dlinkq_end
+ *  
  * @brief Gets the end of a doubly linked list queue object.
  *
  * @param[in] pThis - A pointer to an initialized doubly linked list queue
