@@ -679,7 +679,7 @@ int HttpRespHeaders::getFirstHeader(const char *pName, int nameLen,
 
 HttpRespHeaders::INDEX HttpRespHeaders::getIndex(const char *pHeader)
 {
-    register INDEX idx = H_HEADER_END;
+    INDEX idx = H_HEADER_END;
 
     switch (*pHeader++ | 0x20)
     {

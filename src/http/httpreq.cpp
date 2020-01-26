@@ -351,10 +351,10 @@ int HttpReq::processHeader()
 const HttpVHost *HttpReq::matchVHost(const VHostMap *pVHostMap)
 {
     const HttpVHost *pVHost = NULL;
-    register char *pHost = m_headerBuf.begin() + m_iHostOff;
-    register char *pHostEnd = pHost + m_iHostLen;
-    register char ch = *pHostEnd;
-    register int  www = 4;
+    char *pHost = m_headerBuf.begin() + m_iHostOff;
+    char *pHostEnd = pHost + m_iHostLen;
+    char ch = *pHostEnd;
+    int  www = 4;
     if (m_iLeadingWWW && pVHostMap->isStripWWW())
     {
         pHost += www;
