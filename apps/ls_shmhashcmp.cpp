@@ -94,7 +94,7 @@ int getOptions(int ac, char *av[])
         switch (opt)
         {
         case 'c':
-                g_iMaxFail = StringTool::atoll(optarg);
+                g_iMaxFail = atoll(optarg);
                 break;
         case 'd':
             if (iLongIdx & 1)

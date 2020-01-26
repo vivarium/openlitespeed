@@ -18,6 +18,21 @@ target_link_libraries(openlitespeed
 )
 
 #############################
+#####   ls_shmhashcmp   #####
+#############################
+add_executable(ls_shmhashcmp ls_shmhashcmp.cpp)
+
+target_include_directories(ls_shmhashcmp
+        PRIVATE
+            "${OpenLiteSpeed_SOURCE_DIR}/src"
+)
+
+target_link_libraries(ls_shmhashcmp
+        PRIVATE
+            shm util
+)
+
+#############################
 #####   ls_shmhashstat  #####
 #############################
 
@@ -49,6 +64,6 @@ target_link_libraries(ls_shmstat
             shm
 )
 
-install(TARGETS openlitespeed ls_shmhashstat ls_shmstat
+install(TARGETS openlitespeed ls_shmhashcmp ls_shmhashstat ls_shmstat
         RUNTIME DESTINATION bin
 )
