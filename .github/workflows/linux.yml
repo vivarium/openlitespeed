@@ -34,4 +34,5 @@ jobs:
           cd build
           cmake ..
           make
+          make doc
           make test
