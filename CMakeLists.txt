@@ -31,19 +31,6 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-    set(BUILD_TESTS "Choose whether to build tests.")
-    set(BUILD_DOCS "Choose whether to build docs.")
-
-    if (BUILD_TESTS)
-        include(CTest)
-        add_subdirectory(test)
-    endif()
-
-    if (BUILD_DOCS)
-        find_package(Doxygen REQUIRED)
-        add_subdirectory(doc)
-    endif()
-
 endif()
 
 set(TMP_DIR
@@ -70,6 +57,18 @@ set(LS_ENABLE_SPDY
 option(ENABLE_GEOIP "Choose whether to enable GeoIp" ON)
 option(ENABLE_IP2LOCATION "Choose whether to enable IP2Location" ON)
 option(ENABLE_BROTLI "Choose whether to enable Brotli" ON)
+option(BUILD_TESTS "Choose whether to build tests." ON)
+option(BUILD_DOCS "Choose whether to build docs." ON)
 
 add_subdirectory(src)
 add_subdirectory(apps)
+
+if (BUILD_TESTS)
+    include(CTest)
+    add_subdirectory(test)
+endif()
+
+if (BUILD_DOCS)
+    find_package(Doxygen REQUIRED)
+    add_subdirectory(doc)
+endif()
