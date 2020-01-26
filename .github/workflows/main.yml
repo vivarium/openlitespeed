@@ -16,7 +16,7 @@ jobs:
         run: |
           apt-get -yq install build-essential cmake libzip-dev pkg-config libluajit-5.1-dev libpcre3-dev \
           libudns-dev libssl-dev libexpat1-dev doxygen libgeoip-dev libmaxminddb-dev libbrotli-dev wget \
-          libunittest++-dev libmodsecurity-dev autoconf
+          libunittest++-dev libmodsecurity-dev autoconf libtool
       - name: Build IP2Location
         run: |
           wget https://github.com/chrislim2888/IP2Location-C-Library/archive/8.0.9.tar.gz -O IP2Location.tar.gz
