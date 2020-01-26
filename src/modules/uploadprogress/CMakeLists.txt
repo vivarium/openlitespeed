@@ -14,3 +14,7 @@ target_link_libraries(mod_uploadprogress
         PRIVATE
             lsr
 )
+
+install(TARGETS mod_uploadprogress
+        LIBRARY DESTINATION lib/lshttpd/modules
+)

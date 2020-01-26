@@ -26,3 +26,7 @@ target_link_libraries(mod_js
         PRIVATE
             lsr util
 )
+
+install(TARGETS mod_js
+        LIBRARY DESTINATION lib/lshttpd/modules
+)

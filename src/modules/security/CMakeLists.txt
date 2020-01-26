@@ -12,3 +12,7 @@ target_link_libraries(mod_security
         PRIVATE
             lsr
 )
+
+install(TARGETS mod_security
+        LIBRARY DESTINATION lib/lshttpd/modules
+)

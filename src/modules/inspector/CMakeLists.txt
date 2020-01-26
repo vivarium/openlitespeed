@@ -12,3 +12,7 @@ target_link_libraries(mod_inspector
         PRIVATE
             lsr
 )
+
+install(TARGETS mod_inspector
+        LIBRARY DESTINATION lib/lshttpd/modules
+)

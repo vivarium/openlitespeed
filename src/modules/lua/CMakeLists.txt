@@ -38,3 +38,7 @@ target_link_libraries(mod_lua
         PRIVATE
             lsr edio log4cxx shm socket util ${CMAKE_DL_LIBS}
 )
+
+install(TARGETS mod_lua
+        LIBRARY DESTINATION lib/lshttpd/modules
+)

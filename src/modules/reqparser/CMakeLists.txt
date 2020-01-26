@@ -17,3 +17,7 @@ target_link_libraries(mod_reqparser
         PRIVATE
             lsr util
 )
+
+install(TARGETS mod_reqparser
+        LIBRARY DESTINATION lib/lshttpd/modules
+)
