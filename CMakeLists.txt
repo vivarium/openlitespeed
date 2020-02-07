@@ -40,10 +40,38 @@ set(TMP_DIR
         FORCE
 )
 
-set(PID_FILE
-        "/var/run/lshttpd/openlitespeed.pid"
+set(PID_DIR
+        "/var/run/lshttpd"
         CACHE STRING
-        "The OpenLiteSpeed's pid file."
+        "The OpenLiteSpeed's pid files directory."
+        FORCE
+)
+
+set(CONF_DIR
+        "/etc/lshttpd"
+        CACHE STRING
+        "The OpenLiteSpeed's configuration directory."
+        FORCE
+)
+
+set(LOG_DIR
+        "/var/log/lshttpd"
+        CACHE STRING
+        "The OpenLiteSpeed's log files directory."
+        FORCE
+)
+
+set(USER
+        "lshttp"
+        CACHE STRING
+        "The OpenLiteSpeed's user."
+        FORCE
+)
+
+set(GROUP
+        "lshttp"
+        CACHE STRING
+        "The OpenLiteSpeed's group."
         FORCE
 )
 
@@ -62,6 +90,7 @@ option(BUILD_DOCS "Choose whether to build docs." ON)
 
 add_subdirectory(src)
 add_subdirectory(apps)
+add_subdirectory(conf)
 
 if (BUILD_TESTS)
     include(CTest)

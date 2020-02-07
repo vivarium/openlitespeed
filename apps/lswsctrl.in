@@ -1,7 +1,7 @@
 #!/bin/sh
 
 EXECUTABLE=@CMAKE_INSTALL_PREFIX@/bin/openlitespeed
-CONF_DIR=@CONF_DIR@
+CONF_DIR=@CMAKE_INSTALL_PREFIX@/@CONF_DIR@
 TMP_DIR=@TMP_DIR@
 DESC="openlitespeed"
 
@@ -53,7 +53,7 @@ ret=0
 
 killwatch()
 {
-        WATCH_PROCS="$PS_CMD | grep wswatch.sh | grep -v grep | wc -l"
+        WATCH_PROCS=$($PS_CMD | grep wswatch.sh | grep -v grep | wc -l)
         if [ $WATCH_PROCS -gt 0 ]; then
                 pkill wswatch.sh
         fi
@@ -63,22 +63,22 @@ killwatch()
 start()
 {
     killwatch
-    if [ -f "$PIDFILE" ]; then
-        PID="cat $PIDFILE"
+    if [ -f $PIDFILE ]; then
+        PID=$(cat $PIDFILE)
     else
         PID=""
     fi
     
     export OLS_PID_FILE=$PIDFILE
-    ./$EXECUTABLE
+    $EXECUTABLE
     ret=$?
 
 
     if [ $ret -eq 0 ]; then
-        NEW_PID="cat $PIDFILE"
+        NEW_PID=$(cat $PIDFILE)
         if [ "x$NEW_PID" = "x$PID" ] || [ "x$NEW_PID" = "x" ]; then
             sleep 1
-            NEW_PID="cat $PIDFILE"
+            NEW_PID=$(cat $PIDFILE)
         fi
         echo "[OK] $DESC: pid=$NEW_PID."
         test_running

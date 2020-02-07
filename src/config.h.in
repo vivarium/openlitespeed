@@ -3,7 +3,7 @@
 
 #cmakedefine01 LS_ENABLE_SPDY
 #define DEFAULT_TMP_DIR "@TMP_DIR@"
-#define PID_FILE        "@PID_FILE@"
+#define PID_FILE        "@PID_DIR@/lshttpd.pid"
 
 #define PACKAGE_VERSION "@VERSION@"
 #define LS_MODULE_VERSION_INFO "\tmodpagespeed 2.2-1.11.33.4\n\tcache 1.62\n\tmodinspector 1.1\n\tuploadprogress LSIAPI_VERSION_STRING\n\tmod_security 1.2\n"

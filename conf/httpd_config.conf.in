@@ -4,30 +4,30 @@
 
 #It not set, will use host name as serverName
 serverName                       
-user                             %USER%
-group                            %GROUP%
+user                             @USER@
+group                            @GROUP@
 priority                         0
 autoRestart                      1 
 chrootPath                       / 
 enableChroot                     0 
 inMemBufSize                     60M 
-swappingDir                      %DEFAULT_TMP_DIR%/swap 
+swappingDir                      @TMP_DIR@/swap
 autoFix503                       1 
 gracefulRestartTimeout           300
-mime                             conf/mime.properties 
+mime                             @CONF_DIR@/mime.properties
 showVersionNumber                0 
-adminEmails                      %ADMIN_EMAIL%
+adminEmails                      admin@localhost
 indexFiles                       index.html, index.php
 disableWebAdmin                  0
 
-errorlog logs/error.log {
+errorlog @LOG_DIR@/error.log {
         logLevel             DEBUG
         debugLevel           0
         rollingSize          10M
         enableStderrLog      1
 }
     
-accessLog logs/access.log {
+accessLog @LOG_DIR@/access.log {
         rollingSize          10M    
         keepDays             30    
         compressArchive      0
@@ -78,13 +78,13 @@ accessDenyDir{
     dir                  /
     dir                  /etc/*
     dir                  /dev/*
-    dir                  conf/*
-    dir                  admin/conf/*
+    dir                  @CONF_DIR@/*
+    dir                  @CONF_DIR@/admin/*
 }
 
 fileAccessControl{
-    followSymbolLink                            1 
-    checkSymbolLink                             0 
+    followSymbolLink                            0
+    checkSymbolLink                             1
     requiredPermissionMask                      000 
     restrictedPermissionMask                    000 
 }
@@ -117,117 +117,6 @@ accessControl{
 	allow                                   ALL
 	deny
 }
- 
-extProcessor lsphp{
-    type                            lsapi 
-    address                         uds:/%DEFAULT_TMP_DIR%/lsphp.sock 
-    maxConns                        10 
-    env                             PHP_LSAPI_CHILDREN=10
-    env                             LSAPI_AVOID_FORK=200M
-    initTimeout                     60 
-    retryTimeout                    0 
-    persistConn                     1 
-    pcKeepAliveTimeout
-    respBuffer                      0 
-    autoStart                       1 
-    path                            fcgi-bin/lsphp
-    backlog                         100 
-    instances                       1 
-    priority                        0 
-    memSoftLimit                    2047M 
-    memHardLimit                    2047M 
-    procSoftLimit                   1400 
-    procHardLimit                   1500 
-}
-
-scriptHandler{
-    add lsapi:lsphp  php
-}
-
-railsDefaults{
-    binPath                  %RUBY_BIN%
-    railsEnv                 1 
-    maxConns                 1 
-    env                      LSAPI_MAX_IDLE=60 
-    initTimeout              60 
-    retryTimeout             0 
-    pcKeepAliveTimeout       60 
-    respBuffer               0 
-    backlog                  50 
-    runOnStartUp             3
-    extMaxIdleTime           300
-    priority                 3 
-    memSoftLimit             2047M 
-    memHardLimit             2047M 
-    procSoftLimit            500 
-    procHardLimit            600 
-}
-
-wsgiDefaults{
-    binPath                  
-    railsEnv                 1 
-    maxConns                 5 
-    env                      LSAPI_MAX_IDLE=60 
-    initTimeout              60 
-    retryTimeout             0 
-    pcKeepAliveTimeout       60 
-    respBuffer               0 
-    backlog                  50 
-    runOnStartUp             3
-    extMaxIdleTime           300
-    priority                 3 
-    memSoftLimit             2047M 
-    memHardLimit             2047M 
-    procSoftLimit            500 
-    procHardLimit            600 
-}
-
-nodeDefaults{
-    binPath                  
-    railsEnv                 1 
-    maxConns                 5 
-    env                      LSAPI_MAX_IDLE=60 
-    initTimeout              60 
-    retryTimeout             0 
-    pcKeepAliveTimeout       60 
-    respBuffer               0 
-    backlog                  50 
-    runOnStartUp             3
-    extMaxIdleTime           300
-    priority                 3 
-    memSoftLimit             2047M 
-    memHardLimit             2047M 
-    procSoftLimit            500 
-    procHardLimit            600 
-}
-
-virtualHost Example{
-    vhRoot                   Example/
-    allowSymbolLink          1 
-    enableScript             1 
-    restrained               1 
-    maxKeepAliveReq
-    smartKeepAlive                  
-    setUIDMode               0 
-    chrootMode               0 
-    configFile               conf/vhosts/Example/vhconf.conf
-}
-
-listener Default{
-    address                  *:%HTTP_PORT%
-    secure                   0
-    map                      Example *
-}
-    
-vhTemplate centralConfigLog{
-    templateFile             conf/templates/ccl.conf
-    listeners                Default
-}
-
-vhTemplate EasyRailsWithSuEXEC{
-    templateFile             conf/templates/rails.conf
-    listeners                Default
-}
 
 module cache {
     ls_enabled          1
@@ -242,9 +131,9 @@ module cache {
     ignoreReqCacheCtrl  1
     ignoreRespCacheCtrl 0
 
-    enableCache         0
+    enableCache         1
     expireInSeconds     3600
-    enablePrivateCache  0
+    enablePrivateCache  1
     privateExpireInSeconds 3600
 
 }

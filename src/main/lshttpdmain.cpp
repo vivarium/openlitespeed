@@ -69,6 +69,7 @@
 #include <unistd.h>
 #include <config.h>
 
+#include <string>
 
 /***
  * Do not change the below format, it will be set correctly while packing the code

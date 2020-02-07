@@ -20,14 +20,14 @@ target_link_libraries(openlitespeed
 #############################
 #####   ls_shmhashcmp   #####
 #############################
-add_executable(ls_shmhashcmp ls_shmhashcmp.cpp)
+add_executable(shmhashcmp ls_shmhashcmp.cpp)
 
-target_include_directories(ls_shmhashcmp
+target_include_directories(shmhashcmp
         PRIVATE
             "${OpenLiteSpeed_SOURCE_DIR}/src"
 )
 
-target_link_libraries(ls_shmhashcmp
+target_link_libraries(shmhashcmp
         PRIVATE
             shm util
 )
@@ -36,14 +36,14 @@ target_link_libraries(ls_shmhashcmp
 #####   ls_shmhashstat  #####
 #############################
 
-add_executable(ls_shmhashstat ls_shmhashstat.cpp)
+add_executable(shmhashstat ls_shmhashstat.cpp)
 
-target_include_directories(ls_shmhashstat
+target_include_directories(shmhashstat
         PRIVATE
             "${OpenLiteSpeed_SOURCE_DIR}/src"
 )
 
-target_link_libraries(ls_shmhashstat
+target_link_libraries(shmhashstat
         PRIVATE
             shm
 )
@@ -52,18 +52,32 @@ target_link_libraries(ls_shmhashstat
 #####   ls_shmstat  #####
 #########################
 
-add_executable(ls_shmstat ls_shmstat.cpp)
+add_executable(shmstat ls_shmstat.cpp)
 
-target_include_directories(ls_shmstat
+target_include_directories(shmstat
         PRIVATE
            "${OpenLiteSpeed_SOURCE_DIR}/src"
 )
 
-target_link_libraries(ls_shmstat
+target_link_libraries(shmstat
         PRIVATE
             shm
 )
 
-install(TARGETS openlitespeed ls_shmhashcmp ls_shmhashstat ls_shmstat
+
+install(TARGETS openlitespeed shmhashcmp shmhashstat shmstat
         RUNTIME DESTINATION bin
+)
+
+#########################
+#####   lswsctrl    #####
+#########################
+
+configure_file(
+        "${OpenLiteSpeed_SOURCE_DIR}/apps/lswsctrl.in"
+        "${CMAKE_BINARY_DIR}/apps/lswsctrl"
+)
+
+install(FILES "${CMAKE_BINARY_DIR}/apps/lswsctrl"
+        DESTINATION bin
 )

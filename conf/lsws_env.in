@@ -1,0 +1,2 @@
+PIDFILE=@PID_DIR@/lshttpd.pid
+GRACEFUL_PIDFILE=@PID_DIR@/graceful.pid
