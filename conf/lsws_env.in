@@ -1,2 +1,7 @@
-PIDFILE=@PID_DIR@/lshttpd.pid
-GRACEFUL_PIDFILE=@PID_DIR@/graceful.pid
+EXECUTABLE="@CMAKE_INSTALL_PREFIX@/bin/openlitespeed"
+DESC="OpenLiteSpeed Web Server"
+CONF_DIR="@CMAKE_INSTALL_PREFIX@@CONF_DIR@"
+TMP_DIR="@TMP_DIR@"
+RESTART_LOG="@LOG_DIR@/restart.log"
+PIDFILE="@PID_DIR@/lshttpd.pid"
+GRACEFUL_PIDFILE="@PID_DIR@/graceful.pid"

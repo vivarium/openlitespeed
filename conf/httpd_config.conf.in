@@ -9,16 +9,16 @@ group                            @GROUP@
 priority                         0
 autoRestart                      1 
 chrootPath                       / 
-enableChroot                     0 
+enableChroot                     1
 inMemBufSize                     60M 
 swappingDir                      @TMP_DIR@/swap
-autoFix503                       1 
+autoFix503                       0
 gracefulRestartTimeout           300
 mime                             @CONF_DIR@/mime.properties
 showVersionNumber                0 
 adminEmails                      admin@localhost
 indexFiles                       index.html, index.php
-disableWebAdmin                  0
+disableWebAdmin                  1
 
 errorlog @LOG_DIR@/error.log {
         logLevel             DEBUG
