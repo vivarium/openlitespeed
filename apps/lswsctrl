@@ -1,0 +1,228 @@
+#!/bin/sh
+
+get_conf_dir()
+{
+  COMMON_GLOBAL="/usr/etc/lshttpd/lsws_env"
+  COMMON_LOCAL="/usr/local/etc/lshttpd/lsws_env"
+
+  if [ -z "$LSHTTPD_CONF" ] ; then
+      if [ -f "$COMMON_GLOBAL" ] ; then
+        CONF_DIR="$COMMON_GLOBAL"
+      fi
+
+      if [ -f "$COMMON_LOCAL" ] ; then
+          CONF_DIR="$COMMON_LOCAL"
+      fi
+  else
+      CONF_DIR="$LSHTTPD_CONF"
+  fi
+}
+
+check_conf()
+{
+    if [ -f "${CONF_DIR}/lsws_env" ] && ! "${CONF_DIR}/lsws_env" 2>/dev/null ; then
+        # shellcheck source=/dev/null
+        . "${CONF_DIR}/lsws_env"
+    else
+        echo "Cannot find lsws_env file, exit"
+        exit 1
+    fi
+
+    CONF_VARS="EXECUTABLE DESC CONF_DIR TMP_DIR RESTART_LOG PIDFILE GRACEFUL_PIDFILE"
+
+    for VAR in $CONF_VARS ; do
+        if [ -z "$VAR" ] ; then
+          echo "Undefined variable $VAR check lsws_env file, exit"
+          exit 1
+        fi
+    done
+
+    if [ ! -x "$EXECUTABLE" ]; then
+        log ERROR "Cannot find $EXECUTABLE"
+        exit 1
+    fi
+}
+
+detect_ps()
+{
+    SYS_NAME=$(uname -s)
+    if [ "$SYS_NAME" = "FreeBSD" ] || [ "$SYS_NAME" = "xDarwin" ] ; then
+        PS_CMD="ps -ax"
+    else
+        PS_CMD="ps -ef"
+    fi
+}
+
+help() {
+    echo "Usage: lswctrl {start|stop|restart|reload|condrestrt|try-restart|status|help}"
+    cat <<EOF
+
+start       - start web server
+stop        - stop web server
+restart     - gracefully restart web server with zero down time
+reload      - same as restart
+condrestart - gracefully restart web server if server is running
+try-restart - same as condrestart
+status      - show service status
+help        - this screen
+
+EOF
+
+    exit 0
+}
+
+test_running()
+{
+    RUNNING=0
+    if [ -f "$PIDFILE" ]; then
+        FPID=$(cat "$PIDFILE")
+        if [ -n "$FPID" ] && ! kill -0 "$FPID" 2>/dev/null ; then
+                RUNNING=1
+                PID="$FPID"
+        fi
+    fi
+
+    RESTARTING=0
+    if [ -f "${TMP_DIR}/.restart" ]; then
+        RESTARTING=1
+    fi
+}
+
+status()
+{
+    if [ $RUNNING -eq 1 ]; then
+	    echo "$DESC is running with PID $PID."
+    else
+	    echo "$DESC is not running."
+    fi
+
+    exit 0
+}
+
+log()
+{
+    NOW=$(date "+%d/%m/%Y:%R:%S %z")
+    
+    echo "[${NOW}][${1}] ${2}" >> "$RESTART_LOG"
+
+    if [ "$1" = ERROR ] || [ "$1" = OK ]; then
+	      echo "[${1}] $2"
+    fi
+}
+
+killwatch()
+{
+    log INFO "Attempt to kill wswatch.sh"
+    WATCH_PROCS=$($PS_CMD | grep wswatch.sh | grep -cv grep)
+    if [ "$WATCH_PROCS" -gt 0 ]; then
+        if ! pkill wswatch.sh ; then
+            log ERROR "Failed to kill wswatch.sh"
+	      else
+	          log INFO "wswatch.sh killed successfully"
+	      fi
+    else
+        log INFO "Ok, wswatch.sh is not running"
+    fi
+}
+
+start()
+{
+    test_running
+
+    if [ $RUNNING -eq 1 ]; then
+	      log ERROR "$DESC is already running, exit"
+
+	      exit 2
+    fi
+
+    if [ $RESTARTING -eq 1 ]; then
+	      log ERROR "$DESC is currently restarting, exit"
+
+	      exit 2
+    fi
+
+    killwatch
+
+    export OLS_PID_FILE=$PIDFILE
+
+    if ! $EXECUTABLE ; then
+	      log ERROR "Failed to start $DESC"
+
+	      exit 2
+	  fi
+
+	  PID=$(cat "$PIDFILE")
+    log OK "$DESC started with pid=${PID}"
+
+    exit 0
+}
+
+stop()
+{
+    test_running
+
+    if [ $RUNNING -eq 0 ] ; then
+        log ERROR "$DESC is not running"
+
+        exit 2
+    fi
+
+    killwatch
+    kill -USR2 "$PID"
+    kill "$PID"
+
+    test_running
+
+    NOW=$(date +%s)
+    while [ $RUNNING -eq 1 ] && [ "$(date +%s - "$NOW")" -gt 30 ]; do
+        sleep 2
+        test_running
+    done
+
+    test_running
+
+    if [ $RUNNING -eq 1 ] ; then
+        kill -SIGQUIT "$PID"
+    fi
+
+    test_running
+
+    if [ $RUNNING -eq 1 ]; then
+        log ERROR "Cannot kill $DESC"
+
+        exit 2
+    fi
+
+    log OK "$DESC stopped"
+
+    exit 0
+}
+
+# Script entry point
+
+get_conf_dir
+check_conf
+detect_ps
+
+if [ -z "$1" ]; then
+    CMD=help
+else
+    CMD=$1
+fi
+
+log INFO "lswctrl called with $CMD command"
+
+case "$1" in
+    start)
+      start
+      ;;
+    stop)
+      stop
+      ;;
+    status)
+      status
+      ;;
+    *)
+      help
+      ;;
+esac

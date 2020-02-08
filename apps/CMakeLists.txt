@@ -73,11 +73,6 @@ install(TARGETS openlitespeed shmhashcmp shmhashstat shmstat
 #####   lswsctrl    #####
 #########################
 
-configure_file(
-        "${OpenLiteSpeed_SOURCE_DIR}/apps/lswsctrl.in"
-        "${CMAKE_BINARY_DIR}/apps/lswsctrl"
-)
-
 install(FILES "${CMAKE_BINARY_DIR}/apps/lswsctrl"
         DESTINATION bin
 )

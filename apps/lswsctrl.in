@@ -1,23 +1,11 @@
 #!/bin/sh
 
-EXECUTABLE=@CMAKE_INSTALL_PREFIX@/bin/openlitespeed
-CONF_DIR=@CMAKE_INSTALL_PREFIX@/@CONF_DIR@
-TMP_DIR=@TMP_DIR@
-DESC="openlitespeed"
-
-if [ -f "CONF_DIR"/lsws_env ] ; then
-    if ! ./"CONF_DIR"/lsws_env 2>/dev/null ; then
-        ./"CONF_DIR"/lsws_env
+if [ -f ${CONF_DIR}/lsws_env ] ; then
+    if ! ${CONF_DIR}/lsws_env 2>/dev/null ; then
+        . ${CONF_DIR}/lsws_env
     fi
 fi
 
-# if the lsws_env is empty or not exist, still need to set the default values
-if [ "x$PIDFILE" = "x" ] ; then 
-    PIDFILE=@PID_DIR@/lshttpd.pid
-    GRACEFUL_PIDFILE=@PID_DIR@/graceful.pid
-fi
-
-RESTART_LOG="@LOG_DIR@/lsrestart.log"
 if [ ! -x "$EXECUTABLE" ]; then
     echo "[ERROR] Cannot find $EXECUTABLE"
     exit 1
@@ -48,6 +36,8 @@ test_running()
     RESTARTING=1
   fi
 }
+
+
 
 ret=0
 
