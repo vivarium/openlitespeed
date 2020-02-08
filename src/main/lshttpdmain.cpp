@@ -544,7 +544,7 @@ int LshttpdMain::processAdminBuffer(char *p, char *pEnd)
 }
 
 
-#define DEFAULT_CONFIG_FILE         "conf/httpd_config.conf"
+#define DEFAULT_CONFIG_FILE "conf/httpd_config.conf"
 
 int LshttpdMain::testServerRoot(const char *pRoot)
 {
@@ -879,7 +879,7 @@ int LshttpdMain::init(int argc, char *argv[])
     {
         //LS_ERROR("Failed to determine the root directory of server!" ));
         fprintf(stderr,
-                "Can't determine the Home of LiteSpeed Web Server, exit!\n");
+                "[ERROR] Can't determine the Home of LiteSpeed Web Server, exit!\n");
         return 1;
     }
 
