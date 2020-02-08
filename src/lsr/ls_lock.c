@@ -119,21 +119,7 @@ int ls_pthread_mutex_setup(pthread_mutex_t *p)
 {
     pthread_mutexattr_t myAttr;
     pthread_mutexattr_init(&myAttr);
-#if defined(USE_MUTEX_ADAPTIVE)
-    pthread_mutexattr_settype(&myAttr, PTHREAD_MUTEX_ADAPTIVE_NP);
-#else  /* defined(USE_MUTEX_ADAPTIVE) */
-    /* pthread_mutexattr_settype(&myAttr, PTHREAD_MUTEX_NORMAL); */
-    pthread_mutexattr_settype(&myAttr,
-#if defined(linux) || defined(__linux) || defined(__linux__) || defined(__gnu_linux__)
-                              PTHREAD_MUTEX_ERRORCHECK_NP
-#else  /* defined(linux) */
-                              PTHREAD_MUTEX_ERRORCHECK
-#endif  /* defined(linux) */
-                             );
-#endif  /* defined(USE_MUTEX_ADAPTIVE) */
-    /* pthread_mutexattr_settype(&myAttr, PTHREAD_MUTEX_RECURSIVE); */
-    /* pthread_mutexattr_settype(&myAttr, PTHREAD_MUTEX_RECURSIVE_NP); */
-
+    pthread_mutexattr_settype(&myAttr,PTHREAD_MUTEX_ERRORCHECK);
     pthread_mutexattr_setpshared(&myAttr, PTHREAD_PROCESS_SHARED);
 
     int code = pthread_mutex_init((pthread_mutex_t *)p, &myAttr);

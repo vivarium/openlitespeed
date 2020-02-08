@@ -241,8 +241,8 @@ static void *benchRun(void *arg)
         }
     }
     for (i = 0; i < iIterations; ++i)
-    {
-        pthread_yield();
+    {;
+        sched_yield();
         delete pNodes[i];
     }
     return NULL;
