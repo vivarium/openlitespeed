@@ -41,7 +41,7 @@ set(TMP_DIR
 )
 
 set(PID_DIR
-        "/var/run/lshttpd"
+        "/run/lshttpd"
         CACHE STRING
         "The OpenLiteSpeed's pid files directory."
         FORCE
